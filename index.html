@@ -1,577 +1,1100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Peptide Glossary — PeptideClear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  /* Brand blues */
+  --blue-900: #C1E4FF;
+  --blue-800: #93C9FF;
+  --blue-700: #6BB8FF;
+  --blue-600: #4A90D9;
+  --blue-500: #2E74C0;
+  --blue-400: #1B5EA3;
+  --blue-300: #164E8A;
+  --blue-200: #103D6E;
+  --blue-100: #0B2D52;
+  --blue-50:  #071E38;
 
-  :root {
-    --navy: #1B3A5C;
-    --mid-blue: #4A90D9;
-    --light-blue: #EBF4FF;
-    --teal: #2EAD7A;
-    --text-primary: #1B3A5C;
-    --text-secondary: #5A7A9A;
-    --text-muted: #8AAABB;
-    --border: #D0E4F4;
-    --bg: #FFFFFF;
-    --bg-alt: #F7FAFD;
-  }
+  /* Light mode tokens */
+  --bg:             #FFFFFF;
+  --bg-alt:         #F7FAFD;
+  --bg-hero:        #EBF4FF;
+  --surface:        #FFFFFF;
+  --surface-hover:  #F0F8FF;
+  --border:         #D0E4F4;
+  --text-primary:   #1B3A5C;
+  --text-secondary: #5A7A8A;
+  --text-muted:     #8AAABB;
+  --accent:         #4A90D9;
+  --accent-light:   #EBF4FF;
+  --tag-bg:         #EBF4FF;
+  --tag-text:       #1B5EA3;
+  --heading-color:  #1B3A5C;
+  --pill-bg:        #1B3A5C;
+  --pill-text:      #FFFFFF;
+  --toggle-bg:      #D0E4F4;
+  --toggle-knob:    #1B3A5C;
+  --search-bg:      #FFFFFF;
+  --search-border:  #D0E4F4;
+  --letter-color:   #4A90D9;
+  --divider:        #E8F2FB;
+}
 
-  html { scroll-behavior: smooth; }
+[data-theme="dark"] {
+  --bg:             #0A1929;
+  --bg-alt:         #071E38;
+  --bg-hero:        #071E38;
+  --surface:        #103D6E;
+  --surface-hover:  #164E8A;
+  --border:         #1B5EA3;
+  --text-primary:   #C1E4FF;
+  --text-secondary: #93C9FF;
+  --text-muted:     #6BB8FF;
+  --accent:         #4A90D9;
+  --accent-light:   #103D6E;
+  --tag-bg:         #164E8A;
+  --tag-text:       #93C9FF;
+  --heading-color:  #C1E4FF;
+  --pill-bg:        #4A90D9;
+  --pill-text:      #FFFFFF;
+  --toggle-bg:      #1B5EA3;
+  --toggle-knob:    #C1E4FF;
+  --search-bg:      #103D6E;
+  --search-border:  #1B5EA3;
+  --letter-color:   #6BB8FF;
+  --divider:        #103D6E;
+}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    color: var(--text-primary);
-    background: var(--bg);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+html { scroll-behavior: smooth; }
 
-  /* ── HERO ── */
-  .hero {
-    background: var(--light-blue);
-    padding: 80px 40px 60px;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-  }
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
 
-  .hero-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--mid-blue);
-    margin-bottom: 16px;
-  }
+/* ── HEADER ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
 
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 400;
-    color: var(--navy);
-    line-height: 1.15;
-    margin-bottom: 16px;
-  }
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.3px;
+}
 
-  .hero h1 em {
-    font-style: italic;
-    color: var(--mid-blue);
-  }
+.logo span { color: var(--accent); }
 
-  .hero p {
-    font-size: 17px;
-    color: var(--text-secondary);
-    max-width: 560px;
-    margin: 0 auto 32px;
-    font-weight: 300;
-  }
+.header-right { display: flex; align-items: center; gap: 16px; }
 
-  .hero-stats {
-    display: inline-flex;
-    gap: 32px;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 40px;
-    padding: 12px 28px;
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
+.back-link {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--accent); }
 
-  .hero-stats span strong {
-    color: var(--navy);
-    font-weight: 500;
-  }
+/* Dark mode toggle */
+.toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
 
-  /* ── SEARCH ── */
-  .search-bar {
-    background: white;
-    border-bottom: 1px solid var(--border);
-    padding: 20px 40px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    justify-content: center;
-  }
+.toggle-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  user-select: none;
+}
 
-  .search-wrap {
-    position: relative;
-    width: 100%;
-    max-width: 520px;
-  }
+.toggle {
+  width: 40px;
+  height: 22px;
+  background: var(--toggle-bg);
+  border-radius: 11px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  flex-shrink: 0;
+}
 
-  .search-icon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-muted);
-    font-size: 15px;
-  }
+.toggle::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--toggle-knob);
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
 
-  #search {
-    width: 100%;
-    padding: 12px 16px 12px 44px;
-    border: 1.5px solid var(--border);
-    border-radius: 40px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    color: var(--text-primary);
-    background: var(--bg-alt);
-    outline: none;
-    transition: border-color 0.2s;
-  }
+[data-theme="dark"] .toggle::after { transform: translateX(18px); }
 
-  #search:focus { border-color: var(--mid-blue); background: white; }
-  #search::placeholder { color: var(--text-muted); }
+/* ── HERO ── */
+.hero {
+  background: var(--bg-hero);
+  border-bottom: 1px solid var(--border);
+  padding: 64px 40px 48px;
+  text-align: center;
+  transition: background 0.3s ease;
+}
 
-  /* ── ALPHA INDEX ── */
-  .alpha-index {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    justify-content: center;
-    padding: 20px 40px;
-    background: var(--bg-alt);
-    border-bottom: 1px solid var(--border);
-  }
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
 
-  .alpha-index a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: all 0.15s;
-    border: 1px solid transparent;
-  }
+.hero h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 600;
+  color: var(--heading-color);
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
 
-  .alpha-index a:hover {
-    background: var(--light-blue);
-    color: var(--navy);
-    border-color: var(--border);
-  }
+.hero-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
 
-  /* ── LAYOUT ── */
-  .container {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 60px 40px 100px;
-  }
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-  /* ── LETTER SECTION ── */
-  .letter-section {
-    margin-bottom: 56px;
-  }
+.stat {
+  font-size: 13px;
+  color: var(--text-muted);
+}
 
-  .letter-heading {
-    font-family: 'DM Serif Display', serif;
-    font-size: 48px;
-    font-weight: 400;
-    color: var(--light-blue);
-    border-bottom: 2px solid var(--light-blue);
-    padding-bottom: 8px;
-    margin-bottom: 24px;
-    position: relative;
-    line-height: 1;
-  }
+.stat strong {
+  color: var(--accent);
+  font-weight: 600;
+}
 
-  .letter-heading::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background: var(--mid-blue);
-  }
+/* ── SEARCH ── */
+.search-wrap {
+  max-width: 600px;
+  margin: 0 auto 0;
+  padding: 32px 40px 0;
+  position: relative;
+}
 
-  /* ── TERM ── */
-  .term {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 0 32px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border);
-    align-items: start;
-    transition: background 0.15s;
-  }
+.search-input {
+  width: 100%;
+  padding: 14px 48px 14px 20px;
+  border: 1.5px solid var(--search-border);
+  border-radius: 12px;
+  background: var(--search-bg);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s, background 0.3s ease;
+}
 
-  .term:last-child { border-bottom: none; }
+.search-input::placeholder { color: var(--text-muted); }
+.search-input:focus { border-color: var(--accent); }
 
-  .term:hover {
-    background: var(--bg-alt);
-    margin: 0 -16px;
-    padding: 16px 16px;
-    border-radius: 8px;
-    border-bottom: 1px solid transparent;
-  }
+.search-icon {
+  position: absolute;
+  right: 56px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  margin-top: 16px;
+}
 
-  .term-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--navy);
-    line-height: 1.4;
-    padding-top: 2px;
-  }
+/* ── ALPHA INDEX ── */
+.alpha-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  padding: 28px 40px 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-  .term-cat {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 20px;
-    margin-top: 4px;
-  }
+.alpha-link {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: all 0.15s ease;
+}
 
-  .cat-biology { background: #E1F5EE; color: #0F6E56; }
-  .cat-hormones { background: #E6F1FB; color: #185FA5; }
-  .cat-regulatory { background: #FAEEDA; color: #854F0B; }
-  .cat-research { background: #EEEDFE; color: #3C3489; }
-  .cat-admin { background: #FAECE7; color: #993C1D; }
-  .cat-skincare { background: #FBEAF0; color: #993556; }
-  .cat-health { background: #FCEBEB; color: #A32D2D; }
-  .cat-fundamentals { background: var(--light-blue); color: var(--navy); }
+.alpha-link:hover {
+  background: var(--accent);
+  color: #FFFFFF;
+  border-color: var(--accent);
+}
 
-  .term-def {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.65;
-    font-weight: 300;
-  }
+/* ── CATEGORY FILTER ── */
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  padding: 24px 40px 0;
+}
 
-  /* ── NO RESULTS ── */
-  #no-results {
-    display: none;
-    text-align: center;
-    padding: 80px 40px;
-    color: var(--text-muted);
-    font-size: 15px;
-  }
+.cat-btn {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-  /* ── FOOTER ── */
-  .glossary-footer {
-    background: var(--light-blue);
-    border-top: 1px solid var(--border);
-    padding: 40px;
-    text-align: center;
-  }
+.cat-btn:hover, .cat-btn.active {
+  background: var(--text-primary);
+  color: var(--bg);
+  border-color: var(--text-primary);
+}
 
-  .glossary-footer p {
-    font-size: 13px;
-    color: var(--text-secondary);
-    max-width: 500px;
-    margin: 0 auto;
-  }
+/* ── MAIN CONTENT ── */
+.glossary-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+}
 
-  .glossary-footer a {
-    color: var(--mid-blue);
-    text-decoration: none;
-  }
+.letter-section { margin-bottom: 48px; }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 640px) {
-    .hero { padding: 60px 20px 40px; }
-    .search-bar { padding: 16px 20px; }
-    .alpha-index { padding: 16px 20px; }
-    .container { padding: 40px 20px 80px; }
-    .term { grid-template-columns: 1fr; gap: 6px; }
-    .hero-stats { gap: 20px; flex-wrap: wrap; }
-  }
+.letter-heading {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--letter-color);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--divider);
+  margin-bottom: 4px;
+}
+
+.term {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--divider);
+  transition: background 0.15s ease;
+}
+
+.term:last-child { border-bottom: none; }
+
+.term-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.term-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--heading-color);
+  line-height: 1.3;
+}
+
+.term-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.3px;
+}
+
+/* Category tag colors */
+.tag-biology     { background: #EBF4FF; color: #1B5EA3; }
+.tag-evidence    { background: #D1FAE5; color: #065F46; }
+.tag-regulatory  { background: #FEF3C7; color: #92400E; }
+.tag-chemistry   { background: #EDE9FE; color: #5B21B6; }
+.tag-clinical    { background: #DBEAFE; color: #1E40AF; }
+.tag-community   { background: #FEE2E2; color: #991B1B; }
+.tag-research    { background: #F0FDF4; color: #166534; }
+.tag-scoring     { background: #FFF7ED; color: #9A3412; }
+
+[data-theme="dark"] .tag-biology     { background: #103D6E; color: #93C9FF; }
+[data-theme="dark"] .tag-evidence    { background: #064E3B; color: #6EE7B7; }
+[data-theme="dark"] .tag-regulatory  { background: #78350F; color: #FDE68A; }
+[data-theme="dark"] .tag-chemistry   { background: #4C1D95; color: #DDD6FE; }
+[data-theme="dark"] .tag-clinical    { background: #1E3A5F; color: #93C5FD; }
+[data-theme="dark"] .tag-community   { background: #7F1D1D; color: #FCA5A5; }
+[data-theme="dark"] .tag-research    { background: #14532D; color: #86EFAC; }
+[data-theme="dark"] .tag-scoring     { background: #7C2D12; color: #FDBA74; }
+
+.term-def {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.term-def strong { color: var(--heading-color); font-weight: 600; }
+
+/* ── NO RESULTS ── */
+#no-results {
+  display: none;
+  text-align: center;
+  padding: 60px 0;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* ── FOOTER ── */
+.glossary-footer {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  padding: 32px 40px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: background 0.3s ease;
+}
+
+.glossary-footer a { color: var(--accent); text-decoration: none; }
+.glossary-footer a:hover { text-decoration: underline; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .site-header { padding: 14px 20px; }
+  .hero { padding: 48px 20px 36px; }
+  .search-wrap { padding: 24px 20px 0; }
+  .alpha-index { padding: 20px 20px 0; }
+  .category-filter { padding: 16px 20px 0; }
+  .glossary-wrap { padding: 28px 20px 60px; }
+  .glossary-footer { padding: 24px 20px; }
+  .hero-stats { gap: 16px; }
+}
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <p class="hero-label">PeptideClear Reference</p>
-  <h1>Peptide <em>Glossary</em></h1>
-  <p>Plain English definitions for every technical term used across PeptideClear's peptide profiles. No jargon left unexplained.</p>
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://peptideclear.com" class="logo">Peptide<span>Clear</span></a>
+  <div class="header-right">
+    <a href="https://peptideclear.com" class="back-link">← Back to site</a>
+    <div class="toggle-wrap" onclick="toggleTheme()" title="Toggle dark mode">
+      <span class="toggle-label" id="theme-label">Light</span>
+      <div class="toggle"></div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Reference</div>
+  <h1>Peptide Glossary</h1>
+  <p class="hero-sub">Plain-English definitions for every technical term used across PeptideClear's compound profiles — from molecular biology to regulatory status.</p>
   <div class="hero-stats">
-    <span><strong>92</strong> terms defined</span>
-    <span><strong>8</strong> categories</span>
-    <span><strong>14</strong> compounds covered</span>
+    <span class="stat"><strong>100+</strong> terms defined</span>
+    <span class="stat"><strong>8</strong> categories</span>
+    <span class="stat"><strong>Updated</strong> as catalog grows</span>
   </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <input class="search-input" id="search" type="text" placeholder="Search any term or definition..." autocomplete="off"/>
+  <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+  </svg>
 </div>
 
-<div class="search-bar">
-  <div class="search-wrap">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="search" placeholder="Search any term or definition..." autocomplete="off">
-  </div>
-</div>
-
+<!-- ALPHA INDEX -->
 <div class="alpha-index" id="alpha-index">
-  <a href="#A">A</a><a href="#B">B</a><a href="#C">C</a><a href="#D">D</a>
-  <a href="#E">E</a><a href="#F">F</a><a href="#G">G</a><a href="#H">H</a>
-  <a href="#I">I</a><a href="#L">L</a><a href="#M">M</a><a href="#N">N</a>
-  <a href="#O">O</a><a href="#P">P</a><a href="#R">R</a><a href="#S">S</a>
-  <a href="#T">T</a><a href="#V">V</a><a href="#W">W</a>
+  <a class="alpha-link" href="#A">A</a>
+  <a class="alpha-link" href="#B">B</a>
+  <a class="alpha-link" href="#C">C</a>
+  <a class="alpha-link" href="#D">D</a>
+  <a class="alpha-link" href="#E">E</a>
+  <a class="alpha-link" href="#F">F</a>
+  <a class="alpha-link" href="#G">G</a>
+  <a class="alpha-link" href="#H">H</a>
+  <a class="alpha-link" href="#I">I</a>
+  <a class="alpha-link" href="#J">J</a>
+  <a class="alpha-link" href="#K">K</a>
+  <a class="alpha-link" href="#L">L</a>
+  <a class="alpha-link" href="#M">M</a>
+  <a class="alpha-link" href="#N">N</a>
+  <a class="alpha-link" href="#O">O</a>
+  <a class="alpha-link" href="#P">P</a>
+  <a class="alpha-link" href="#R">R</a>
+  <a class="alpha-link" href="#S">S</a>
+  <a class="alpha-link" href="#T">T</a>
+  <a class="alpha-link" href="#V">V</a>
+  <a class="alpha-link" href="#W">W</a>
 </div>
 
-<div class="container" id="glossary-container">
+<!-- CATEGORY FILTER -->
+<div class="category-filter" id="cat-filter">
+  <button class="cat-btn active" data-cat="all">All</button>
+  <button class="cat-btn" data-cat="biology">Biology</button>
+  <button class="cat-btn" data-cat="evidence">Evidence</button>
+  <button class="cat-btn" data-cat="regulatory">Regulatory</button>
+  <button class="cat-btn" data-cat="chemistry">Chemistry</button>
+  <button class="cat-btn" data-cat="clinical">Clinical</button>
+  <button class="cat-btn" data-cat="community">Community</button>
+  <button class="cat-btn" data-cat="research">Research</button>
+  <button class="cat-btn" data-cat="scoring">Scoring</button>
+</div>
 
-  <div class="letter-section" id="A">
-    <div class="letter-heading">A</div>
-    <div class="term"><div><div class="term-name">Actin</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A protein found in nearly all human cells that forms the structural scaffold for cell shape and movement. In the context of peptides like TB-500, promoting actin polymerization accelerates cell migration to injury sites and supports tissue repair.</div></div>
-    <div class="term"><div><div class="term-name">Adaptogen</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A natural substance that helps the body resist physical and psychological stress by normalizing physiological processes. Adaptogens are thought to modulate the stress hormone cortisol rather than acting on a single specific pathway.</div></div>
-    <div class="term"><div><div class="term-name">ADP (Adenosine Diphosphate)</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A molecule produced when ATP releases its energy during muscle contraction. Creatine supplementation helps rapidly convert ADP back into ATP, extending high intensity exercise capacity.</div></div>
-    <div class="term"><div><div class="term-name">Amino acid</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">The fundamental building blocks of all proteins and peptides. There are 20 standard amino acids — the body can produce some itself while others must be obtained through diet.</div></div>
-    <div class="term"><div><div class="term-name">Anabolic steroid</div><span class="term-cat cat-health">Health</span></div><div class="term-def">A synthetic derivative of testosterone that promotes muscle protein synthesis and growth. Unlike compounds such as Turkesterone, anabolic steroids bind directly to androgen receptors and typically cause hormonal suppression.</div></div>
-    <div class="term"><div><div class="term-name">Androgen receptor</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A protein in cells that binds testosterone and related hormones to trigger muscle growth and other androgenic effects. Compounds that bind androgen receptors carry risk of hormonal suppression — notably Turkesterone does not appear to bind these receptors.</div></div>
-    <div class="term"><div><div class="term-name">Angiogenesis</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The biological process of forming new blood vessels from existing ones. Several peptides including BPC-157 and GHK-Cu promote angiogenesis at injury sites, accelerating tissue repair and nutrient delivery.</div></div>
-    <div class="term"><div><div class="term-name">Animal model</div><span class="term-cat cat-research">Research</span></div><div class="term-def">A research study conducted in non-human animals, typically rodents, to investigate biological mechanisms and potential therapeutic effects. Animal model evidence is considered less conclusive than human clinical trial data for predicting effects in humans.</div></div>
-    <div class="term"><div><div class="term-name">Anterior pituitary</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The front portion of the pituitary gland at the base of the brain. It produces and releases growth hormone in response to signals from the hypothalamus — the primary target of peptides like Sermorelin and Ipamorelin.</div></div>
-    <div class="term"><div><div class="term-name">Anti-glycation</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The process of preventing or reducing glycation, the damaging attachment of sugar molecules to proteins and DNA. Carnosine is one of the most studied anti-glycation compounds in the longevity space.</div></div>
-    <div class="term"><div><div class="term-name">Antioxidant</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A molecule that neutralizes free radicals, preventing them from damaging cells and DNA. Both GHK-Cu and Carnosine have demonstrated significant antioxidant activity in research settings.</div></div>
-    <div class="term"><div><div class="term-name">ATP (Adenosine Triphosphate)</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The primary energy currency of all living cells. During high intensity exercise ATP is rapidly depleted — creatine supplementation helps regenerate ATP faster, extending performance capacity.</div></div>
-  </div>
-
-  <div class="letter-section" id="B">
-    <div class="letter-heading">B</div>
-    <div class="term"><div><div class="term-name">Bacteriostatic water</div><span class="term-cat cat-admin">Administration</span></div><div class="term-def">Sterile water containing a small amount of benzyl alcohol that prevents bacterial growth. It is the standard diluent used to reconstitute lyophilized peptide powders for injection.</div></div>
-    <div class="term"><div><div class="term-name">Beta-alanine</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">A non-essential amino acid and one of the two building blocks of carnosine. It is the rate-limiting precursor to carnosine synthesis in muscle — supplementing beta-alanine raises muscle carnosine levels and is well established for improving high intensity exercise endurance.</div></div>
-    <div class="term"><div><div class="term-name">Bioavailability</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">The proportion of a substance that enters circulation and is available to have an active effect. Injectable peptides typically have higher bioavailability than oral forms as they bypass digestive breakdown.</div></div>
-    <div class="term"><div><div class="term-name">Blood vessel wall integrity</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The structural health and function of the walls of arteries, veins, and capillaries. Collagen Type III plays a critical role in maintaining blood vessel wall integrity and flexibility.</div></div>
-    <div class="term"><div><div class="term-name">Bone mineral density</div><span class="term-cat cat-health">Health</span></div><div class="term-def">A measure of the amount of minerals, primarily calcium, contained in bone tissue. Higher bone mineral density indicates stronger bones — both Collagen Type I and Sermorelin have evidence for supporting bone mineral density.</div></div>
-    <div class="term"><div><div class="term-name">Bovine</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">Derived from cattle. In the context of collagen supplements, bovine refers to collagen sourced from cow hide, bones, or cartilage — the most common and well-studied commercial collagen source.</div></div>
-    <div class="term"><div><div class="term-name">Boxed warning</div><span class="term-cat cat-regulatory">Regulatory</span></div><div class="term-def">The FDA's most serious warning label, placed in a box at the top of a drug's prescribing information. GLP-1 receptor agonists carry a boxed warning for thyroid C-cell tumors observed in rodent studies.</div></div>
-  </div>
-
-  <div class="letter-section" id="C">
-    <div class="letter-heading">C</div>
-    <div class="term"><div><div class="term-name">Cell migration</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The movement of cells from one location to another within the body, essential for wound healing and immune response. TB-500 promotes cell migration to injury sites by upregulating actin polymerization.</div></div>
-    <div class="term"><div><div class="term-name">Cell volumization</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The increase in cell size due to water retention inside the cell. Creatine supplementation causes cell volumization in muscle tissue which may stimulate protein synthesis pathways.</div></div>
-    <div class="term"><div><div class="term-name">Chelation</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The process by which a molecule binds to metal ions to form a stable complex, preventing their free circulation in tissue. Carnosine chelates heavy metals including copper and zinc, reducing their potential for cellular damage.</div></div>
-    <div class="term"><div><div class="term-name">COA (Certificate of Analysis)</div><span class="term-cat cat-regulatory">Regulatory</span></div><div class="term-def">A document from an accredited laboratory verifying the identity, purity, and potency of a compound. PeptideClear recommends always requesting a COA before purchasing any research compound or supplement.</div></div>
-    <div class="term"><div><div class="term-name">Collagen crosslinking</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The chemical bonding between collagen fibers that gives connective tissue its strength and rigidity. GHK-Cu activates enzymes involved in collagen crosslinking, contributing to stronger and more organized tissue repair.</div></div>
-    <div class="term"><div><div class="term-name">Collagen peptides</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">Short chains of amino acids derived from hydrolyzed collagen that are absorbed more efficiently than intact collagen protein. Collagen peptides are the active form in most commercial collagen supplements.</div></div>
-    <div class="term"><div><div class="term-name">Collagen synthesis</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The biological process by which cells, primarily fibroblasts, produce new collagen protein. Multiple peptides in this catalog stimulate collagen synthesis including GHK-Cu, Palmitoyl Tripeptide-1, and collagen supplements themselves.</div></div>
-    <div class="term"><div><div class="term-name">Collagen Type I</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">The most abundant protein in the human body, forming the structural backbone of skin, tendons, ligaments, and bone. It represents approximately 90% of total body collagen.</div></div>
-    <div class="term"><div><div class="term-name">Collagen Type III</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">The second most abundant collagen, found alongside Type I in skin, blood vessels, and internal organs. It forms a more flexible fibrillar network and is particularly important in early wound healing.</div></div>
-    <div class="term"><div><div class="term-name">Copper ion</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A positively charged copper atom that plays an essential role in enzyme activation and antioxidant defense. In GHK-Cu the copper ion activates enzymes involved in collagen crosslinking and superoxide dismutase activity.</div></div>
-    <div class="term"><div><div class="term-name">Cortisol</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">The body's primary stress hormone, produced by the adrenal glands. Elevated cortisol is catabolic — it breaks down muscle tissue. Ipamorelin is valued partly because it stimulates growth hormone release without significantly raising cortisol.</div></div>
-    <div class="term"><div><div class="term-name">Creatine monohydrate</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">The most studied and widely used form of creatine supplementation. Despite the marketing of proprietary creatine variants, research consistently shows creatine monohydrate is as effective as any alternative form at a fraction of the cost.</div></div>
-  </div>
-
-  <div class="letter-section" id="D">
-    <div class="letter-heading">D</div>
-    <div class="term"><div><div class="term-name">Dipeptide</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">A peptide consisting of exactly two amino acids joined by a peptide bond. Carnosine is a dipeptide composed of beta-alanine and histidine.</div></div>
-    <div class="term"><div><div class="term-name">Dose escalation</div><span class="term-cat cat-admin">Administration</span></div><div class="term-def">The gradual increase of a compound's dose over time to improve tolerability and minimize side effects. GLP-1 receptor agonists and Retatrutide are typically initiated at low doses and escalated over weeks to months.</div></div>
-    <div class="term"><div><div class="term-name">DSHEA</div><span class="term-cat cat-regulatory">Regulatory</span></div><div class="term-def">The Dietary Supplement Health and Education Act — the 1994 US federal law that regulates dietary supplements. Under DSHEA, supplement manufacturers do not need FDA approval before selling products; the FDA can only act after a product is proven unsafe.</div></div>
-  </div>
-
-  <div class="letter-section" id="E">
-    <div class="letter-heading">E</div>
-    <div class="term"><div><div class="term-name">Ecdysteroid</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A class of steroid hormones found naturally in plants and insects that regulate molting and development in arthropods. Turkesterone is an ecdysteroid — it does not function like mammalian steroid hormones and does not appear to bind androgen receptors.</div></div>
-    <div class="term"><div><div class="term-name">Elastin</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A protein in connective tissue that allows skin and other tissues to resume their shape after stretching. GHK-Cu stimulates elastin production alongside collagen, contributing to improved skin firmness and resilience.</div></div>
-    <div class="term"><div><div class="term-name">Endogenous</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">Produced or originating from within the body. Carnosine and GHK-Cu are endogenous compounds — they occur naturally in the human body and decline with age.</div></div>
-    <div class="term"><div><div class="term-name">Energy expenditure</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The total amount of energy the body uses over a given period. Retatrutide's glucagon receptor agonism increases energy expenditure, contributing to its superior weight loss outcomes compared to GLP-1-only therapies.</div></div>
-    <div class="term"><div><div class="term-name">Estrogen receptor beta</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">One of two main estrogen receptor subtypes, found in bone, brain, and cardiovascular tissue. Turkesterone may exert some of its effects through estrogen receptor beta activation — an area of active research.</div></div>
-    <div class="term"><div><div class="term-name">Exogenous</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">Originating from outside the body. Exogenous HGH refers to synthetic human growth hormone injected directly, as opposed to secretagogue peptides that stimulate the body's own GH production.</div></div>
-    <div class="term"><div><div class="term-name">Extracellular matrix</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The network of proteins and molecules surrounding cells that provides structural support and regulates cell behavior. Multiple peptides including Palmitoyl Tripeptide-1 and TB-500 interact with the extracellular matrix to promote tissue repair.</div></div>
-  </div>
-
-  <div class="letter-section" id="F">
-    <div class="letter-heading">F</div>
-    <div class="term"><div><div class="term-name">FDA</div><span class="term-cat cat-regulatory">Regulatory</span></div><div class="term-def">The US Food and Drug Administration — the federal agency responsible for regulating food, drugs, medical devices, and dietary supplements. FDA approval requires demonstrated safety and efficacy through clinical trials — most research compounds in this catalog are not FDA approved.</div></div>
-    <div class="term"><div><div class="term-name">Fibroblast</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A cell found in connective tissue that produces collagen, elastin, and other structural proteins. Fibroblasts are the primary target of skin-focused peptides including GHK-Cu and Palmitoyl Tripeptide-1.</div></div>
-    <div class="term"><div><div class="term-name">Free radical</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">An unstable molecule with an unpaired electron that damages cells, proteins, and DNA through oxidative stress. Both Carnosine and GHK-Cu are effective free radical scavengers.</div></div>
-  </div>
-
-  <div class="letter-section" id="G">
-    <div class="letter-heading">G</div>
-    <div class="term"><div><div class="term-name">Gastric emptying</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The rate at which food moves from the stomach into the small intestine. GLP-1 receptor agonists slow gastric emptying, prolonging fullness after meals and contributing to reduced caloric intake.</div></div>
-    <div class="term"><div><div class="term-name">Gene expression</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The process by which information encoded in DNA is used to produce proteins that carry out cellular functions. GHK-Cu has demonstrated the ability to reset gene expression patterns in aging cells toward more youthful profiles.</div></div>
-    <div class="term"><div><div class="term-name">Geroprotector</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A compound that protects against the biological processes of aging. Carnosine is considered a geroprotector due to its combined antioxidant, anti-glycation, and pH buffering properties.</div></div>
-    <div class="term"><div><div class="term-name">GH axis</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">The hormonal signaling system governing growth hormone production and regulation, involving the hypothalamus, pituitary gland, and IGF-1 feedback loop. Prolonged use of GH secretagogues may suppress natural GH axis function.</div></div>
-    <div class="term"><div><div class="term-name">Ghrelin</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">A hormone produced primarily in the stomach that stimulates appetite and growth hormone release. MK-677 and Ipamorelin work by mimicking ghrelin and activating the ghrelin receptor.</div></div>
-    <div class="term"><div><div class="term-name">Ghrelin receptor (GHS-R1a)</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">The receptor targeted by ghrelin and ghrelin mimetics including Ipamorelin and MK-677. Activation of this receptor in the pituitary gland triggers growth hormone release.</div></div>
-    <div class="term"><div><div class="term-name">GIP</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">Glucose-dependent Insulinotropic Polypeptide — an incretin hormone produced in the small intestine that stimulates insulin release in response to food. Retatrutide targets GIP receptors alongside GLP-1 and glucagon receptors in its triple agonist mechanism.</div></div>
-    <div class="term"><div><div class="term-name">GLP-1 receptor agonist</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">A class of drugs that mimic the action of the naturally occurring GLP-1 hormone to stimulate insulin release, suppress appetite, and slow gastric emptying. Includes semaglutide (Ozempic, Wegovy) and liraglutide.</div></div>
-    <div class="term"><div><div class="term-name">Glucagon</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">A hormone produced by the pancreas that raises blood sugar by stimulating glucose release from the liver. Retatrutide's glucagon receptor agonism increases energy expenditure and fat breakdown.</div></div>
-    <div class="term"><div><div class="term-name">Glucagon receptor</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">The cell surface receptor that binds glucagon and mediates its effects on blood sugar and energy metabolism. Activation of the glucagon receptor is what distinguishes Retatrutide from semaglutide and tirzepatide.</div></div>
-    <div class="term"><div><div class="term-name">Glycation</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The non-enzymatic bonding of sugar molecules to proteins and DNA, causing cellular dysfunction and contributing to aging. Carnosine is one of the most potent anti-glycation compounds identified in research.</div></div>
-    <div class="term"><div><div class="term-name">Glycation end products</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The damaged proteins and lipids that result from glycation. Accumulation of glycation end products is associated with accelerated aging, diabetes complications, and cardiovascular disease.</div></div>
-    <div class="term"><div><div class="term-name">Glycine</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">The simplest amino acid and the most abundant in collagen, comprising approximately one third of collagen's amino acid sequence. Glycine is a key component of both Collagen Type I and GHK-Cu.</div></div>
-    <div class="term"><div><div class="term-name">Glycosaminoglycan</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A class of long chain sugar molecules that form a key component of connective tissue and skin. GHK-Cu stimulates glycosaminoglycan synthesis alongside collagen and elastin production.</div></div>
-    <div class="term"><div><div class="term-name">Growth hormone (GH)</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">A peptide hormone produced by the anterior pituitary that stimulates growth, cell reproduction, and metabolism. GH declines naturally with age — stimulating its production through secretagogue peptides is a core strategy in longevity medicine.</div></div>
-    <div class="term"><div><div class="term-name">Growth hormone deficiency</div><span class="term-cat cat-health">Health</span></div><div class="term-def">A medical condition characterized by insufficient growth hormone production. Sermorelin was previously FDA approved specifically for treating growth hormone deficiency in children.</div></div>
-    <div class="term"><div><div class="term-name">Growth hormone secretagogue</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">Any compound that stimulates the secretion of growth hormone from the pituitary gland. Ipamorelin, Sermorelin, and MK-677 are all growth hormone secretagogues though they work through different mechanisms.</div></div>
-  </div>
-
-  <div class="letter-section" id="H">
-    <div class="letter-heading">H</div>
-    <div class="term"><div><div class="term-name">Hair follicle</div><span class="term-cat cat-skincare">Skincare</span></div><div class="term-def">The skin structure from which hair grows. GHK-Cu has demonstrated benefits for hair follicle health and density in both topical and research contexts.</div></div>
-    <div class="term"><div><div class="term-name">Half-life</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">The time it takes for half of a compound to be eliminated from the body. A longer half-life means less frequent dosing — MK-677's 24-hour half-life allows once daily oral dosing compared to multiple daily injections for peptide secretagogues.</div></div>
-    <div class="term"><div><div class="term-name">Heavy metals</div><span class="term-cat cat-health">Health</span></div><div class="term-def">Metallic elements with high density that can accumulate in tissue and cause cellular damage. Carnosine chelates heavy metals including copper and zinc, preventing their toxic accumulation.</div></div>
-    <div class="term"><div><div class="term-name">HGH (Human Growth Hormone)</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">Synthetic human growth hormone administered by injection. Unlike secretagogue peptides that stimulate the body's own GH production, exogenous HGH bypasses natural regulatory feedback mechanisms.</div></div>
-    <div class="term"><div><div class="term-name">Histidine</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">An essential amino acid and one of the two building blocks of carnosine. Histidine is also the central amino acid in the GHK sequence of both GHK-Cu and Palmitoyl Tripeptide-1.</div></div>
-    <div class="term"><div><div class="term-name">Hydrolyzed collagen</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">Collagen protein that has been broken down into smaller peptide fragments through enzymatic or chemical hydrolysis. Hydrolyzed collagen is more easily absorbed than intact collagen protein.</div></div>
-    <div class="term"><div><div class="term-name">Hydroxyproline</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">A modified form of the amino acid proline found almost exclusively in collagen. Its presence in blood and urine is used as a marker of collagen metabolism and is one of the key bioactive fragments in hydrolyzed collagen supplements.</div></div>
-    <div class="term"><div><div class="term-name">Hyperpigmentation</div><span class="term-cat cat-skincare">Skincare</span></div><div class="term-def">The darkening of areas of skin caused by excess melanin production. GHK-Cu has demonstrated the ability to reduce hyperpigmentation in topical applications.</div></div>
-    <div class="term"><div><div class="term-name">Hypoglycemia</div><span class="term-cat cat-health">Health</span></div><div class="term-def">Abnormally low blood sugar levels. GLP-1 receptor agonists stimulate insulin release in a glucose-dependent manner — meaning they do not cause hypoglycemia when blood sugar is already normal, unlike some older diabetes medications.</div></div>
-    <div class="term"><div><div class="term-name">Hypothalamic appetite centers</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">Areas of the hypothalamus in the brain that regulate hunger and satiety. GLP-1 receptor agonists act on these centers to reduce appetite and increase feelings of fullness.</div></div>
-  </div>
-
-  <div class="letter-section" id="I">
-    <div class="letter-heading">I</div>
-    <div class="term"><div><div class="term-name">IGF-1 (Insulin-like Growth Factor 1)</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">A hormone produced primarily by the liver in response to growth hormone stimulation. IGF-1 mediates many of GH's anabolic effects on muscle and bone — elevated IGF-1 is a key marker of GH secretagogue activity.</div></div>
-    <div class="term"><div><div class="term-name">Incretin hormone</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">A class of gut hormones released after eating that stimulate insulin secretion and reduce glucagon. GLP-1 and GIP are the two primary incretin hormones — both are targeted by Retatrutide.</div></div>
-    <div class="term"><div><div class="term-name">INCI</div><span class="term-cat cat-regulatory">Regulatory</span></div><div class="term-def">International Nomenclature of Cosmetic Ingredients — the standardized international naming system for cosmetic ingredients. The INCI name for Palmitoyl Tripeptide-1 is used on skincare product ingredient labels worldwide.</div></div>
-    <div class="term"><div><div class="term-name">In vitro</div><span class="term-cat cat-research">Research</span></div><div class="term-def">Literally "in glass" — research conducted in a controlled laboratory environment outside a living organism, typically in cell cultures or test tubes. In vitro evidence is the weakest tier of the PeptideClear evidence grading system.</div></div>
-    <div class="term"><div><div class="term-name">In vivo</div><span class="term-cat cat-research">Research</span></div><div class="term-def">Literally "within the living" — research conducted within a living organism. In vivo studies in animals are considered stronger evidence than in vitro but weaker than human clinical trials.</div></div>
-    <div class="term"><div><div class="term-name">Insulin resistance</div><span class="term-cat cat-health">Health</span></div><div class="term-def">A condition in which cells respond poorly to insulin, requiring more insulin to achieve normal blood sugar control. Prolonged MK-677 use may worsen insulin resistance due to sustained GH and IGF-1 elevation.</div></div>
-    <div class="term"><div><div class="term-name">Insulin secretion</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">The release of insulin from the pancreas in response to rising blood sugar. GLP-1 receptor agonists stimulate glucose-dependent insulin secretion — a key mechanism in their blood sugar lowering effects.</div></div>
-    <div class="term"><div><div class="term-name">Intramuscular injection</div><span class="term-cat cat-admin">Administration</span></div><div class="term-def">Administration of a compound directly into muscle tissue using a needle. Some peptides are administered intramuscularly though subcutaneous injection is more common for most compounds in this catalog.</div></div>
-  </div>
-
-  <div class="letter-section" id="L">
-    <div class="letter-heading">L</div>
-    <div class="term"><div><div class="term-name">L-cells</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">Specialized hormone-secreting cells found in the lining of the small intestine and colon. L-cells produce GLP-1 in response to food intake, triggering insulin release and appetite suppression.</div></div>
-    <div class="term"><div><div class="term-name">Lactic acid</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A byproduct of anaerobic metabolism that accumulates in muscles during high intensity exercise, contributing to fatigue. Carnosine buffers lactic acid in muscle tissue, delaying the onset of fatigue.</div></div>
-    <div class="term"><div><div class="term-name">Lipophilicity</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">The ability of a compound to dissolve in fats and oils. The palmitic acid modification in Palmitoyl Tripeptide-1 increases its lipophilicity, enabling it to penetrate the skin's outer barrier more effectively.</div></div>
-    <div class="term"><div><div class="term-name">Lyophilized powder</div><span class="term-cat cat-admin">Administration</span></div><div class="term-def">A freeze-dried powder form of a compound that has had water removed to improve stability and shelf life. Most injectable peptides are supplied as lyophilized powders that must be reconstituted with bacteriostatic water before use.</div></div>
-  </div>
-
-  <div class="letter-section" id="M">
-    <div class="letter-heading">M</div>
-    <div class="term"><div><div class="term-name">Malignancy</div><span class="term-cat cat-health">Health</span></div><div class="term-def">A cancerous tumor or condition characterized by uncontrolled cell growth. Growth hormone stimulating peptides and pro-angiogenic compounds carry theoretical risk in individuals with active malignancies and should be avoided in this population.</div></div>
-    <div class="term"><div><div class="term-name">Marine collagen</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">Collagen sourced from fish skin, scales, or bones. Marine collagen is predominantly Type I and is a preferred option for individuals who avoid bovine products — it is not a significant source of Type III collagen.</div></div>
-    <div class="term"><div><div class="term-name">Matrikine</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A peptide fragment released during extracellular matrix breakdown that signals cells to initiate repair processes. Palmitoyl Tripeptide-1 is a matrikine — it mimics a collagen breakdown fragment to trigger new collagen synthesis.</div></div>
-    <div class="term"><div><div class="term-name">Matrixyl 3000</div><span class="term-cat cat-skincare">Skincare</span></div><div class="term-def">A trademarked cosmetic ingredient combining Palmitoyl Tripeptide-1 and Palmitoyl Tetrapeptide-7. It is one of the most commonly used peptide complexes in premium anti-aging skincare formulations.</div></div>
-    <div class="term"><div><div class="term-name">Medullary thyroid carcinoma</div><span class="term-cat cat-health">Health</span></div><div class="term-def">A rare cancer of the thyroid gland originating in C-cells. GLP-1 receptor agonists carry a contraindication for individuals with personal or family history of this condition due to thyroid C-cell tumors observed in rodent studies.</div></div>
-    <div class="term"><div><div class="term-name">Metabolic syndrome</div><span class="term-cat cat-health">Health</span></div><div class="term-def">A cluster of conditions including high blood pressure, elevated blood sugar, excess abdominal fat, and abnormal cholesterol that together increase risk of heart disease, stroke, and diabetes. Retatrutide is being investigated as a treatment for metabolic syndrome.</div></div>
-    <div class="term"><div><div class="term-name">Micronized creatine</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">Creatine monohydrate that has been processed into smaller particles for improved solubility in water. Micronized creatine dissolves more easily and may cause less gastrointestinal discomfort than standard creatine monohydrate.</div></div>
-    <div class="term"><div><div class="term-name">Multiple Endocrine Neoplasia (MEN2)</div><span class="term-cat cat-health">Health</span></div><div class="term-def">A rare inherited disorder that causes tumors in multiple endocrine glands. GLP-1 receptor agonists are contraindicated in individuals with MEN2 due to associated thyroid cancer risk.</div></div>
-    <div class="term"><div><div class="term-name">Muscle protein synthesis</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The biological process by which muscle cells build new protein to repair and grow muscle tissue. Creatine, Turkesterone, and growth hormone secretagogues all influence muscle protein synthesis through different pathways.</div></div>
-  </div>
-
-  <div class="letter-section" id="N">
-    <div class="letter-heading">N</div>
-    <div class="term"><div><div class="term-name">Nasolabial folds</div><span class="term-cat cat-skincare">Skincare</span></div><div class="term-def">The skin folds running from the sides of the nose to the corners of the mouth, commonly called smile lines. Palmitoyl Tripeptide-1 has been specifically studied for reducing the depth of nasolabial folds.</div></div>
-    <div class="term"><div><div class="term-name">Nerve outgrowth</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The extension and regeneration of nerve fibers following injury or degeneration. GHK-Cu has demonstrated the ability to promote nerve outgrowth, contributing to its broad tissue repair profile.</div></div>
-    <div class="term"><div><div class="term-name">Neurodegenerative disease</div><span class="term-cat cat-health">Health</span></div><div class="term-def">A category of conditions involving the progressive loss of nerve cell function, including Alzheimer's, Parkinson's, and ALS. Several compounds in this catalog including Carnosine and Creatine show emerging evidence for neuroprotective effects relevant to neurodegeneration.</div></div>
-    <div class="term"><div><div class="term-name">Neuroprotection</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The preservation of neuronal structure and function against damage or degeneration. Carnosine, Creatine, and GHK-Cu all demonstrate neuroprotective properties in research settings.</div></div>
-    <div class="term"><div><div class="term-name">Nitric oxide</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A signaling molecule that dilates blood vessels, regulates blood pressure, and modulates inflammation. BPC-157's interaction with nitric oxide synthesis pathways is thought to contribute to its anti-inflammatory and healing effects.</div></div>
-    <div class="term"><div><div class="term-name">NASH</div><span class="term-cat cat-health">Health</span></div><div class="term-def">Non-alcoholic steatohepatitis — a severe form of fatty liver disease involving inflammation and liver cell damage. Retatrutide is being investigated as a treatment for NASH given its effects on liver fat metabolism.</div></div>
-  </div>
-
-  <div class="letter-section" id="O">
-    <div class="letter-heading">O</div>
-    <div class="term"><div><div class="term-name">Oral bioavailability</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">The fraction of an orally administered compound that reaches systemic circulation in active form. MK-677's oral bioavailability is a key practical advantage over injectable peptide secretagogues that must be injected to be effective.</div></div>
-    <div class="term"><div><div class="term-name">Osteoarthritis</div><span class="term-cat cat-health">Health</span></div><div class="term-def">A degenerative joint disease characterized by the breakdown of cartilage. Collagen Type I supplementation has evidence for reducing joint discomfort and improving mobility in individuals with osteoarthritis.</div></div>
-    <div class="term"><div><div class="term-name">OTC supplement</div><span class="term-cat cat-regulatory">Regulatory</span></div><div class="term-def">An over-the-counter dietary supplement available without a prescription. Several compounds in this catalog including Collagen Type I, GHK-Cu topical, Carnosine, and Creatine are OTC supplements regulated under DSHEA.</div></div>
-    <div class="term"><div><div class="term-name">Oxidative damage</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">Cellular injury caused by free radicals and reactive oxygen species overwhelming the body's antioxidant defenses. Both Carnosine and GHK-Cu protect against oxidative damage through multiple complementary mechanisms.</div></div>
-  </div>
-
-  <div class="letter-section" id="P">
-    <div class="letter-heading">P</div>
-    <div class="term"><div><div class="term-name">Palmitic acid</div><span class="term-cat cat-skincare">Skincare</span></div><div class="term-def">A saturated fatty acid attached to the GHK peptide sequence in Palmitoyl Tripeptide-1. The palmitic acid component increases skin penetration and formulation stability.</div></div>
-    <div class="term"><div><div class="term-name">Pancreatitis</div><span class="term-cat cat-health">Health</span></div><div class="term-def">Inflammation of the pancreas, which can range from mild to life-threatening. GLP-1 receptor agonists carry a risk of pancreatitis — individuals with a history of pancreatitis should avoid these compounds.</div></div>
-    <div class="term"><div><div class="term-name">Paresthesia</div><span class="term-cat cat-health">Health</span></div><div class="term-def">An abnormal sensation such as tingling, numbness, or a "pins and needles" feeling. It is a commonly reported side effect of beta-alanine supplementation and occasionally of MK-677 use.</div></div>
-    <div class="term"><div><div class="term-name">Peer-reviewed</div><span class="term-cat cat-research">Research</span></div><div class="term-def">Research that has been evaluated by independent experts in the relevant field before publication. PeptideClear cites only peer-reviewed sources — no supplement brand studies, no anecdotal reports, no influencer claims.</div></div>
-    <div class="term"><div><div class="term-name">Pentadecapeptide</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">A peptide chain consisting of exactly 15 amino acids. BPC-157 is a pentadecapeptide — its 15 amino acid structure is at the core of its research identity.</div></div>
-    <div class="term"><div><div class="term-name">Pentapeptide</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">A peptide chain consisting of exactly five amino acids. Ipamorelin is a pentapeptide — its compact five amino acid structure contributes to its receptor selectivity.</div></div>
-    <div class="term"><div><div class="term-name">Periorbital</div><span class="term-cat cat-skincare">Skincare</span></div><div class="term-def">Relating to the area around the eye. Palmitoyl Tripeptide-1 has been specifically studied for reducing periorbital wrinkles — one of the most targeted applications in cosmetic peptide research.</div></div>
-    <div class="term"><div><div class="term-name">pH buffer</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A substance that resists changes in acidity (pH) in a solution. Carnosine is one of the most important pH buffers in skeletal muscle, neutralizing the lactic acid produced during high intensity exercise.</div></div>
-    <div class="term"><div><div class="term-name">Phosphocreatine</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The stored form of creatine in muscle tissue, used to rapidly regenerate ATP during high intensity exercise. Creatine supplementation increases muscle phosphocreatine stores by approximately 20-40%.</div></div>
-    <div class="term"><div><div class="term-name">Phosphate group</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A chemical group containing phosphorus and oxygen that is transferred from phosphocreatine to ADP to regenerate ATP. This rapid phosphate transfer is the core of creatine's performance-enhancing mechanism.</div></div>
-    <div class="term"><div><div class="term-name">PI3K/Akt signaling</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A cellular signaling pathway that promotes cell survival, growth, and protein synthesis. Turkesterone may exert anabolic effects partly through activation of the PI3K/Akt pathway in muscle cells.</div></div>
-    <div class="term"><div><div class="term-name">Pituitary gland</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">A small endocrine gland at the base of the brain that produces and regulates multiple hormones including growth hormone. Sermorelin and Ipamorelin stimulate the pituitary gland to release growth hormone naturally.</div></div>
-    <div class="term"><div><div class="term-name">Platelet aggregation</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The clumping together of blood platelets to form clots. TB-500 may affect platelet aggregation — individuals on anticoagulant medications should exercise caution.</div></div>
-    <div class="term"><div><div class="term-name">Post-menopausal</div><span class="term-cat cat-health">Health</span></div><div class="term-def">Referring to the period after a woman has permanently stopped menstruating. Collagen Type I has specific evidence for supporting bone mineral density in post-menopausal women, a population at elevated risk for osteoporosis.</div></div>
-    <div class="term"><div><div class="term-name">Pro-angiogenic</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">Promoting the growth of new blood vessels. BPC-157 and TB-500 are pro-angiogenic compounds — a property that supports tissue healing but raises theoretical concerns in individuals with active malignancies.</div></div>
-    <div class="term"><div><div class="term-name">Prohormone</div><span class="term-cat cat-health">Health</span></div><div class="term-def">A precursor compound that converts into an active hormone in the body. Prohormones are generally considered higher risk than the peptide-adjacent compounds covered in this catalog.</div></div>
-    <div class="term"><div><div class="term-name">Prolactin</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">A hormone produced by the pituitary gland involved in lactation and immune function. Ipamorelin is distinguished from other GH secretagogues by its lack of effect on prolactin levels.</div></div>
-    <div class="term"><div><div class="term-name">Prolyl-hydroxyproline (Pro-Hyp)</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A bioactive dipeptide fragment released during collagen digestion that directly stimulates collagen and hyaluronic acid production in skin cells. It is considered one of the key active fragments in hydrolyzed collagen supplementation.</div></div>
-    <div class="term"><div><div class="term-name">Proline</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">An amino acid that makes up approximately 15% of collagen's structure and is essential for collagen stability. Along with glycine and hydroxyproline, proline is one of the three most abundant amino acids in collagen.</div></div>
-    <div class="term"><div><div class="term-name">PubMed</div><span class="term-cat cat-research">Research</span></div><div class="term-def">The free online database of biomedical and life sciences literature maintained by the National Institutes of Health. PeptideClear cites PubMed as the primary source for all research references.</div></div>
-    <div class="term"><div><div class="term-name">Pulsatile release</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">The natural pattern of hormone secretion occurring in brief bursts rather than continuously. Sermorelin preserves the natural pulsatile release of growth hormone — a key safety advantage over continuous exogenous HGH administration.</div></div>
-  </div>
-
-  <div class="letter-section" id="R">
-    <div class="letter-heading">R</div>
-    <div class="term"><div><div class="term-name">RCT (Randomized Controlled Trial)</div><span class="term-cat cat-research">Research</span></div><div class="term-def">The gold standard of clinical research design, in which participants are randomly assigned to treatment or control groups to minimize bias. Human RCT is the highest evidence grade in PeptideClear's rating system.</div></div>
-    <div class="term"><div><div class="term-name">Reconstitution</div><span class="term-cat cat-admin">Administration</span></div><div class="term-def">The process of dissolving a lyophilized peptide powder in bacteriostatic water to prepare it for injection. Proper reconstitution technique is essential for maintaining peptide stability and sterility.</div></div>
-    <div class="term"><div><div class="term-name">Renal function</div><span class="term-cat cat-health">Health</span></div><div class="term-def">The ability of the kidneys to filter waste products from the blood. The myth that creatine damages kidneys has been thoroughly refuted — multiple long-term studies show no adverse effects on renal function in healthy individuals.</div></div>
-    <div class="term"><div><div class="term-name">Research compound</div><span class="term-cat cat-regulatory">Regulatory</span></div><div class="term-def">A substance sold legally for laboratory research purposes and labeled "not for human consumption." Most gray zone peptides in this catalog including BPC-157 and TB-500 are classified as research compounds.</div></div>
-  </div>
-
-  <div class="letter-section" id="S">
-    <div class="letter-heading">S</div>
-    <div class="term"><div><div class="term-name">Sarcopenia</div><span class="term-cat cat-health">Health</span></div><div class="term-def">The age-related loss of skeletal muscle mass and strength. Creatine supplementation is one of the most evidence-supported interventions for slowing sarcopenia in older adults.</div></div>
-    <div class="term"><div><div class="term-name">Satiety</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The feeling of fullness and satisfaction after eating. GLP-1 receptor agonists promote satiety through both central appetite suppression and peripheral gastric emptying slowing.</div></div>
-    <div class="term"><div><div class="term-name">Semaglutide</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">A GLP-1 receptor agonist marketed as Ozempic for diabetes and Wegovy for weight management. It is currently the most prescribed GLP-1 compound and the primary benchmark against which Retatrutide's superior weight loss outcomes are measured.</div></div>
-    <div class="term"><div><div class="term-name">Skeletal muscle</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The voluntary muscle tissue attached to bones that enables movement. Carnosine, Creatine, and growth hormone secretagogues all have primary mechanisms of action in skeletal muscle.</div></div>
-    <div class="term"><div><div class="term-name">Somatostatin</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">A hormone that inhibits growth hormone release from the pituitary gland. Because Sermorelin works through the natural GH axis, somatostatin provides a natural check on GH elevation — a key safety advantage over direct HGH administration.</div></div>
-    <div class="term"><div><div class="term-name">Stem cell differentiation</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The process by which stem cells develop into specialized cell types. TB-500 modulates stem cell differentiation, contributing to its broad tissue repair properties across multiple tissue types.</div></div>
-    <div class="term"><div><div class="term-name">Stratum corneum</div><span class="term-cat cat-skincare">Skincare</span></div><div class="term-def">The outermost layer of the skin, composed of dead skin cells. It acts as a barrier that most topically applied compounds cannot penetrate — the palmitic acid modification in Palmitoyl Tripeptide-1 is specifically designed to improve penetration through this layer.</div></div>
-    <div class="term"><div><div class="term-name">Subcutaneous injection</div><span class="term-cat cat-admin">Administration</span></div><div class="term-def">Administration of a compound into the layer of fat just beneath the skin. Most peptides in this catalog are administered subcutaneously — it is less painful than intramuscular injection and generally produces adequate bioavailability.</div></div>
-    <div class="term"><div><div class="term-name">Superoxide dismutase</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">An enzyme that neutralizes superoxide free radicals, protecting cells from oxidative damage. GHK-Cu activates superoxide dismutase as part of its multi-pathway antioxidant mechanism.</div></div>
-  </div>
-
-  <div class="letter-section" id="T">
-    <div class="letter-heading">T</div>
-    <div class="term"><div><div class="term-name">Testosterone suppression</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">The reduction of the body's natural testosterone production, typically caused by compounds that bind androgen receptors. Traditional anabolic steroids cause testosterone suppression — Turkesterone does not appear to do so.</div></div>
-    <div class="term"><div><div class="term-name">Thymosin Beta-4</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">A naturally occurring protein found in virtually all human cells that plays a central role in cell building and repair. TB-500 is a synthetic peptide derived from the active region of Thymosin Beta-4.</div></div>
-    <div class="term"><div><div class="term-name">Tirzepatide</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">A dual GLP-1 and GIP receptor agonist marketed as Mounjaro for diabetes and Zepbound for weight management. It produces greater weight loss than semaglutide and is the closest approved comparator to Retatrutide.</div></div>
-    <div class="term"><div><div class="term-name">Tripeptide</div><span class="term-cat cat-fundamentals">Fundamentals</span></div><div class="term-def">A peptide consisting of exactly three amino acids. GHK-Cu is a tripeptide — its compact three amino acid structure (glycine-histidine-lysine) belies its remarkably broad biological activity.</div></div>
-    <div class="term"><div><div class="term-name">Triple agonist</div><span class="term-cat cat-hormones">Hormones</span></div><div class="term-def">A compound that activates three different receptors simultaneously. Retatrutide is a triple agonist targeting GLP-1, GIP, and glucagon receptors — this triple mechanism is responsible for its superior weight loss outcomes.</div></div>
-  </div>
-
-  <div class="letter-section" id="V">
-    <div class="letter-heading">V</div>
-    <div class="term"><div><div class="term-name">Vascular</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">Relating to blood vessels. Collagen Type III plays a critical role in vascular health by maintaining the structural integrity and flexibility of blood vessel walls.</div></div>
-  </div>
-
-  <div class="letter-section" id="W">
-    <div class="letter-heading">W</div>
-    <div class="term"><div><div class="term-name">WADA</div><span class="term-cat cat-regulatory">Regulatory</span></div><div class="term-def">World Anti-Doping Agency — the international organization that regulates doping in competitive sports. MK-677 is on WADA's prohibited list — athletes subject to anti-doping testing should be aware before using any compound in this catalog.</div></div>
-    <div class="term"><div><div class="term-name">Water retention</div><span class="term-cat cat-biology">Biology</span></div><div class="term-def">The accumulation of excess fluid in body tissues. Both Creatine and MK-677 cause water retention — in creatine's case this occurs in muscle cells and is considered a normal and beneficial physiological response.</div></div>
-  </div>
-
+<!-- GLOSSARY CONTENT -->
+<div class="glossary-wrap">
   <div id="no-results">No terms found matching your search.</div>
 
+  <!-- A -->
+  <div class="letter-section" id="A">
+    <div class="letter-heading">A</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Adipogenesis</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The process by which precursor cells develop into mature fat cells (adipocytes). Compounds that inhibit adipogenesis are studied for fat loss applications — AOD-9604 works in part by inhibiting this process.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Amino Acid</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The molecular building blocks of peptides and proteins. There are 20 standard amino acids used by the human body, each with a unique side chain that determines its chemical properties. Peptides are chains of amino acids linked by peptide bonds.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Amphipathic</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A molecule that has both hydrophilic (water-attracting) and hydrophobic (water-repelling) regions. LL-37 is amphipathic — its hydrophobic face inserts into bacterial membranes while its cationic face attracts it to negatively charged microbial surfaces. This property is essential to its antimicrobial mechanism.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Angiogenesis</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The formation of new blood vessels from existing ones. BPC-157 is believed to promote angiogenesis — increasing blood supply to damaged tissue — which may explain its observed tissue repair effects in animal studies.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Apoptosis</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">Programmed cell death — a normal and controlled process by which the body eliminates damaged or unnecessary cells. Humanin works by inhibiting apoptosis in neurons, potentially protecting brain cells from Alzheimer's-related death signals.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">AMPK (AMP-Activated Protein Kinase)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A master regulator of cellular energy homeostasis. When energy is low, AMPK activates processes that generate ATP (fat oxidation, glucose uptake) and suppresses energy-consuming processes. MOTS-c activates AMPK — the same pathway triggered by exercise — which is why it is called an exercise mimetic.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Antimicrobial Peptide (AMP)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A class of naturally occurring peptides that form part of the innate immune system's defense against infection. AMPs typically work by disrupting microbial cell membranes. LL-37 is the only known human cathelicidin AMP and one of the most studied AMPs in existence.</p>
+    </div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Animal Study</span><span class="term-tag tag-evidence">Evidence</span></div>
+      <p class="term-def">Research conducted in non-human animals, typically rodents. Animal studies are useful for establishing biological plausibility and safety signals but do not reliably predict human outcomes. PeptideClear assigns "Animal Only" evidence grade to compounds where all primary data comes from animal models.</p>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="letter-section" id="B">
+    <div class="letter-heading">B</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Bioavailability</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The fraction of a substance that enters circulation and is available to produce an effect. Most peptides have poor oral bioavailability because digestive enzymes break them down before absorption — which is why most must be injected. Dihexa and Ibutamoren are notable exceptions that are orally bioavailable.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">BDNF (Brain-Derived Neurotrophic Factor)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A protein that supports the survival, growth, and differentiation of neurons. Often called "fertilizer for the brain." Semax upregulates BDNF — a primary proposed mechanism for its nootropic effects. Dihexa is reported to be millions of times more potent than BDNF itself at stimulating synaptogenesis in specific laboratory assays.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Blood-Brain Barrier (BBB)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A selective membrane separating circulating blood from brain tissue, protecting the brain from pathogens and large molecules. Most peptides cannot cross the BBB, which limits their CNS applications. Notable exceptions in this catalog: Semax, Selank, DSIP, and Dihexa — all of which demonstrate BBB penetration.</p>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="letter-section" id="C">
+    <div class="letter-heading">C</div>
+
+    <div class="term" data-cat="chemistry">
+      <div class="term-header"><span class="term-name">CAS Number</span><span class="term-tag tag-chemistry">Chemistry</span></div>
+      <p class="term-def">Chemical Abstracts Service Registry Number — a unique numerical identifier assigned to every chemical substance. CAS numbers allow precise identification of compounds regardless of brand name or nickname. Particularly important in the peptide space where naming confusion is common — e.g. TB-500 (CAS 77591-33-4) vs TB-500 Fragment which has a different CAS number entirely.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Cathelicidin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A family of antimicrobial peptides found in mammals. Humans have only one cathelicidin — LL-37, the C-terminal cleavage product of hCAP-18. Cathelicidins are stored in neutrophil granules and released upon immune activation as part of innate defense against infection.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">c-Met Receptor</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A receptor tyrosine kinase activated by hepatocyte growth factor (HGF). c-Met signaling drives cell growth, survival, and synaptogenesis — the formation of new synaptic connections. Dihexa works by potentiating HGF activity at c-Met, which is its primary mechanism for cognitive enhancement. c-Met is also an oncogene, which creates a theoretical cancer risk with chronic activation.</p>
+    </div>
+
+    <div class="term" data-cat="chemistry">
+      <div class="term-header"><span class="term-name">Cyclic Peptide</span><span class="term-tag tag-chemistry">Chemistry</span></div>
+      <p class="term-def">A peptide whose amino acid chain forms a ring structure, typically via a bond between the N-terminal and C-terminal ends or between side chains. Cyclic peptides are generally more stable than linear peptides because the ring structure resists enzymatic cleavage. PT-141 is a cyclic heptapeptide — the lactam bond between its Asp and Lys residues creates the ring that gives it metabolic stability.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Cytokine</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">Small signaling proteins released by immune cells to regulate inflammation and immune responses. Pro-inflammatory cytokines like TNF-α, IL-1β, and IL-6 drive inflammation — KPV suppresses these cytokines via NF-κB inhibition. Thymosin Alpha-1 modulates cytokine expression to shift immune responses toward T-cell activation.</p>
+    </div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Confounding Variable</span><span class="term-tag tag-evidence">Evidence</span></div>
+      <p class="term-def">A variable that influences both the independent and dependent variable in a study, creating a spurious association. The "wine is good for your heart" claim was undermined by confounding — moderate drinkers tend to have higher incomes, better diets, and more exercise than abstainers, so the apparent heart benefit may have had nothing to do with wine. Identifying and controlling for confounders is a core function of well-designed research.</p>
+    </div>
+
+    <div class="term" data-cat="clinical">
+      <div class="term-header"><span class="term-name">Compounding Pharmacy</span><span class="term-tag tag-clinical">Clinical</span></div>
+      <p class="term-def">A licensed pharmacy that prepares customized medications not available commercially. Several peptides in this catalog — including Sermorelin and Tesamorelin — are available through licensed compounding pharmacies by prescription, providing a legitimate clinical access pathway distinct from research compound suppliers.</p>
+    </div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Cohort Study</span><span class="term-tag tag-evidence">Evidence</span></div>
+      <p class="term-def">An observational study that follows a group of people over time to examine how exposure to a factor affects outcomes. Cohort studies cannot establish causation but can identify associations. Stronger than case reports but weaker than randomized controlled trials on the evidence hierarchy.</p>
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="letter-section" id="D">
+    <div class="letter-heading">D</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">DAC (Drug Affinity Complex)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A chemical modification added to CJC-1295 that enables it to covalently bind albumin in the bloodstream — dramatically extending its half-life from minutes to 6-8 days. The DAC version and the without-DAC version (Modified GRF 1-29) are frequently confused in the community despite being functionally different compounds with different CAS numbers.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Desensitization</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The reduced response of a receptor to a compound with repeated exposure. Hexarelin causes meaningful desensitization of GH release with continuous use — necessitating cycling protocols. Ipamorelin shows minimal desensitization, which is considered a clinical advantage for chronic use protocols.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Disulfide Bridge</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A covalent bond between two cysteine residues that constrains a peptide's three-dimensional conformation. AOD-9604 has a disulfide bridge between Cys7 and Cys15 that gives it its constrained shape and contributes to its metabolic selectivity — allowing it to target fat metabolism without the growth-promoting effects of full-length hGH.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Dopamine</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A neurotransmitter involved in reward, motivation, and movement. PT-141 activates MC4R receptors in the hypothalamus which modulate dopaminergic pathways — driving the increase in sexual desire that is its primary mechanism. This central nervous system action distinguishes it from PDE5 inhibitors which work peripherally.</p>
+    </div>
+  </div>
+
+  <!-- E -->
+  <div class="letter-section" id="E">
+    <div class="letter-heading">E</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Ecdysteroid</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A class of steroid hormones found primarily in insects and some plants. Turkesterone is an ecdysteroid extracted from Ajuga turkestanica. Unlike anabolic steroids, ecdysteroids do not appear to bind androgen receptors in humans — meaning they work through a different mechanism and are not expected to cause hormonal suppression.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Enkephalin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">Naturally occurring opioid peptides that modulate pain and mood. Selank inhibits enkephalinase — the enzyme that degrades enkephalins — increasing their half-life in the bloodstream. This is one proposed mechanism for Selank's anxiolytic and mood-stabilizing effects.</p>
+    </div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Evidence Grade</span><span class="term-tag tag-evidence">Evidence</span></div>
+      <p class="term-def">PeptideClear's primary classification of the quality and type of research supporting each compound. Grades include: Human RCT (strongest), Observational, Animal Only, Animal / In Vitro, and Emerging / Clinical Trial. The evidence grade reflects what type of research exists — not whether the compound works. A compound can have robust Animal Only data and still score low on the evidence grade.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Extracellular Matrix (ECM)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The network of proteins (collagen, elastin, fibronectin) and other molecules that provides structural support to cells. GHK-Cu stimulates ECM remodeling — promoting collagen and elastin synthesis while suppressing matrix metalloproteinases that break down existing ECM. This is the primary mechanism for its skin anti-aging and wound healing effects.</p>
+    </div>
+  </div>
+
+  <!-- F -->
+  <div class="letter-section" id="F">
+    <div class="letter-heading">F</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Fibroblast</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">Connective tissue cells responsible for producing collagen, elastin, and other ECM components. Palmitoyl Tripeptide-1 (Matrixyl) works by sending a matrikine signal to fibroblasts that triggers new collagen, elastin, and hyaluronic acid production — mimicking the body's natural wound repair response.</p>
+    </div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Funding Source</span><span class="term-tag tag-evidence">Evidence</span></div>
+      <p class="term-def">The organization that paid for a study. Industry-funded studies are not automatically invalid but are statistically more likely to produce positive results than independently funded studies. Disclosing funding sources is standard practice in reputable journals and is one of the dimensions scored in PeptideClear's Research Quality Score.</p>
+    </div>
+  </div>
+
+  <!-- G -->
+  <div class="letter-section" id="G">
+    <div class="letter-heading">G</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">GABA-A Receptor</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The primary inhibitory receptor in the brain — activation reduces neuronal excitability and produces calming effects. Benzodiazepines work by binding GABA-A receptors. Selank appears to modulate GABA-A receptors via a different binding site, producing anxiolytic effects without the sedation, tolerance, or dependence associated with classical benzodiazepines.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Ghrelin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A hunger hormone produced primarily in the stomach that stimulates appetite and GH release via GHSR-1a receptor activation. Ibutamoren mimics ghrelin at GHSR-1a — producing GH secretion without injection. Hexarelin also acts at GHSR-1a but with greater potency than ghrelin itself.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">GHSR-1a (Growth Hormone Secretagogue Receptor)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The ghrelin receptor — expressed in the pituitary and hypothalamus. Activation triggers pulsatile GH release. Ibutamoren, Hexarelin, and Ipamorelin all work through GHSR-1a. Hexarelin is also unique in acting at CD36 — a second receptor that produces cardioprotective effects independent of GH release.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Glycation</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The non-enzymatic attachment of sugar molecules to proteins or fats, forming advanced glycation end-products (AGEs). Glycation damages proteins and is a key driver of aging and diabetic complications. Carnosine inhibits glycation — one of four distinct mechanisms through which it exerts anti-aging effects.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Growth Hormone (GH)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A peptide hormone produced by the pituitary gland that stimulates growth, cell reproduction, and metabolism. GH declines with age — which has driven significant interest in peptides that stimulate its production. Sermorelin, CJC-1295, Ipamorelin, Hexarelin, and Tesamorelin all work by stimulating pituitary GH release rather than supplying exogenous GH directly.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">GHRH (Growth Hormone Releasing Hormone)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The hypothalamic hormone that triggers the pituitary to release GH. Sermorelin is a 29 amino acid synthetic analog of GHRH. Tesamorelin is a 44 amino acid analog with a stabilizing modification. CJC-1295 is a modified GHRH analog with a DAC group for extended half-life.</p>
+    </div>
+  </div>
+
+  <!-- H -->
+  <div class="letter-section" id="H">
+    <div class="letter-heading">H</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Half-Life</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The time it takes for half of a substance to be eliminated from the body. Half-life determines dosing frequency — a peptide with a short half-life (like DSIP at 15 minutes in vitro, or Sermorelin) requires frequent dosing, while CJC-1295 with DAC (6-8 day half-life) can be dosed once or twice weekly. Dihexa has an unusually long half-life of 12.7 days in rats.</p>
+    </div>
+
+    <div class="term" data-cat="scoring">
+      <div class="term-header"><span class="term-name">h-Index</span><span class="term-tag tag-scoring">Scoring</span></div>
+      <p class="term-def">A metric that measures a researcher's productivity and citation impact. A researcher with an h-Index of 20 has published at least 20 papers that have each been cited at least 20 times. Used in PeptideClear's Research Quality Score to weight the credibility of the research team behind a compound's evidence base. Viewable publicly on Google Scholar for any named researcher.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">HGF (Hepatocyte Growth Factor)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A growth factor that drives cell survival, proliferation, and synaptogenesis through the c-Met receptor. Dihexa works by binding HGF and potentiating its activity at c-Met — driving the formation of new synaptic connections. HGF/c-Met is also an oncogenic pathway, which creates the theoretical cancer risk associated with chronic Dihexa use.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Hydrolysis</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The chemical breakdown of a compound by reaction with water. Collagen supplements are hydrolyzed — broken into smaller peptide fragments — to improve absorption. Non-hydrolyzed collagen is too large to be absorbed intact; hydrolyzed collagen (collagen peptides) can be absorbed and used by the body.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Hypothalamus</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A brain region that acts as the master regulator of hormonal systems, appetite, temperature, and circadian rhythm. DSIP is produced in the hypothalamus. The hypothalamus also produces GHRH (which triggers pituitary GH release) and somatostatin (which inhibits it) — creating the feedback loop that GH secretagogues work within.</p>
+    </div>
+  </div>
+
+  <!-- I -->
+  <div class="letter-section" id="I">
+    <div class="letter-heading">I</div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Impact Factor (IF)</span><span class="term-tag tag-scoring">Scoring</span></div>
+      <p class="term-def">A metric reflecting the average number of citations received by papers published in a journal over the past two years. Used as a proxy for journal prestige and research quality. Low-quality journals: IF 1-2. Good peer-reviewed journals: IF 3-4. High-quality journals: IF 5-7. Top-tier journals (NEJM, Nature, JAMA): IF 8+. Used in PeptideClear's Research Quality Score to evaluate where a compound's primary studies were published.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">IGF-1 (Insulin-Like Growth Factor 1)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A hormone produced primarily in the liver in response to GH stimulation. IGF-1 mediates many of GH's anabolic and growth-promoting effects. Ibutamoren increases both GH and IGF-1 — making it measurable in blood tests. Elevated IGF-1 is both the mechanism of benefit (muscle, recovery) and a concern (potential cancer promotion with chronic elevation).</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Immunomodulatory</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The ability to modify immune function — either stimulating or suppressing specific immune pathways. Thymosin Alpha-1 is immunomodulatory rather than simply immunostimulatory — it normalizes dysregulated immune responses rather than uniformly amplifying immune activity. This distinction is clinically meaningful in both immunosuppressed states (infection, cancer) and hyperinflammatory states (sepsis).</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">In Vitro</span><span class="term-tag tag-evidence">Evidence</span></div>
+      <p class="term-def">Latin for "in glass" — research conducted in a controlled environment outside a living organism, typically in cell cultures or test tubes. In vitro studies are useful for mechanistic investigation but frequently fail to translate to in vivo effects. PeptideClear assigns "Animal / In Vitro" evidence grade to compounds where evidence is limited to these conditions.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">In Vivo</span><span class="term-tag tag-evidence">Evidence</span></div>
+      <p class="term-def">Latin for "within the living" — research conducted within a living organism. In vivo studies include animal studies and human clinical trials. In vivo results are considered more predictive of real-world outcomes than in vitro results but animal in vivo data still frequently fails to translate to humans.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Incretin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A class of hormones released by the gut after eating that stimulate insulin secretion in a glucose-dependent manner. GLP-1 and GIP are the two primary incretins. GLP-1 receptor agonists (Ozempic, Wegovy) and dual GLP-1/GIP agonists (Tirzepatide) leverage incretin biology to treat diabetes and obesity.</p>
+    </div>
+  </div>
+
+  <!-- J -->
+  <div class="letter-section" id="J">
+    <div class="letter-heading">J</div>
+    <div class="term" data-cat="scoring">
+      <div class="term-header"><span class="term-name">Journal Peer Review</span><span class="term-tag tag-scoring">Scoring</span></div>
+      <p class="term-def">The process by which scientific manuscripts are evaluated by independent experts before publication. Peer review is the primary quality gate for scientific literature. "Pay to publish" or predatory journals circumvent genuine peer review — a meaningful risk in the research compound space where some studies appear in low-quality journals. PeptideClear's Research Quality Score penalizes studies published without legitimate peer review.</p>
+    </div>
+  </div>
+
+  <!-- K -->
+  <div class="letter-section" id="K">
+    <div class="letter-heading">K</div>
+
+    <div class="term" data-cat="community">
+      <div class="term-header"><span class="term-name">KLOW Stack</span><span class="term-tag tag-community">Community</span></div>
+      <p class="term-def">A branded combination of four research compounds commonly referenced together in the biohacking community: GHK-Cu, KPV, BPC-157, and TB-500. Named for the initials of its components. Designed to target tissue repair and systemic inflammation through four complementary mechanisms. PeptideClear covers what each component contains — not how to use them.</p>
+    </div>
+  </div>
+
+  <!-- L -->
+  <div class="letter-section" id="L">
+    <div class="letter-heading">L</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Lactam Bond</span><span class="term-tag tag-chemistry">Chemistry</span></div>
+      <p class="term-def">A cyclic amide bond formed between an amine and a carboxylic acid group within the same molecule. In PT-141, a lactam bond between the Asp and Lys residues closes the heptapeptide into a ring — giving it metabolic stability and contributing to its receptor selectivity at MC4R.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Lipogenesis</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The metabolic process by which the body converts carbohydrates and other nutrients into fatty acids and triglycerides for storage. AOD-9604 inhibits lipogenesis — reducing the conversion of dietary nutrients into new body fat — as part of its proposed fat reduction mechanism.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Lipolysis</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The breakdown of stored fat (triglycerides) into fatty acids and glycerol for energy use. AOD-9604 promotes lipolysis — the release of stored fat — via a mechanism independent of the GH receptor. Tesamorelin reduces visceral fat through GH-mediated lipolysis in adipose tissue surrounding internal organs.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Lyophilization</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">Freeze-drying — a preservation process that removes water from a substance while maintaining its structure. Most research compound peptides are supplied as lyophilized powder that must be reconstituted with bacteriostatic water before use. Lyophilization extends shelf life significantly compared to liquid formulations.</p>
+    </div>
+  </div>
+
+  <!-- M -->
+  <div class="letter-section" id="M">
+    <div class="letter-heading">M</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Matrikine</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A peptide fragment released during the degradation of extracellular matrix proteins that acts as a signaling molecule to regulate cell behavior. Palmitoyl Tripeptide-1 (Matrixyl) is a matrikine — it mimics a collagen breakdown signal that triggers fibroblasts to produce new collagen, elastin, and hyaluronic acid, essentially telling the skin to repair itself.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">MC4R (Melanocortin Receptor 4)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A receptor expressed primarily in the hypothalamus that modulates appetite, energy expenditure, and sexual function. PT-141 has its highest affinity for MC4R — activating dopaminergic pathways through this receptor to increase sexual desire. MC4R is also involved in energy regulation, which is why melanocortin system compounds can have overlapping metabolic and sexual effects.</p>
+    </div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Meta-Analysis</span><span class="term-tag tag-evidence">Evidence</span></div>
+      <p class="term-def">A statistical method that combines results from multiple studies to produce a single, more powerful estimate of an effect. Meta-analyses sit at the top of the evidence hierarchy because they synthesize all available data rather than relying on any single study. The presence or absence of a meta-analysis is one of the factors scored in PeptideClear's Research Quality Score.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Mitochondrial-Derived Peptide (MDP)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A peptide encoded within mitochondrial DNA rather than nuclear DNA — a recently discovered class of bioactive molecules. PeptideClear currently covers two MDPs: MOTS-c (metabolic regulation, exercise mimetic) and Humanin (neuroprotection, cytoprotection). Both are encoded within the ribosomal RNA genes of mitochondrial DNA and decline with age.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Mechanism of Action (MOA)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The specific biological process through which a compound produces its effect. Understanding mechanism distinguishes PeptideClear from surface-level content — knowing that BPC-157 promotes angiogenesis and that KPV inhibits NF-κB explains why they might have different effects despite both being described as "anti-inflammatory."</p>
+    </div>
+  </div>
+
+  <!-- N -->
+  <div class="letter-section" id="N">
+    <div class="letter-heading">N</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">NF-κB (Nuclear Factor Kappa B)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A transcription factor that controls the expression of pro-inflammatory genes. NF-κB activation triggers the production of cytokines, chemokines, and other inflammatory mediators. KPV inhibits NF-κB signaling intracellularly — a mechanistically precise anti-inflammatory approach that targets the master switch rather than individual downstream products.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Nootropic</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A substance that enhances cognitive function including memory, focus, creativity, or motivation. In PeptideClear's catalog the Nootropics & Neuroprotection category includes Semax, Selank, Humanin, DSIP, and Dihexa — each working through distinct CNS mechanisms. The term is broadly used and loosely defined in the wellness community.</p>
+    </div>
+  </div>
+
+  <!-- O -->
+  <div class="letter-section" id="O">
+    <div class="letter-heading">O</div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Observational Study</span><span class="term-tag tag-evidence">Evidence</span></div>
+      <p class="term-def">Research that observes outcomes without intervening or assigning treatments. Observational studies can establish correlation but cannot prove causation. PeptideClear assigns "Observational" evidence grade to compounds where the primary human evidence comes from observational rather than controlled research — including CJC-1295, Ibutamoren, AOD-9604, and the Russian-developed nootropics Semax and Selank.</p>
+    </div>
+
+    <div class="term" data-cat="regulatory">
+      <div class="term-header"><span class="term-name">Off-Label Use</span><span class="term-tag tag-regulatory">Regulatory</span></div>
+      <p class="term-def">The use of an FDA-approved drug for an indication, population, or dosage not specified in its approved labeling. Legal for physicians to prescribe but not for manufacturers to promote. Several compounds in this catalog are FDA-approved for specific indications but used off-label for longevity, body composition, or other purposes — including Tesamorelin, PT-141, and Thymosin Alpha-1.</p>
+    </div>
+
+    <div class="term" data-cat="regulatory">
+      <div class="term-header"><span class="term-name">Orphan Drug</span><span class="term-tag tag-regulatory">Regulatory</span></div>
+      <p class="term-def">A pharmaceutical agent developed to treat rare diseases affecting fewer than 200,000 people in the US. The FDA grants orphan drug designation to incentivize development of treatments for rare conditions. Thymosin Alpha-1 received FDA orphan drug designation for conditions including DiGeorge syndrome and hepatocellular carcinoma.</p>
+    </div>
+  </div>
+
+  <!-- P -->
+  <div class="letter-section" id="P">
+    <div class="letter-heading">P</div>
+
+    <div class="term" data-cat="chemistry">
+      <div class="term-header"><span class="term-name">Peptide</span><span class="term-tag tag-chemistry">Chemistry</span></div>
+      <p class="term-def">A short chain of amino acids linked by peptide bonds, typically fewer than 50 amino acids. Peptides are smaller than proteins and are produced naturally throughout the body as signaling molecules, hormones, and structural components. The compounds in PeptideClear's catalog range from 2 amino acids (Carnosine) to 44 amino acids (Tesamorelin).</p>
+    </div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Peptide Bond</span><span class="term-tag tag-chemistry">Chemistry</span></div>
+      <p class="term-def">The covalent chemical bond formed between the carboxyl group of one amino acid and the amino group of another, releasing water in the process. The sequence and number of peptide bonds determine a peptide's primary structure and consequently its biological activity.</p>
+    </div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Placebo-Controlled Trial</span><span class="term-tag tag-evidence">Evidence</span></div>
+      <p class="term-def">A clinical trial in which some participants receive the treatment being studied and others receive an inert placebo. Comparing outcomes between groups isolates the treatment effect from the placebo effect. Placebo-controlled design is a core component of the randomized controlled trial and is required for PeptideClear to assign Human RCT evidence grade.</p>
+    </div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Population Diversity</span><span class="term-tag tag-scoring">Scoring</span></div>
+      <p class="term-def">The degree to which a study's participants represent the broader population — across age, sex, ethnicity, and health status. Studies conducted exclusively on young white men may not produce findings that generalize to women, older populations, or different ethnicities. Population diversity is one of the seven dimensions scored in PeptideClear's Research Quality Score, as flagged by Professor Erica Bailey at UC Berkeley.</p>
+    </div>
+
+    <div class="term" data-cat="regulatory">
+      <div class="term-header"><span class="term-name">Predatory Journal</span><span class="term-tag tag-regulatory">Regulatory</span></div>
+      <p class="term-def">A publication that charges authors fees to publish without providing legitimate peer review. Predatory journals mimic legitimate scientific journals in appearance but lack editorial standards. Research published in predatory journals should be weighted very low — PeptideClear's Research Quality Score assigns near-zero points for studies in known predatory publications.</p>
+    </div>
+
+    <div class="term" data-cat="regulatory">
+      <div class="term-header"><span class="term-name">Prescription Drug</span><span class="term-tag tag-regulatory">Regulatory</span></div>
+      <p class="term-def">A medication that requires a licensed healthcare provider's authorization before it can be dispensed. Several compounds in PeptideClear are prescription-only including GLP-1 analogs, Tirzepatide, Tesamorelin, Sermorelin, and PT-141. Accessing these compounds without a prescription is illegal and bypasses the medical oversight that makes their use appropriate.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Pulsatile Release</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The natural pattern of hormone secretion in intermittent bursts rather than continuous flow. Growth hormone is naturally released in pulses — primarily during deep sleep. GHRH analogs like Sermorelin and CJC-1295 preserve this pulsatile pattern by stimulating the pituitary's own release mechanisms rather than flooding the system with exogenous GH.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Pyroptosis</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A form of inflammatory cell death — distinct from apoptosis — triggered by inflammasome activation. Pyroptosis releases inflammatory content into surrounding tissue and is a driver of sepsis-related organ damage. LL-37 inhibits LPS/ATP-induced pyroptosis in macrophages through dual mechanisms, which may explain its potential protective role in sepsis.</p>
+    </div>
+  </div>
+
+  <!-- R -->
+  <div class="letter-section" id="R">
+    <div class="letter-heading">R</div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Randomized Controlled Trial (RCT)</span><span class="term-tag tag-evidence">Evidence</span></div>
+      <p class="term-def">The gold standard of clinical research. Participants are randomly assigned to treatment or control groups — eliminating selection bias. When blinded (participants and/or researchers don't know who receives treatment), RCTs can establish causation rather than merely correlation. PeptideClear's strongest evidence grade — Human RCT — requires this design in human subjects.</p>
+    </div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Replication</span><span class="term-tag tag-scoring">Scoring</span></div>
+      <p class="term-def">The independent reproduction of a study's findings by a different research group. A single impressive study that has never been replicated should be held lightly — many initial findings fail to replicate, a phenomenon known as the replication crisis. Replication is one of the highest-weighted dimensions in PeptideClear's Research Quality Score (20 points) because it is the most reliable indicator of a finding's robustness.</p>
+    </div>
+
+    <div class="term" data-cat="community">
+      <div class="term-header"><span class="term-name">Research Compound</span><span class="term-tag tag-community">Community</span></div>
+      <p class="term-def">A substance sold legally for laboratory research purposes but not approved for human therapeutic use. Research compounds occupy a legal grey zone — they are not illegal to purchase but are not approved for administration to humans. Many peptides in PeptideClear's catalog are sold as research compounds, including BPC-157, TB-500, KPV, Semax, and Selank.</p>
+    </div>
+
+    <div class="term" data-cat="scoring">
+      <div class="term-header"><span class="term-name">Research Quality Score</span><span class="term-tag tag-scoring">Scoring</span></div>
+      <p class="term-def">PeptideClear's proprietary scoring framework that evaluates the methodological strength of evidence behind each compound, scored out of 100 points across seven dimensions: Study Design (25 pts), Sample Size (20 pts), Replication (20 pts), Journal Impact Factor (15 pts), Funding Independence (10 pts), Population Diversity (5 pts), and Researcher h-Index (5 pts). Designed to help visitors understand not just what the research says but how much weight to give it.</p>
+    </div>
+  </div>
+
+  <!-- S -->
+  <div class="letter-section" id="S">
+    <div class="letter-heading">S</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Secretagogue</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A substance that stimulates another substance to be secreted. Growth hormone secretagogues (GHS) — including Ipamorelin, Hexarelin, and Ibutamoren — stimulate the pituitary to secrete GH. This is mechanistically distinct from administering exogenous GH directly, as secretagogues preserve the body's own regulatory feedback systems.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Slow-Wave Sleep (SWS)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The deepest stage of non-REM sleep, also called delta sleep. SWS is when the majority of GH secretion occurs, physical restoration happens, and memories are consolidated. DSIP specifically promotes slow-wave sleep — which is why it is called "Delta Sleep-Inducing Peptide" — rather than producing generalized sedation.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Somatostatin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A hormone that inhibits GH release — the counterpart to GHRH in the hypothalamic-pituitary axis. GHRH analogs like Sermorelin and Tesamorelin work within this regulatory system — they stimulate GH release but somatostatin can still suppress it, preventing dangerous GH excess. DSIP inhibits somatostatin release via a dopaminergic mechanism, which secondarily stimulates GH — an indirect GH-releasing mechanism.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Subcutaneous Injection</span><span class="term-tag tag-clinical">Clinical</span></div>
+      <p class="term-def">Administration of a substance into the tissue layer between the skin and muscle. Most injectable peptides in this catalog are administered subcutaneously rather than intravenously or intramuscularly. Subcutaneous injection is generally simpler and lower-risk than intravenous administration and produces slower, more sustained absorption.</p>
+    </div>
+
+    <div class="term" data-cat="evidence">
+      <div class="term-header"><span class="term-name">Study Design</span><span class="term-tag tag-scoring">Scoring</span></div>
+      <p class="term-def">The methodological framework of a research study — including whether it is an RCT, observational study, animal study, or in vitro experiment. Study design is the single most important determinant of evidence quality and carries the highest weight (25 points) in PeptideClear's Research Quality Score. The hierarchy from strongest to weakest: Multiple RCTs → Single RCT → Observational → Phase I/II trials → Animal → In vitro.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Synaptogenesis</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The formation of new synaptic connections between neurons. Synaptogenesis underlies learning, memory consolidation, and cognitive recovery after injury. Dihexa works by activating the HGF/c-Met pathway to drive synaptogenesis — making it mechanistically unique among the nootropic compounds in this catalog, all of which target the brain through different pathways.</p>
+    </div>
+  </div>
+
+  <!-- T -->
+  <div class="letter-section" id="T">
+    <div class="letter-heading">T</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Telomerase</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">An enzyme that extends telomeres — the protective caps at the ends of chromosomes that shorten with each cell division. Telomere shortening is associated with cellular aging and senescence. Epitalon is proposed to activate telomerase, potentially slowing this process. Telomerase is also activated in most cancers, creating a theoretical oncogenic concern with compounds that upregulate it chronically.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Telomere</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">Protective sequences of repetitive DNA at the ends of chromosomes, often compared to the plastic tips on shoelaces. Telomeres shorten with each cell division and with oxidative stress — when they become too short the cell can no longer divide and enters senescence. Telomere length is considered a biological marker of cellular aging.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Thymus</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A primary lymphoid organ in the chest where T-cells mature and are educated to distinguish self from non-self. The thymus involutes (shrinks) with age — contributing to the immune decline of aging. Thymosin Alpha-1 is naturally produced by the thymus and declines as the thymus involutes, which is the rationale for exogenous supplementation in aging and immunocompromised populations.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Toll-Like Receptor (TLR)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">Pattern recognition receptors of the innate immune system that detect pathogen-associated molecular patterns and trigger immune responses. Thymosin Alpha-1 activates TLR2 and TLR9 on dendritic cells — initiating the innate immune cascade that drives T-cell differentiation, NK cell activation, and antiviral defense.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Tuftsin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A naturally occurring tetrapeptide (Thr-Lys-Pro-Arg) produced by the spleen as a fragment of immunoglobulin G. Tuftsin activates macrophages and modulates immune function but is rapidly degraded in plasma. Selank was created by adding a Pro-Gly-Pro stabilizing tail to Tuftsin, dramatically improving its stability and enabling CNS penetration while preserving its immunomodulatory and anxiolytic properties.</p>
+    </div>
+  </div>
+
+  <!-- V -->
+  <div class="letter-section" id="V">
+    <div class="letter-heading">V</div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Visceral Adipose Tissue (VAT)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">Fat stored around internal organs in the abdominal cavity — as opposed to subcutaneous fat stored under the skin. VAT is metabolically active and associated with insulin resistance, cardiovascular disease, and systemic inflammation. Tesamorelin is specifically approved to reduce VAT in HIV-associated lipodystrophy and is the most clinically validated compound for targeted visceral fat reduction in this catalog.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Vitamin D</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A fat-soluble vitamin that regulates immune function, bone metabolism, and numerous other biological processes. Relevant to LL-37 because sun exposure activates vitamin D production which in turn upregulates LL-37 expression in airway epithelial cells — a mechanistic link between vitamin D deficiency, reduced LL-37 levels, and increased susceptibility to respiratory infections.</p>
+    </div>
+  </div>
+
+  <!-- W -->
+  <div class="letter-section" id="W">
+    <div class="letter-heading">W</div>
+
+    <div class="term" data-cat="community">
+      <div class="term-header"><span class="term-name">Wolverine Stack</span><span class="term-tag tag-community">Community</span></div>
+      <p class="term-def">A branded combination of two research compounds commonly referenced in the biohacking and recovery community: BPC-157 and TB-500. Named after the Marvel character's regenerative abilities. The combination targets complementary axes of tissue repair — BPC-157 via angiogenesis and TB-500 via cell migration. Forms the foundation from which the GLOW and KLOW stacks are built.</p>
+    </div>
+
+    <div class="term" data-cat="regulatory">
+      <div class="term-header"><span class="term-name">WADA (World Anti-Doping Agency)</span><span class="term-tag tag-regulatory">Regulatory</span></div>
+      <p class="term-def">The international organization that sets and enforces anti-doping regulations in competitive sport. WADA's Prohibited List (updated annually) bans numerous peptides and growth hormone secretagogues. Compounds prohibited under WADA Section S2 include CJC-1295, Hexarelin, Ipamorelin, Ibutamoren, and Sermorelin. Athletes subject to anti-doping testing should consult WADA's current list before using any compound in this catalog.</p>
+    </div>
+  </div>
+
 </div>
 
-<div class="glossary-footer">
-  <p>PeptideClear Glossary — 92 terms across 8 categories. Updated as new peptide profiles are added. Questions or corrections? <a href="mailto:hello@peptideclear.com">hello@peptideclear.com</a></p>
-</div>
+<!-- FOOTER -->
+<footer class="glossary-footer">
+  <p>PeptideClear Glossary — 100+ terms across 8 categories. Updated as new compound profiles are added.<br>
+  Questions or corrections? <a href="mailto:hello@peptideclear.com">hello@peptideclear.com</a></p>
+</footer>
 
 <script>
-  const input = document.getElementById('search');
+  // ── DARK MODE TOGGLE ──
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('theme-label').textContent = isDark ? 'Light' : 'Dark';
+    localStorage.setItem('pc-theme', isDark ? 'light' : 'dark');
+  }
+
+  // Restore saved theme
+  const saved = localStorage.getItem('pc-theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    document.getElementById('theme-label').textContent = saved === 'dark' ? 'Dark' : 'Light';
+  }
+
+  // ── SEARCH ──
+  const searchInput = document.getElementById('search');
   const terms = document.querySelectorAll('.term');
   const sections = document.querySelectorAll('.letter-section');
   const noResults = document.getElementById('no-results');
   const alphaIndex = document.getElementById('alpha-index');
+  const catFilter = document.getElementById('cat-filter');
 
-  input.addEventListener('input', function() {
+  searchInput.addEventListener('input', function() {
     const q = this.value.toLowerCase().trim();
-    let visible = 0;
+    const activeCat = document.querySelector('.cat-btn.active')?.dataset.cat || 'all';
 
     if (!q) {
-      terms.forEach(t => t.style.display = '');
-      sections.forEach(s => s.style.display = '');
+      filterByCategory(activeCat);
       noResults.style.display = 'none';
       alphaIndex.style.display = 'flex';
+      catFilter.style.display = 'flex';
       return;
     }
 
     alphaIndex.style.display = 'none';
+    catFilter.style.display = 'none';
+    let visible = 0;
 
     sections.forEach(section => {
       const sectionTerms = section.querySelectorAll('.term');
@@ -591,7 +1114,34 @@
 
     noResults.style.display = visible === 0 ? 'block' : 'none';
   });
-</script>
 
+  // ── CATEGORY FILTER ──
+  function filterByCategory(cat) {
+    sections.forEach(section => {
+      const sectionTerms = section.querySelectorAll('.term');
+      let visible = 0;
+      sectionTerms.forEach(term => {
+        if (cat === 'all' || term.dataset.cat === cat) {
+          term.style.display = '';
+          visible++;
+        } else {
+          term.style.display = 'none';
+        }
+      });
+      section.style.display = visible > 0 ? '' : 'none';
+    });
+  }
+
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      searchInput.value = '';
+      alphaIndex.style.display = 'flex';
+      noResults.style.display = 'none';
+      filterByCategory(this.dataset.cat);
+    });
+  });
+</script>
 </body>
 </html>
