@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-31 — RQS Scoring Log · PeptideClear</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#ffffff; --bg-alt:#f7fafd; --bg-header:#f0f6ff; --border:#e8edf2;
+  --border-accent:#4A90D9; --text-primary:#0d1f35; --text-body:#374151;
+  --text-muted:#4a5568; --text-faint:#6b7280; --accent:#4A90D9; --accent-dark:#1B5EA3;
+  --caveat-bg:#f8fafc; --note-bg:#f0f6ff;
+  --strong-bg:#d1fae5; --strong-fg:#065f46; --moderate-bg:#dbeafe; --moderate-fg:#1e40af;
+  --limited-bg:#fef3c7; --limited-fg:#92400e; --weak-bg:#ffedd5; --weak-fg:#9a3412;
+  --insuff-bg:#fee2e2; --insuff-fg:#991b1b;
+  --color-strong:#16a34a; --color-moderate:#2563eb; --color-limited:#d97706; --color-weak:#ea580c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#0A1929; --bg-alt:#071E38; --bg-header:#071E38; --border:#164E8A;
+    --border-accent:#4A90D9; --text-primary:#C1E4FF; --text-body:#93C9FF;
+    --text-muted:#6BB8FF; --text-faint:#6BB8FF; --accent:#4A90D9; --accent-dark:#93C9FF;
+    --caveat-bg:#0B2D52; --note-bg:#071E38;
+    --strong-bg:#14532D; --strong-fg:#86EFAC; --moderate-bg:#1E3A5F; --moderate-fg:#93C5FD;
+    --limited-bg:#78350F; --limited-fg:#FDE68A; --weak-bg:#7C2D12; --weak-fg:#FDBA74;
+    --insuff-bg:#7F1D1D; --insuff-fg:#FCA5A5;
+    --color-strong:#4ade80; --color-moderate:#60a5fa; --color-limited:#fcd34d; --color-weak:#fb923c;
+  }
+}
+body { background:var(--bg); color:var(--text-primary); font-family:'Georgia',serif; font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; transition:background 0.3s ease,color 0.3s ease; }
+.page-wrapper { max-width:680px; margin:0 auto; padding:48px 24px 100px; }
+.back-link { display:inline-block; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--accent); text-decoration:none; margin-bottom:32px; letter-spacing:0.02em; }
+.back-link:hover { text-decoration:underline; }
+.compound-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+h1 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:32px; font-weight:700; color:var(--text-primary); margin-bottom:12px; letter-spacing:-0.02em; line-height:1.2; }
+.meta-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:32px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-faint); }
+.meta-divider { color:var(--border); }
+.meta-row a { color:var(--accent); text-decoration:none; }
+.meta-row a:hover { text-decoration:underline; }
+.score-hero { display:flex; align-items:center; gap:24px; background:var(--bg-alt); border-radius:10px; padding:24px; margin-bottom:40px; border:1px solid var(--border); }
+.score-circle { width:80px; height:80px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; border:4px solid; }
+.score-num-big { font-family:'Helvetica Neue',Arial,sans-serif; font-size:26px; font-weight:800; line-height:1; }
+.score-denom { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; color:var(--text-faint); }
+.score-info { flex:1; }
+.score-band-pill { display:inline-block; padding:4px 14px; border-radius:20px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; font-weight:700; margin-bottom:8px; }
+.score-desc { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); }
+.section-title { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:16px; }
+.dim-table { width:100%; border-collapse:collapse; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; margin-bottom:40px; }
+.dim-table thead tr { border-bottom:2px solid var(--border-accent); background:var(--bg-header); }
+.dim-table thead th { padding:10px 12px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-dark); }
+.dim-table tbody tr { border-bottom:1px solid var(--border); }
+.dim-table tbody tr:last-child { border-bottom:none; }
+.dim-table tbody td { padding:14px 12px; vertical-align:top; color:var(--text-body); line-height:1.5; }
+.dim-table tbody td:first-child { font-weight:700; color:var(--text-primary); width:180px; }
+.dim-score-cell { white-space:nowrap; text-align:right; font-weight:700; width:70px; }
+.dim-note { font-size:13px; color:var(--text-muted); font-style:italic; }
+.divider { height:1px; background:var(--border); margin:32px 0; }
+.caveat-box { background:var(--caveat-bg); border-left:3px solid var(--border-accent); border-radius:0 6px 6px 0; padding:14px 18px; margin-bottom:12px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; }
+.caveat-title { font-weight:700; color:var(--text-primary); margin-bottom:4px; }
+.caveat-body { color:var(--text-muted); line-height:1.6; }
+.footer-note { margin-top:40px; padding:16px 20px; background:var(--note-bg); border-radius:8px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); line-height:1.6; }
+@media (max-width:600px) { h1 { font-size:24px; } .score-hero { flex-direction:column; align-items:flex-start; } .dim-table tbody td:first-child { width:auto; } }</style>
+</head>
+<body>
+<div class="page-wrapper">
+  <a class="back-link" href="https://peptideclear.com/methodology">← Back to Methodology</a>
+  <div class="compound-label">RQS Scoring Log</div>
+  <h1>SS-31</h1>
+  <div class="meta-row">
+    <span>Longevity &amp; Cellular Aging</span><span class="meta-divider">·</span>
+    <span>Observational</span><span class="meta-divider">·</span>
+    <span>Scored June 2026</span><span class="meta-divider">·</span>
+    <a href="https://peptideclear.com/peptides/ss-31">View compound profile →</a>
+  </div>
+  <div class="score-hero">
+    <div class="score-circle" style="border-color:var(--limited-fg); color:var(--limited-fg)">
+      <span class="score-num-big">47</span>
+      <span class="score-denom">/100</span>
+    </div>
+    <div class="score-info">
+      <div class="score-band-pill" style="background:var(--limited-bg); color:var(--limited-fg)">Limited Evidence</div>
+      <div class="score-desc">7 dimensions · 100 points total · Methodology by PeptideClear</div>
+    </div>
+  </div>
+
+  <div class="caveat-box">
+    <div class="caveat-title">Evidence grade note: Phase II/III trials exist but primary endpoints were not met</div>
+    <div class="caveat-body">SS-31 (elamipretide) has advanced further through clinical development than most compounds in the Longevity &amp; Cellular Aging category — reaching Phase II/III RCTs in primary mitochondrial myopathy (MMPOWER-3), heart failure (PROGRESS-HF), and Barth syndrome (TAZPOWER). However, MMPOWER-3 (the pivotal Phase 3 trial) did not meet its primary endpoints and was terminated early for futility in the double-blind phase. TAZPOWER showed improvement in the 6-minute walk test after 48 weeks, but was an open-label extension. The evidence grade is scored as Observational rather than Human RCT because the available completed RCTs did not demonstrate statistically significant primary endpoint efficacy, even though the trials themselves were RCT in design.</div>
+  </div>
+
+  <div class="section-title">Dimension Breakdown</div>
+  <table class="dim-table">
+    <thead><tr><th>Dimension</th><th>Scoring Notes</th><th style="text-align:right">Score</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Study Design</td>
+        <td><div class="dim-note">Multiple Phase II and one Phase III RCT completed. MMPOWER-3 was a rigorous 24-week, randomized, double-blind, placebo-controlled trial enrolling 218 participants across 27 international sites — gold-standard design. PROGRESS-HF and TAZPOWER are Phase II. The design quality is genuinely high; the outcomes are the limitation. Scored at Phase I/II tier to reflect that the best-powered trial (MMPOWER-3) failed its primary endpoints, and no completed Phase III has demonstrated efficacy.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-limited)">10 / 25</td>
+      </tr>
+      <tr>
+        <td>Sample Size</td>
+        <td><div class="dim-note">MMPOWER-3 enrolled 218 participants — the largest SS-31 human trial to date. PROGRESS-HF enrolled ~47. TAZPOWER enrolled 12 (Barth syndrome is an ultra-rare disease). Cumulative human exposure across completed trials is in the low hundreds. Meaningful Phase II/III-level sample in MMPOWER-3; smaller in other indications.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-limited)">8 / 20</td>
+      </tr>
+      <tr>
+        <td>Replication</td>
+        <td><div class="dim-note">Multiple trials across multiple independent sites and research groups — Harvard/MGH, Cleveland Clinic, Nationwide Children's, and international academic centers contributed to MMPOWER-3. TAZPOWER and PROGRESS-HF were conducted by separate principal investigator groups. Meaningful independent replication exists at the trial level, though all sponsored by Stealth BioTherapeutics. Separate academic-led investigator-initiated studies (e.g., FRDA trial at NCT05168774) add independent replication signal.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-limited)">10 / 20</td>
+      </tr>
+      <tr>
+        <td>Journal Impact Factor</td>
+        <td><div class="dim-note">MMPOWER-3 results published in Neurology (IF ~9). TAZPOWER in Genetics in Medicine (IF ~8). Foundational cardiolipin/SS-31 mechanism papers in PNAS (IF ~11) and JASN (Journal of the American Society of Nephrology, IF ~13). Solid journal placement across the evidence base — this is one of the better-published compounds in the Longevity category.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-moderate)">12 / 15</td>
+      </tr>
+      <tr>
+        <td>Funding Independence</td>
+        <td><div class="dim-note">Stealth BioTherapeutics (formerly Stealth Peptides) funded the major clinical trials. The company filed for bankruptcy in 2022 after MMPOWER-3 failed — trials were pre-registered and conducted to pharmaceutical standards, but funding was entirely industry (no NIH or independent academic primary funding for Phase II/III trials). Foundational Szeto laboratory work at Weill Cornell was NIH-funded. Mixed picture — industry for clinical, academic for mechanistic. Scored to reflect industry dominance in the clinical evidence.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-weak)">4 / 10</td>
+      </tr>
+      <tr>
+        <td>Population Diversity</td>
+        <td><div class="dim-note">MMPOWER-3 was 94% White, mean age 45.6, 64% women — conducted across 7 countries but ethnically narrow by modern trial standards. Barth syndrome trials by definition enroll a very narrow rare-disease pediatric/young adult population. Limited diversity score reflects this honestly.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-weak)">1 / 5</td>
+      </tr>
+      <tr>
+        <td>Researcher h-Index</td>
+        <td><div class="dim-note">Hazel Szeto (Weill Cornell) is the discoverer of the SS-peptide class with h-Index ~50+ in mitochondrial pharmacology. Vincenzo Carelli (University of Bologna), lead MMPOWER-3 investigator, has h-Index ~50+ in mitochondrial disease research. Top-tier researchers across the program.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-strong)">5 / 5</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="divider"></div>
+  <div class="footer-note">
+    <strong>Sources:</strong> PubMed — Karaa et al. 2023 Neurology (MMPOWER-3, PMID 37330286), Thompson et al. 2021 Genetics in Medicine (TAZPOWER), Butler et al. 2020 JACC Heart Failure (PROGRESS-HF). Key journals: Neurology, Genetics in Medicine, PNAS. Lead researchers: Hazel Szeto (Weill Cornell, Google Scholar), Vincenzo Carelli (Bologna). Funding: Stealth BioTherapeutics — disclosed in all trial publications. Note: Stealth BioTherapeutics filed Chapter 7 bankruptcy in April 2022 following MMPOWER-3 failure; compound IP and ongoing investigator-initiated trials continue under academic sponsorship.<br><br>
+    <strong>Note:</strong> SS-31 is one of the most intellectually compelling compounds in the catalog — a genuinely novel mechanism (cardiolipin stabilization, inner mitochondrial membrane targeting), strong foundational science, and serious clinical development. The failure of MMPOWER-3 to meet primary endpoints does not invalidate the mechanism or the preclinical science, but it is a significant setback that the evidence grade must reflect. TAZPOWER in Barth syndrome showed clinically meaningful improvements over 48 weeks, and investigator-initiated trials continue. The gap between preclinical promise and clinical RCT outcomes is the defining tension in the SS-31 story — the same tension that defines much of the mitochondria-targeted therapy field.<br><br>
+    Scored by the PeptideClear editorial team using publicly available literature. Sources: PubMed (study design, sample size, replication) · ScimagoJR (journal impact factor) · Google Scholar (researcher h-Index) · Primary papers (funding disclosure). Scores are reviewed as new research is published.
+  </div>
+</div>
+</body>
+</html>
