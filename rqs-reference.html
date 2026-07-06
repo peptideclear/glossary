@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The RQS Reference — PeptideClear</title>
+<meta name="description" content="Every compound in the PeptideClear catalog, graded for clinical research quality on the 100-point Research Quality Score." />
+<style>
+  :root {
+    --navy-deep: #0A1929;
+    --navy: #0B2D52;
+    --navy-mid: #1B3A5C;
+    --border: #E2E8F0;
+    --ink: #16324F;
+    --ink-soft: #5A7189;
+    --paper: #FBFCFE;
+    --card: #FFFFFF;
+    --accent: #4A90D9;
+
+    --strong: #2E9E5B;   --strong-bg: rgba(46,158,91,0.12);
+    --moderate: #3A78C2; --moderate-bg: rgba(58,120,194,0.12);
+    --limited: #C98A2E;  --limited-bg: rgba(201,138,46,0.14);
+    --weak: #D25B3E;     --weak-bg: rgba(210,91,62,0.12);
+    --insufficient: #6C7C90; --insufficient-bg: rgba(108,124,144,0.14);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px 72px; }
+
+  header {
+    background: var(--navy);
+    color: #EAF3FF;
+    padding: 40px 0 34px;
+    margin-bottom: 34px;
+  }
+  header .wrap { padding-bottom: 0; }
+  .wordmark { font-size: 15px; letter-spacing: 0.02em; font-weight: 600; color: #EAF3FF; margin: 0 0 22px; }
+  .wordmark span { color: var(--accent); }
+  h1 { font-family: Georgia, "Times New Roman", serif; font-size: 34px; line-height: 1.15; margin: 0 0 12px; font-weight: 700; color: #FFFFFF; }
+  .lede { font-size: 15px; color: #B9D4F0; max-width: 620px; margin: 0; }
+  .lede strong { color: #EAF3FF; font-weight: 600; }
+
+  .framing {
+    background: var(--card); border: 1px solid var(--border);
+    border-left: 3px solid var(--accent); border-radius: 10px;
+    padding: 16px 18px; font-size: 13.5px; color: var(--ink-soft); margin-bottom: 30px;
+  }
+  .framing strong { color: var(--ink); font-weight: 600; }
+
+  .legend { margin-bottom: 34px; }
+  .legend h2, .section h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-soft); font-weight: 700; margin: 0 0 14px;
+  }
+  .bands { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .band-key {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: 5px 12px 5px 10px; font-size: 12.5px; background: var(--card);
+  }
+  .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; transform: translateY(0.5px); }
+  .band-key .range { color: var(--ink-soft); }
+  .dims { font-size: 13px; color: var(--ink-soft); background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .dims strong { color: var(--ink); font-weight: 600; }
+
+  .controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; flex-wrap: wrap; }
+  .count { font-size: 13px; color: var(--ink-soft); }
+  .toggle { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; background: var(--card); }
+  .toggle button { border: none; background: transparent; cursor: pointer; font-size: 12.5px; font-weight: 500; padding: 7px 14px; color: var(--ink-soft); font-family: inherit; }
+  .toggle button.active { background: var(--navy); color: #EAF3FF; }
+
+  .section { margin-bottom: 26px; break-inside: avoid; }
+  .section h2 { margin-bottom: 10px; }
+  .row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 14px; padding: 11px 4px; border-bottom: 1px solid var(--border); }
+  .row:last-child { border-bottom: none; }
+  .cname { font-size: 15px; font-weight: 600; color: var(--ink); }
+  .grade { font-size: 12px; color: var(--ink-soft); font-weight: 400; margin-left: 2px; }
+  .score { font-size: 15px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; text-align: right; min-width: 54px; }
+  .score span { font-size: 11px; font-weight: 500; color: var(--ink-soft); }
+  .chip { font-size: 11.5px; font-weight: 600; letter-spacing: 0.01em; padding: 3px 10px; border-radius: 999px; white-space: nowrap; text-align: center; min-width: 82px; }
+  .c-strong { color: var(--strong); background: var(--strong-bg); }
+  .c-moderate { color: var(--moderate); background: var(--moderate-bg); }
+  .c-limited { color: var(--limited); background: var(--limited-bg); }
+  .c-weak { color: var(--weak); background: var(--weak-bg); }
+  .c-insufficient { color: var(--insufficient); background: var(--insufficient-bg); }
+
+  footer { margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--ink-soft); }
+  footer p { margin: 0 0 8px; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 520px) {
+    .row { grid-template-columns: 1fr auto; grid-template-areas: "name score" "chip chip"; row-gap: 6px; }
+    .cname { grid-area: name; } .score { grid-area: score; }
+    .chip { grid-area: chip; justify-self: start; }
+  }
+  @media print {
+    body { background: #fff; }
+    header { background: #fff; color: var(--navy); padding: 0 0 18px; border-bottom: 2px solid var(--navy); }
+    .wordmark, h1 { color: var(--navy); }
+    .lede { color: #333; } .lede strong { color: #000; }
+    .controls { display: none; }
+    a { color: var(--ink); }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="wordmark">Peptide<span>Clear</span></p>
+    <h1>The RQS Reference</h1>
+    <p class="lede">Every compound in the catalog, graded on the <strong>Research Quality Score</strong>: a 100-point measure of how strong the clinical research behind a compound actually is.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="framing">
+    <strong>What this measures, and what it does not.</strong> The RQS grades the quality of the research evidence only. It is not a rating of how safe a compound is, how well it works, or whether you should use it. A low score means the science is thin or early, not that a compound is dangerous or useless. A high score means the research is rigorous, not that the compound is right for you. Those are different questions, and this sheet answers only the first.
+  </div>
+
+  <div class="legend">
+    <h2>The five bands</h2>
+    <div class="bands">
+      <span class="band-key"><span class="dot" style="background:var(--strong)"></span> Strong <span class="range">80&ndash;100</span></span>
+      <span class="band-key"><span class="dot" style="background:var(--moderate)"></span> Moderate <span class="range">60&ndash;79</span></span>
+      <span class="band-key"><span class="dot" style="background:var(--limited)"></span> Limited <span class="range">40&ndash;59</span></span>
+      <span class="band-key"><span class="dot" style="background:var(--weak)"></span> Weak <span class="range">20&ndash;39</span></span>
+      <span class="band-key"><span class="dot" style="background:var(--insufficient)"></span> Insufficient <span class="range">0&ndash;19</span></span>
+    </div>
+    <div class="dims">
+      Each score is built from seven weighted dimensions: <strong>Study Design</strong> (25), <strong>Sample Size</strong> (20), <strong>Replication</strong> (20), <strong>Journal Impact Factor</strong> (15), <strong>Funding Independence</strong> (10), <strong>Population Diversity</strong> (5), and <strong>Researcher h-Index</strong> (5). Full scoring logs for every compound live at peptideclear.com.
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="count" id="count"></div>
+    <div class="toggle">
+      <button id="btn-cat" class="active" onclick="render('category')">By category</button>
+      <button id="btn-score" onclick="render('score')">Ranked by score</button>
+    </div>
+  </div>
+
+  <div id="list"></div>
+
+  <footer>
+    <p>Scored by the PeptideClear editorial team, based on publicly available literature. The RQS reflects research quality only, never a safety or efficacy verdict.</p>
+    <p>Scores reflect the evidence as presented. Some compounds are scored on a specific approved indication or on a studied analog rather than the marketed form; see the individual scoring log for scoping notes. Compounds published in lower-impact-factor research ecosystems (for example, several Russian nootropic peptides) carry lower Journal Impact Factor scores that reflect the publishing environment, not necessarily the scientific quality.</p>
+    <p>The full catalog and every scoring log: <a href="https://peptideclear.com">peptideclear.com</a></p>
+  </footer>
+</div>
+
+<script>
+// ── SOURCE OF TRUTH ──
+// Pulled directly from PeptideCatalog.tsx — 48 compounds
+// Band is computed from score; do not store it separately
+const COMPOUNDS = [
+  // Foundational Supplements
+  { name:"Creatine", score:93, category:"Foundational Supplements", grade:"Human RCT" },
+
+  // Metabolic
+  { name:"GLP-1 (Semaglutide)", score:94, category:"Metabolic", grade:"Human RCT" },
+  { name:"Tirzepatide", score:91, category:"Metabolic", grade:"Human RCT" },
+  { name:"Tesamorelin", score:88, category:"Metabolic", grade:"Human RCT" },
+  { name:"Retatrutide", score:77, category:"Metabolic", grade:"Human RCT" },
+  { name:"AOD-9604", score:33, category:"Metabolic", grade:"Observational" },
+
+  // Growth Hormone
+  { name:"HGH", score:90, category:"Growth Hormone", grade:"Human RCT" },
+  { name:"Sermorelin", score:64, category:"Growth Hormone", grade:"Human RCT" },
+  { name:"Ibutamoren (MK-677)", score:63, category:"Growth Hormone", grade:"Observational" },
+  { name:"GHRP-6", score:47, category:"Growth Hormone", grade:"Observational" },
+  { name:"CJC-1295", score:44, category:"Growth Hormone", grade:"Observational" },
+  { name:"Hexarelin", score:43, category:"Growth Hormone", grade:"Observational" },
+  { name:"Ipamorelin", score:35, category:"Growth Hormone", grade:"Animal Only" },
+  { name:"IGF-1 LR3", score:34, category:"Growth Hormone", grade:"Animal / In Vitro" },
+  { name:"Follistatin-344", score:33, category:"Growth Hormone", grade:"Animal / In Vitro" },
+
+  // Hormones & Neuromodulators
+  { name:"Gonadorelin", score:77, category:"Hormones & Neuromodulators", grade:"Human RCT" },
+  { name:"Oxytocin", score:64, category:"Hormones & Neuromodulators", grade:"Human RCT" },
+  { name:"Kisspeptin-10", score:47, category:"Hormones & Neuromodulators", grade:"Human RCT" },
+
+  // Immune & Antiviral
+  { name:"Thymosin Alpha-1", score:94, category:"Immune & Antiviral", grade:"Human RCT" },
+  { name:"LL-37", score:41, category:"Immune & Antiviral", grade:"Animal / In Vitro" },
+
+  // Longevity & Cellular Aging
+  { name:"NMN", score:74, category:"Longevity & Cellular Aging", grade:"Human RCT" },
+  { name:"Carnosine", score:73, category:"Longevity & Cellular Aging", grade:"Human RCT" },
+  { name:"NAD+", score:69, category:"Longevity & Cellular Aging", grade:"Human RCT" },
+  { name:"Glutathione", score:60, category:"Longevity & Cellular Aging", grade:"Human RCT" },
+  { name:"SS-31", score:50, category:"Longevity & Cellular Aging", grade:"Observational" },
+  { name:"MOTS-c", score:41, category:"Longevity & Cellular Aging", grade:"Animal / In Vitro" },
+  { name:"Epitalon", score:39, category:"Longevity & Cellular Aging", grade:"Observational" },
+  { name:"Pinealon", score:10, category:"Longevity & Cellular Aging", grade:"Animal / In Vitro" },
+
+  // Nootropics & Neuroprotection
+  { name:"Semax", score:42, category:"Nootropics & Neuroprotection", grade:"Observational" },
+  { name:"Humanin", score:37, category:"Nootropics & Neuroprotection", grade:"Animal / In Vitro" },
+  { name:"DSIP", score:37, category:"Nootropics & Neuroprotection", grade:"Observational" },
+  { name:"Selank", score:36, category:"Nootropics & Neuroprotection", grade:"Observational" },
+  { name:"Dihexa", score:30, category:"Nootropics & Neuroprotection", grade:"Animal / In Vitro" },
+  { name:"PE-22-28", score:27, category:"Nootropics & Neuroprotection", grade:"Animal / In Vitro" },
+
+  // Recovery & Performance
+  { name:"KPV", score:42, category:"Recovery & Performance", grade:"Animal / In Vitro" },
+  { name:"TB-500", score:41, category:"Recovery & Performance", grade:"Animal Only" },
+  { name:"BPC-157", score:20, category:"Recovery & Performance", grade:"Animal Only" },
+
+  // Sexual Health
+  { name:"PT-141 (Bremelanotide)", score:69, category:"Sexual Health", grade:"Human RCT" },
+  { name:"Melanotan II", score:38, category:"Sexual Health", grade:"Observational" },
+
+  // Skin & Hair
+  { name:"Collagen Type I", score:82, category:"Skin & Hair", grade:"Human RCT" },
+  { name:"Collagen Type III", score:68, category:"Skin & Hair", grade:"Human RCT" },
+  { name:"GHK-Cu", score:55, category:"Skin & Hair", grade:"Human RCT" },
+  { name:"Argireline", score:48, category:"Skin & Hair", grade:"Human RCT" },
+  { name:"Palmitoyl Tripeptide-1 (Matrixyl)", score:51, category:"Skin & Hair", grade:"Human RCT" },
+  { name:"Leuphasyl", score:38, category:"Skin & Hair", grade:"Human RCT" },
+
+  // Peptide-Adjacent
+  { name:"Turkesterone", score:37, category:"Peptide-Adjacent", grade:"Animal / In Vitro" },
+  { name:"SLU-PP-332", score:36, category:"Peptide-Adjacent", grade:"Animal / In Vitro" },
+  { name:"5-Amino-1MQ", score:28, category:"Peptide-Adjacent", grade:"Animal / In Vitro" },
+];
+
+const CATEGORY_ORDER = [
+  "Metabolic","Growth Hormone","Longevity & Cellular Aging",
+  "Hormones & Neuromodulators","Skin & Hair","Recovery & Performance",
+  "Nootropics & Neuroprotection","Immune & Antiviral","Sexual Health",
+  "Foundational Supplements","Peptide-Adjacent",
+];
+
+function bandFor(score) {
+  if (score >= 80) return { label:"Strong", cls:"c-strong" };
+  if (score >= 60) return { label:"Moderate", cls:"c-moderate" };
+  if (score >= 40) return { label:"Limited", cls:"c-limited" };
+  if (score >= 20) return { label:"Weak", cls:"c-weak" };
+  return { label:"Insufficient", cls:"c-insufficient" };
+}
+
+function rowHTML(c) {
+  const b = bandFor(c.score);
+  return `<div class="row">
+    <div class="cname">${c.name}<span class="grade"> &middot; ${c.grade}</span></div>
+    <div class="score">${c.score}<span> / 100</span></div>
+    <div class="chip ${b.cls}">${b.label}</div>
+  </div>`;
+}
+
+function render(mode) {
+  const list = document.getElementById("list");
+  document.getElementById("btn-cat").classList.toggle("active", mode==="category");
+  document.getElementById("btn-score").classList.toggle("active", mode==="score");
+  document.getElementById("count").textContent = COMPOUNDS.length + " compounds scored";
+
+  if (mode === "score") {
+    const sorted = [...COMPOUNDS].sort((a,b) => b.score - a.score || a.name.localeCompare(b.name));
+    list.innerHTML = `<div class="section">${sorted.map(rowHTML).join("")}</div>`;
+    return;
+  }
+
+  let html = "";
+  for (const cat of CATEGORY_ORDER) {
+    const items = COMPOUNDS.filter(c => c.category===cat)
+      .sort((a,b) => b.score - a.score || a.name.localeCompare(b.name));
+    if (!items.length) continue;
+    html += `<div class="section"><h2>${cat}</h2>${items.map(rowHTML).join("")}</div>`;
+  }
+  list.innerHTML = html;
+}
+
+render("category");
+</script>
+</body>
+</html>
