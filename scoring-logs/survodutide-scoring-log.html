@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survodutide — RQS Scoring Log · PeptideClear</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#ffffff; --bg-alt:#f7fafd; --bg-header:#f0f6ff; --border:#e8edf2;
+  --border-accent:#4A90D9; --text-primary:#0d1f35; --text-body:#374151;
+  --text-muted:#4a5568; --text-faint:#6b7280; --accent:#4A90D9; --accent-dark:#1B5EA3;
+  --caveat-bg:#f8fafc; --note-bg:#f0f6ff;
+  --strong-bg:#d1fae5; --strong-fg:#065f46; --moderate-bg:#dbeafe; --moderate-fg:#1e40af;
+  --limited-bg:#fef3c7; --limited-fg:#92400e; --weak-bg:#ffedd5; --weak-fg:#9a3412;
+  --insuff-bg:#fee2e2; --insuff-fg:#991b1b;
+  --color-strong:#16a34a; --color-moderate:#2563eb; --color-limited:#d97706; --color-weak:#ea580c; --color-insuff:#dc2626;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#0A1929; --bg-alt:#071E38; --bg-header:#071E38; --border:#164E8A;
+    --border-accent:#4A90D9; --text-primary:#C1E4FF; --text-body:#93C9FF;
+    --text-muted:#6BB8FF; --text-faint:#6BB8FF; --accent:#4A90D9; --accent-dark:#93C9FF;
+    --caveat-bg:#0B2D52; --note-bg:#071E38;
+    --strong-bg:#14532D; --strong-fg:#86EFAC; --moderate-bg:#1E3A5F; --moderate-fg:#93C5FD;
+    --limited-bg:#78350F; --limited-fg:#FDE68A; --weak-bg:#7C2D12; --weak-fg:#FDBA74;
+    --insuff-bg:#7F1D1D; --insuff-fg:#FCA5A5;
+    --color-strong:#4ade80; --color-moderate:#60a5fa; --color-limited:#fcd34d; --color-weak:#fb923c; --color-insuff:#f87171;
+  }
+}
+body { background:var(--bg); color:var(--text-primary); font-family:'Georgia',serif; font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; transition:background 0.3s ease,color 0.3s ease; }
+.page-wrapper { max-width:680px; margin:0 auto; padding:48px 24px 100px; }
+.back-link { display:inline-block; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--accent); text-decoration:none; margin-bottom:32px; letter-spacing:0.02em; }
+.back-link:hover { text-decoration:underline; }
+.compound-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+h1 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:32px; font-weight:700; color:var(--text-primary); margin-bottom:12px; letter-spacing:-0.02em; line-height:1.2; }
+.meta-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:32px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-faint); }
+.meta-divider { color:var(--border); }
+.meta-row a { color:var(--accent); text-decoration:none; }
+.meta-row a:hover { text-decoration:underline; }
+.score-hero { display:flex; align-items:center; gap:24px; background:var(--bg-alt); border-radius:10px; padding:24px; margin-bottom:40px; border:1px solid var(--border); }
+.score-circle { width:80px; height:80px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; border:4px solid; }
+.score-num-big { font-family:'Helvetica Neue',Arial,sans-serif; font-size:26px; font-weight:800; line-height:1; }
+.score-denom { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; color:var(--text-faint); }
+.score-info { flex:1; }
+.score-band-pill { display:inline-block; padding:4px 14px; border-radius:20px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; font-weight:700; margin-bottom:8px; }
+.score-desc { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); }
+.section-title { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:16px; }
+.dim-table { width:100%; border-collapse:collapse; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; margin-bottom:40px; }
+.dim-table thead tr { border-bottom:2px solid var(--border-accent); background:var(--bg-header); }
+.dim-table thead th { padding:10px 12px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-dark); }
+.dim-table tbody tr { border-bottom:1px solid var(--border); }
+.dim-table tbody tr:last-child { border-bottom:none; }
+.dim-table tbody td { padding:14px 12px; vertical-align:top; color:var(--text-body); line-height:1.5; }
+.dim-table tbody td:first-child { font-weight:700; color:var(--text-primary); width:180px; }
+.dim-score-cell { white-space:nowrap; text-align:right; font-weight:700; width:70px; }
+.dim-note { font-size:13px; color:var(--text-muted); font-style:italic; }
+.divider { height:1px; background:var(--border); margin:32px 0; }
+.caveat-box { background:var(--caveat-bg); border-left:3px solid var(--border-accent); border-radius:0 6px 6px 0; padding:14px 18px; margin-bottom:12px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; }
+.caveat-title { font-weight:700; color:var(--text-primary); margin-bottom:4px; }
+.caveat-body { color:var(--text-muted); line-height:1.6; }
+.footer-note { margin-top:40px; padding:16px 20px; background:var(--note-bg); border-radius:8px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); line-height:1.6; }
+@media (max-width:600px) { h1 { font-size:24px; } .score-hero { flex-direction:column; align-items:flex-start; } .dim-table tbody td:first-child { width:auto; } }</style>
+</head>
+<body>
+<div class="page-wrapper">
+  <a class="back-link" href="https://peptideclear.com/methodology">← Back to Methodology</a>
+  <div class="compound-label">RQS Scoring Log</div>
+  <h1>Survodutide</h1>
+  <div class="meta-row">
+    <span>Metabolic</span><span class="meta-divider">·</span>
+    <span>Human RCT</span><span class="meta-divider">·</span>
+    <span>Scored July 2026</span><span class="meta-divider">·</span>
+    <a href="https://peptideclear.com/peptides/survodutide">View compound profile →</a>
+  </div>
+  <div class="score-hero">
+    <div class="score-circle" style="border-color:var(--limited-fg); color:var(--limited-fg)">
+      <span class="score-num-big">56</span>
+      <span class="score-denom">/100</span>
+    </div>
+    <div class="score-info">
+      <div class="score-band-pill" style="background:var(--limited-bg); color:var(--limited-fg)">Limited Evidence</div>
+      <div class="score-desc">7 dimensions · 100 points total · Methodology by PeptideClear</div>
+    </div>
+  </div>
+
+  <div class="caveat-box">
+    <div class="caveat-title">Scoping Note</div>
+    <div class="caveat-body">RQS reflects survodutide's Phase II evidence base as of July 2026. Phase III OASIS (obesity) and SYNCHRONY (MASH) programs are underway. This score will be updated on peer-reviewed Phase III publication. The Limited band reflects early-stage human evidence, not a ceiling on the compound's trajectory.</div>
+  </div>
+
+  <div class="section-title">Dimension Breakdown</div>
+  <table class="dim-table">
+    <thead><tr><th>Dimension</th><th>Scoring Notes</th><th style="text-align:right">Score</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Study Design</td>
+        <td><div class="dim-note">Phase II RCTs published in peer-reviewed journals for both obesity and MASH indications. The obesity Phase II (Lv et al. 2023, eClinicalMedicine) is a well-structured RCT. Phase III has not yet reported. Single RCT score (20) reflects the quality of Phase II design — a ceiling appropriate for a compound whose pivotal trial program is still underway.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-moderate)">20 / 25</td>
+      </tr>
+      <tr>
+        <td>Sample Size</td>
+        <td><div class="dim-note">The Phase II obesity trial enrolled approximately 388 participants. MASH Phase II enrolled a smaller cohort. Combined Phase II sample is in the low hundreds. Score reflects 50–99 individual trial range rather than cumulative, consistent with methodology applied to similar-stage compounds.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-weak)">8 / 20</td>
+      </tr>
+      <tr>
+        <td>Replication</td>
+        <td><div class="dim-note">Phase II data comes from Boehringer Ingelheim-sponsored trials — single sponsor, single research program as of July 2026. No independent academic replication exists yet. Single study score (5) reflects the early-stage, single-sponsor evidence base.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-weak)">5 / 20</td>
+      </tr>
+      <tr>
+        <td>Journal Impact Factor</td>
+        <td><div class="dim-note">Lv et al. 2023 published in eClinicalMedicine (Lancet group, IF ~9–10). Additional MASH data published in journals of similar caliber. IF 5–7 range score is appropriate given the Lancet-group placement of primary data.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-moderate)">12 / 15</td>
+      </tr>
+      <tr>
+        <td>Funding Independence</td>
+        <td><div class="dim-note">Boehringer Ingelheim funded all Phase II trials. Pre-registered, rigorously conducted, but entirely industry funded with no independent academic replication at this stage — consistent with other late-pipeline metabolic agents at Phase II.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-insuff)">3 / 10</td>
+      </tr>
+      <tr>
+        <td>Population Diversity</td>
+        <td><div class="dim-note">Phase II enrolled primarily Western populations (US and Europe). Moderate diversity within this enrollment. Phase III is expected to include more geographically diverse sites. Score of 3 reflects the current Phase II data.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-limited)">3 / 5</td>
+      </tr>
+      <tr>
+        <td>Researcher h-Index</td>
+        <td><div class="dim-note">Lead investigators include senior endocrinology and hepatology researchers from Boehringer Ingelheim and academic collaborating sites, with h-Indexes above 20. Top score warranted based on principal investigators' academic profiles.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-strong)">5 / 5</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="divider"></div>
+  <div class="footer-note">
+    <strong>Sources:</strong> Lv X et al. 2023, eClinicalMedicine (PMID 38115960) — survodutide Phase II obesity. ClinicalTrials.gov NCT04666675 (OASIS obesity program) and NCT04771273 (SYNCHRONY MASH program). Boehringer Ingelheim / Zealand Pharma collaboration.<br><br>
+    <strong>Note:</strong> Survodutide's glucagon/GLP-1 dual mechanism differentiates it from the GIP/GLP-1 class (tirzepatide) and the GIP/GLP-1/glucagon class (retatrutide). The MASH indication is particularly significant — metabolic liver disease has limited approved pharmacotherapies, and survodutide's hepatic fat oxidation mechanism targets a genuine unmet need. Phase III readouts will be a meaningful data moment. This score will be updated accordingly.<br><br>
+    Scored by the PeptideClear editorial team using publicly available literature. Sources: PubMed (study design, sample size, replication) · ScimagoJR (journal impact factor) · Google Scholar (researcher h-Index) · Primary papers (funding disclosure). Scores are reviewed as new research is published.
+  </div>
+</div>
+</body>
+</html>

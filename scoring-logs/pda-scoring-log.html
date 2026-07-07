@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pentadeca Arginate (PDA) — RQS Scoring Log · PeptideClear</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#ffffff; --bg-alt:#f7fafd; --bg-header:#f0f6ff; --border:#e8edf2;
+  --border-accent:#4A90D9; --text-primary:#0d1f35; --text-body:#374151;
+  --text-muted:#4a5568; --text-faint:#6b7280; --accent:#4A90D9; --accent-dark:#1B5EA3;
+  --caveat-bg:#f8fafc; --note-bg:#f0f6ff;
+  --strong-bg:#d1fae5; --strong-fg:#065f46; --moderate-bg:#dbeafe; --moderate-fg:#1e40af;
+  --limited-bg:#fef3c7; --limited-fg:#92400e; --weak-bg:#ffedd5; --weak-fg:#9a3412;
+  --insuff-bg:#fee2e2; --insuff-fg:#991b1b;
+  --color-strong:#16a34a; --color-moderate:#2563eb; --color-limited:#d97706; --color-weak:#ea580c; --color-insuff:#dc2626;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#0A1929; --bg-alt:#071E38; --bg-header:#071E38; --border:#164E8A;
+    --border-accent:#4A90D9; --text-primary:#C1E4FF; --text-body:#93C9FF;
+    --text-muted:#6BB8FF; --text-faint:#6BB8FF; --accent:#4A90D9; --accent-dark:#93C9FF;
+    --caveat-bg:#0B2D52; --note-bg:#071E38;
+    --strong-bg:#14532D; --strong-fg:#86EFAC; --moderate-bg:#1E3A5F; --moderate-fg:#93C5FD;
+    --limited-bg:#78350F; --limited-fg:#FDE68A; --weak-bg:#7C2D12; --weak-fg:#FDBA74;
+    --insuff-bg:#7F1D1D; --insuff-fg:#FCA5A5;
+    --color-strong:#4ade80; --color-moderate:#60a5fa; --color-limited:#fcd34d; --color-weak:#fb923c; --color-insuff:#f87171;
+  }
+}
+body { background:var(--bg); color:var(--text-primary); font-family:'Georgia',serif; font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; transition:background 0.3s ease,color 0.3s ease; }
+.page-wrapper { max-width:680px; margin:0 auto; padding:48px 24px 100px; }
+.back-link { display:inline-block; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--accent); text-decoration:none; margin-bottom:32px; letter-spacing:0.02em; }
+.back-link:hover { text-decoration:underline; }
+.compound-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+h1 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:32px; font-weight:700; color:var(--text-primary); margin-bottom:12px; letter-spacing:-0.02em; line-height:1.2; }
+.meta-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:32px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-faint); }
+.meta-divider { color:var(--border); }
+.meta-row a { color:var(--accent); text-decoration:none; }
+.meta-row a:hover { text-decoration:underline; }
+.score-hero { display:flex; align-items:center; gap:24px; background:var(--bg-alt); border-radius:10px; padding:24px; margin-bottom:40px; border:1px solid var(--border); }
+.score-circle { width:80px; height:80px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; border:4px solid; }
+.score-num-big { font-family:'Helvetica Neue',Arial,sans-serif; font-size:26px; font-weight:800; line-height:1; }
+.score-denom { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; color:var(--text-faint); }
+.score-info { flex:1; }
+.score-band-pill { display:inline-block; padding:4px 14px; border-radius:20px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; font-weight:700; margin-bottom:8px; }
+.score-desc { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); }
+.section-title { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:16px; }
+.dim-table { width:100%; border-collapse:collapse; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; margin-bottom:40px; }
+.dim-table thead tr { border-bottom:2px solid var(--border-accent); background:var(--bg-header); }
+.dim-table thead th { padding:10px 12px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-dark); }
+.dim-table tbody tr { border-bottom:1px solid var(--border); }
+.dim-table tbody tr:last-child { border-bottom:none; }
+.dim-table tbody td { padding:14px 12px; vertical-align:top; color:var(--text-body); line-height:1.5; }
+.dim-table tbody td:first-child { font-weight:700; color:var(--text-primary); width:180px; }
+.dim-score-cell { white-space:nowrap; text-align:right; font-weight:700; width:70px; }
+.dim-note { font-size:13px; color:var(--text-muted); font-style:italic; }
+.divider { height:1px; background:var(--border); margin:32px 0; }
+.caveat-box { background:var(--caveat-bg); border-left:3px solid var(--border-accent); border-radius:0 6px 6px 0; padding:14px 18px; margin-bottom:12px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; }
+.caveat-title { font-weight:700; color:var(--text-primary); margin-bottom:4px; }
+.caveat-body { color:var(--text-muted); line-height:1.6; }
+.footer-note { margin-top:40px; padding:16px 20px; background:var(--note-bg); border-radius:8px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); line-height:1.6; }
+@media (max-width:600px) { h1 { font-size:24px; } .score-hero { flex-direction:column; align-items:flex-start; } .dim-table tbody td:first-child { width:auto; } }</style>
+</head>
+<body>
+<div class="page-wrapper">
+  <a class="back-link" href="https://peptideclear.com/methodology">← Back to Methodology</a>
+  <div class="compound-label">RQS Scoring Log</div>
+  <h1>Pentadeca Arginate (PDA)</h1>
+  <div class="meta-row">
+    <span>Recovery &amp; Performance</span><span class="meta-divider">·</span>
+    <span>Animal / In Vitro</span><span class="meta-divider">·</span>
+    <span>Scored July 2026</span><span class="meta-divider">·</span>
+    <a href="https://peptideclear.com/peptides/pda">View compound profile →</a>
+  </div>
+  <div class="score-hero">
+    <div class="score-circle" style="border-color:var(--insuff-fg); color:var(--insuff-fg)">
+      <span class="score-num-big">19</span>
+      <span class="score-denom">/100</span>
+    </div>
+    <div class="score-info">
+      <div class="score-band-pill" style="background:var(--insuff-bg); color:var(--insuff-fg)">Insufficient Evidence</div>
+      <div class="score-desc">7 dimensions · 100 points total · Methodology by PeptideClear</div>
+    </div>
+  </div>
+
+  <div class="caveat-box">
+    <div class="caveat-title">Scoping Note</div>
+    <div class="caveat-body">This score reflects evidence specific to Pentadeca Arginate (PDA) as a distinct compound. BPC-157 animal research is not applied here — PDA is a structurally related but separate peptide with its own (largely absent) evidence base. Extrapolating BPC-157 findings to PDA is not scientifically supported.</div>
+  </div>
+
+  <div class="section-title">Dimension Breakdown</div>
+  <table class="dim-table">
+    <thead><tr><th>Dimension</th><th>Scoring Notes</th><th style="text-align:right">Score</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Study Design</td>
+        <td><div class="dim-note">No published human trials. A small number of animal studies exist in rodent models examining tissue repair and anti-inflammatory effects, representing the extent of the published evidence base. Animal only score applies. The absence of a human safety study — let alone an efficacy trial — is the defining limitation.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-weak)">5 / 25</td>
+      </tr>
+      <tr>
+        <td>Sample Size</td>
+        <td><div class="dim-note">No human participants. Animal study cohorts are small (typically 8–16 animals per group). Score is 0 for this dimension as no human efficacy data exists.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-insuff)">0 / 20</td>
+      </tr>
+      <tr>
+        <td>Replication</td>
+        <td><div class="dim-note">The limited animal studies that exist originate from a small number of groups, with no meaningful independent replication. Single study or single group at best. Score reflects the near-complete absence of a replication record.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-weak)">5 / 20</td>
+      </tr>
+      <tr>
+        <td>Journal Impact Factor</td>
+        <td><div class="dim-note">The sparse published work appears in lower-tier journals or preprint form. No publications in peer-reviewed journals with meaningful impact factors have been identified for PDA-specific research.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-weak)">4 / 15</td>
+      </tr>
+      <tr>
+        <td>Funding Independence</td>
+        <td><div class="dim-note">The available animal research does not appear to trace primarily to vendor or commercial interests — but the overall data volume is too thin to assess this dimension meaningfully. Score reflects the limited evidence available, not confirmed independence.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-weak)">4 / 10</td>
+      </tr>
+      <tr>
+        <td>Population Diversity</td>
+        <td><div class="dim-note">Animal only — not applicable to human population diversity scoring.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-insuff)">0 / 5</td>
+      </tr>
+      <tr>
+        <td>Researcher h-Index</td>
+        <td><div class="dim-note">No prominent lead researcher with an established publication record specific to PDA has been identified. The compound is too new and too thinly researched to have a named academic investigator. Score is 1.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-insuff)">1 / 5</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="divider"></div>
+  <div class="footer-note">
+    <strong>Sources:</strong> PubMed search — "pentadeca arginate" (no indexed results as of July 2026). BPC-157 analog literature: Sikiric P et al., various. FDA docket: Proposed Rule on 503A bulk drug substances — BPC-157 "propose not to include" designation (2024).<br><br>
+    <strong>Note:</strong> PDA entered the commercial market primarily as a structural analog to BPC-157 following FDA regulatory action against BPC-157 compounding. Claims of superiority to BPC-157 circulate in vendor marketing but are not supported by head-to-head or independent research. The 19/100 score reflects the current state of the published literature — not a judgment on future research potential. This score will be updated if peer-reviewed human evidence is published.<br><br>
+    Scored by the PeptideClear editorial team using publicly available literature. Sources: PubMed (study design, sample size, replication) · ScimagoJR (journal impact factor) · Google Scholar (researcher h-Index) · Primary papers (funding disclosure). Scores are reviewed as new research is published.
+  </div>
+</div>
+</body>
+</html>
