@@ -1,0 +1,320 @@
+[
+  {
+    "slug": "glp-1",
+    "name": "GLP-1",
+    "rqs": 94,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "thymosin-alpha-1",
+    "name": "Thymosin Alpha-1",
+    "rqs": 94,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "creatine",
+    "name": "Creatine",
+    "rqs": 93,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "tirzepatide",
+    "name": "Tirzepatide",
+    "rqs": 91,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "hgh",
+    "name": "HGH",
+    "rqs": 90,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "tesamorelin",
+    "name": "Tesamorelin",
+    "rqs": 88,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "collagen-type-i",
+    "name": "Collagen Type I",
+    "rqs": 82,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "retatrutide",
+    "name": "Retatrutide",
+    "rqs": 77,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "gonadorelin",
+    "name": "Gonadorelin",
+    "rqs": 77,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "nmn",
+    "name": "NMN",
+    "rqs": 74,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "carnosine",
+    "name": "Carnosine",
+    "rqs": 73,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "nad",
+    "name": "NAD+",
+    "rqs": 69,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "pt-141",
+    "name": "PT-141",
+    "rqs": 69,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "collagen-type-iii",
+    "name": "Collagen Type III",
+    "rqs": 68,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "cagrilintide",
+    "name": "Cagrilintide",
+    "rqs": 68,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "sermorelin",
+    "name": "Sermorelin",
+    "rqs": 64,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "oxytocin",
+    "name": "Oxytocin",
+    "rqs": 64,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "ibutamoren",
+    "name": "Ibutamoren",
+    "rqs": 63,
+    "grade": "Observational"
+  },
+  {
+    "slug": "cerebrolysin",
+    "name": "Cerebrolysin",
+    "rqs": 62,
+    "grade": "Observational"
+  },
+  {
+    "slug": "ghrp-2",
+    "name": "GHRP-2",
+    "rqs": 61,
+    "grade": "Observational"
+  },
+  {
+    "slug": "glutathione",
+    "name": "Glutathione",
+    "rqs": 60,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "survodutide",
+    "name": "Survodutide",
+    "rqs": 56,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "ghk-cu",
+    "name": "GHK-Cu",
+    "rqs": 55,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "palmitoyl-tripeptide-1",
+    "name": "Palmitoyl Tripeptide-1",
+    "rqs": 51,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "ss-31",
+    "name": "SS-31",
+    "rqs": 50,
+    "grade": "Observational"
+  },
+  {
+    "slug": "argireline",
+    "name": "Argireline",
+    "rqs": 48,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "ghrp-6",
+    "name": "GHRP-6",
+    "rqs": 47,
+    "grade": "Observational"
+  },
+  {
+    "slug": "kisspeptin-10",
+    "name": "Kisspeptin-10",
+    "rqs": 47,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "cjc-1295",
+    "name": "CJC-1295",
+    "rqs": 44,
+    "grade": "Observational"
+  },
+  {
+    "slug": "hexarelin",
+    "name": "Hexarelin",
+    "rqs": 43,
+    "grade": "Observational"
+  },
+  {
+    "slug": "kpv",
+    "name": "KPV",
+    "rqs": 42,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "semax",
+    "name": "Semax",
+    "rqs": 42,
+    "grade": "Observational"
+  },
+  {
+    "slug": "tb-500",
+    "name": "TB-500",
+    "rqs": 41,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "mots-c",
+    "name": "MOTS-c",
+    "rqs": 41,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "ll-37",
+    "name": "LL-37",
+    "rqs": 41,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "epitalon",
+    "name": "Epitalon",
+    "rqs": 39,
+    "grade": "Observational"
+  },
+  {
+    "slug": "melanotan-ii",
+    "name": "Melanotan II",
+    "rqs": 38,
+    "grade": "Observational"
+  },
+  {
+    "slug": "leuphasyl",
+    "name": "Leuphasyl",
+    "rqs": 38,
+    "grade": "Human RCT"
+  },
+  {
+    "slug": "turkesterone",
+    "name": "Turkesterone",
+    "rqs": 37,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "dsip",
+    "name": "DSIP",
+    "rqs": 37,
+    "grade": "Observational"
+  },
+  {
+    "slug": "humanin",
+    "name": "Humanin",
+    "rqs": 37,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "selank",
+    "name": "Selank",
+    "rqs": 36,
+    "grade": "Observational"
+  },
+  {
+    "slug": "slu-pp-332",
+    "name": "SLU-PP-332",
+    "rqs": 36,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "ipamorelin",
+    "name": "Ipamorelin",
+    "rqs": 35,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "igf-1-lr3",
+    "name": "IGF-1 LR3",
+    "rqs": 34,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "follistatin-344",
+    "name": "Follistatin-344",
+    "rqs": 33,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "aod-9604",
+    "name": "AOD-9604",
+    "rqs": 33,
+    "grade": "Observational"
+  },
+  {
+    "slug": "dihexa",
+    "name": "Dihexa",
+    "rqs": 30,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "5-amino-1mq",
+    "name": "5-Amino-1MQ",
+    "rqs": 28,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "pe-22-28",
+    "name": "PE-22-28",
+    "rqs": 27,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "bpc-157",
+    "name": "BPC-157",
+    "rqs": 20,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "pda",
+    "name": "PDA",
+    "rqs": 19,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "pinealon",
+    "name": "Pinealon",
+    "rqs": 10,
+    "grade": "Animal / In Vitro"
+  }
+]
