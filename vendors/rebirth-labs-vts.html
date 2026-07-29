@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rebirth Labs — VTS Scoring Log · PeptideClear</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg:#ffffff; --bg-alt:#f7fafd; --bg-header:#f0f6ff; --border:#e8edf2; --border-accent:#4A90D9; --text-primary:#0d1f35; --text-body:#374151; --text-muted:#4a5568; --text-faint:#6b7280; --accent:#4A90D9; --accent-dark:#1B5EA3; --caveat-bg:#f8fafc; --note-bg:#f0f6ff; --low-bg:#ffedd5; --low-fg:#9a3412; --color-low:#ea580c; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0A1929; --bg-alt:#071E38; --bg-header:#071E38; --border:#164E8A; --border-accent:#4A90D9; --text-primary:#C1E4FF; --text-body:#93C9FF; --text-muted:#6BB8FF; --text-faint:#6BB8FF; --accent:#4A90D9; --accent-dark:#93C9FF; --caveat-bg:#0B2D52; --note-bg:#071E38; --low-bg:#7C2D12; --low-fg:#FDBA74; --color-low:#fb923c; } }
+body { background:var(--bg); color:var(--text-primary); font-family:'Georgia',serif; font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+.page-wrapper { max-width:680px; margin:0 auto; padding:48px 24px 100px; }
+.back-link { display:inline-block; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--accent); text-decoration:none; margin-bottom:32px; letter-spacing:0.02em; }
+.back-link:hover { text-decoration:underline; }
+.compound-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+h1 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:32px; font-weight:700; color:var(--text-primary); margin-bottom:12px; letter-spacing:-0.02em; line-height:1.2; }
+.meta-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:32px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-faint); }
+.meta-divider { color:var(--border); }
+.meta-row a { color:var(--accent); text-decoration:none; }
+.meta-row a:hover { text-decoration:underline; }
+.score-hero { display:flex; align-items:center; gap:24px; background:var(--bg-alt); border-radius:10px; padding:24px; margin-bottom:40px; border:1px solid var(--border); }
+.score-circle { width:80px; height:80px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; border:4px solid; }
+.score-num-big { font-family:'Helvetica Neue',Arial,sans-serif; font-size:26px; font-weight:800; line-height:1; }
+.score-denom { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; color:var(--text-faint); }
+.score-info { flex:1; }
+.score-band-pill { display:inline-block; padding:4px 14px; border-radius:20px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; font-weight:700; margin-bottom:8px; }
+.score-desc { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); }
+.section-title { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:16px; }
+.dim-table { width:100%; border-collapse:collapse; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; margin-bottom:40px; }
+.dim-table thead tr { border-bottom:2px solid var(--border-accent); background:var(--bg-header); }
+.dim-table thead th { padding:10px 12px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-dark); }
+.dim-table tbody tr { border-bottom:1px solid var(--border); }
+.dim-table tbody tr:last-child { border-bottom:none; }
+.dim-table tbody td { padding:14px 12px; vertical-align:top; color:var(--text-body); line-height:1.5; }
+.dim-table tbody td:first-child { font-weight:700; color:var(--text-primary); width:210px; }
+.dim-score-cell { white-space:nowrap; text-align:right; font-weight:700; width:70px; }
+.total-row td { border-top:2px solid var(--border-accent); font-weight:700; color:var(--text-primary); padding-top:14px; }
+.divider { height:1px; background:var(--border); margin:32px 0; }
+.caveat-box { background:var(--caveat-bg); border-left:3px solid var(--border-accent); border-radius:0 6px 6px 0; padding:14px 18px; margin-bottom:12px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; }
+.caveat-title { font-weight:700; color:var(--text-primary); margin-bottom:4px; }
+.caveat-body { color:var(--text-muted); line-height:1.6; }
+.footer-note { margin-top:40px; padding:16px 20px; background:var(--note-bg); border-radius:8px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); line-height:1.6; }
+@media (max-width:600px) { h1 { font-size:24px; } .score-hero { flex-direction:column; align-items:flex-start; } .dim-table tbody td:first-child { width:auto; } }</style>
+</head>
+<body>
+<div class="page-wrapper">
+  <a class="back-link" href="https://peptideclear.com/vts-methodology">← Back to VTS Methodology</a>
+  <div class="compound-label">VTS Scoring Log</div>
+  <h1>Rebirth Labs</h1>
+  <div class="meta-row">
+    <span>US-facing gray market</span><span class="meta-divider">·</span>
+    <span>Lyophilized vials, nasal sprays, pills</span><span class="meta-divider">·</span>
+    <span>Scored July 2026</span><span class="meta-divider">·</span>
+    <a href="https://rebirthlabs.org" target="_blank">rebirthlabs.org →</a>
+  </div>
+  <div class="score-hero">
+    <div class="score-circle" style="border-color:var(--color-low); color:var(--color-low)">
+      <span class="score-num-big">28</span>
+      <span class="score-denom">/100</span>
+    </div>
+    <div class="score-info">
+      <span class="score-band-pill" style="background:var(--low-bg); color:var(--low-fg)">Low Transparency</span>
+      <div class="score-desc">A COA page exists at a dedicated URL listing 40+ compounds, which is a positive structural signal. But the COA links on that page resolve to hash anchors rather than actual documents - a buyer clicking any COA link goes nowhere. Third-party testing is claimed with no named lab, no method detail, and no verifiable output. The infrastructure of transparency is present; the substance is not.</div>
+    </div>
+  </div>
+  <div class="section-title">Dimension Scores</div>
+  <table class="dim-table">
+    <thead><tr><th>Dimension</th><th>Max</th><th>Notes</th><th style="text-align:right">Score</th></tr></thead>
+    <tbody>
+      <tr><td>Third-Party Testing Practice</td><td style="color:var(--text-faint);font-size:13px">30</td><td>Homepage claims "each batch is independently tested by accredited laboratories" and "HPLC and Mass Spectrometry methods" are used. These are the right claims. However, no lab is named, no testing protocol detail is provided, and no actual COA document is publicly accessible despite the existence of a COA page. The testing claim cannot be verified from the public-facing site.</td><td class="dim-score-cell">12/30</td></tr>
+      <tr><td>Batch Traceability &amp; Verification</td><td style="color:var(--text-faint);font-size:13px">20</td><td>No lot codes visible on product pages. No batch number system described publicly. No mechanism exists for a buyer to match a received vial to a specific test result. Generic documentation is implied but not delivered.</td><td class="dim-score-cell">3/20</td></tr>
+      <tr><td>COA Accessibility</td><td style="color:var(--text-faint);font-size:13px">15</td><td>A dedicated COA page at rebirthlabs.org/coas lists 40+ compounds with individual "COA" links. This structural commitment earns partial credit. However, every COA link on the page resolves to a hash anchor (#) rather than a document. No COA is actually downloadable or viewable. The page exists as a framework with no content behind it. Access tier: listed but not accessible.</td><td class="dim-score-cell">5/15</td></tr>
+      <tr><td>COA Completeness</td><td style="color:var(--text-faint);font-size:13px">15</td><td>Cannot score: no COA document is publicly accessible. HPLC and mass spectrometry are claimed as methods on the homepage, which is the right language, but the actual documents do not exist in the public domain for evaluation.</td><td class="dim-score-cell">2/15</td></tr>
+      <tr><td>Testing Recency</td><td style="color:var(--text-faint);font-size:13px">10</td><td>No dated COAs accessible. Refund policy last updated 12/7/2025. OG image dated April 2026 confirms active site maintenance, but no dated testing evidence is publicly available.</td><td class="dim-score-cell">2/10</td></tr>
+      <tr><td>Policy Transparency</td><td style="color:var(--text-faint);font-size:13px">5</td><td>Refund policy exists at a dedicated URL and is specific: all sales final, no returns or exchanges accepted, replacement or store credit only for damaged/incorrect items within 48 hours, no monetary refunds. The policy is clearly stated - buyers know exactly where they stand. Scored low band because all-sales-final with no quality-incident refund pathway is the most restrictive model in this market.</td><td class="dim-score-cell">2/5</td></tr>
+      <tr><td>Operational Track Record</td><td style="color:var(--text-faint);font-size:13px">5</td><td>Copyright 2026. No founding date publicly stated. Domain is .org, uncommon for commercial operations. Active site with regular product updates and April 2026 imagery, but verifiable operational history is limited. The refund policy references "rebirthresearch.com" as the domain, suggesting possible brand or domain change in history.</td><td class="dim-score-cell">2/5</td></tr>
+      <tr class="total-row"><td>Total</td><td></td><td></td><td class="dim-score-cell">28/100</td></tr>
+    </tbody>
+  </table>
+  <div class="divider"></div>
+  <div class="section-title">Community Signal</div>
+  <div class="caveat-box"><div class="caveat-title">Independent Test Results</div><div class="caveat-body">No community-commissioned independent test results identified in public forums as of July 2026. Rebirth Labs has limited community footprint in major peptide research discussions.</div></div>
+  <div class="caveat-box"><div class="caveat-title">Community Experience</div><div class="caveat-body">Insufficient community data to aggregate as of July 2026. Rebirth Labs does not appear prominently in established peptide research community discussions. This field will be updated as community experience accumulates.</div></div>
+  <div class="divider"></div>
+  <div class="section-title">Scoring Notes</div>
+  <div class="caveat-box" style="margin-bottom:12px"><div class="caveat-title">The broken COA page is the defining signal</div><div class="caveat-body">A dedicated COA page listing 40+ compounds is more transparency infrastructure than many vendors build. The fact that every link resolves to a dead anchor rather than a document is the single most important finding in this score. It is not a technical oversight - linking 40+ products to placeholder anchors is a structural choice. A buyer who navigates to the COA page to verify their purchase gets nothing. That gap is the score.</div></div>
+  <div class="caveat-box"><div class="caveat-title">What would change the score</div><div class="caveat-body">Populating the COA page with actual documents, naming the testing lab, and adding lot-level traceability would move this score substantially. The structural commitment to a COA page is a real starting point - the content just needs to follow.</div></div>
+  <div class="footer-note">Sources: rebirthlabs.org (homepage, COA page, refund policy, about page) · rebirthlabs.org/coas (COA link audit - all links resolve to # anchors) · rebirthlabs.org/refund_returns · site OG image metadata (April 2026). VTS measures process transparency from publicly available materials only. Scored July 2026.</div>
+</div>
+</body>
+</html>
