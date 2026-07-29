@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwissChems — VTS Scoring Log · PeptideClear</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg:#ffffff; --bg-alt:#f7fafd; --bg-header:#f0f6ff; --border:#e8edf2; --border-accent:#4A90D9; --text-primary:#0d1f35; --text-body:#374151; --text-muted:#4a5568; --text-faint:#6b7280; --accent:#4A90D9; --accent-dark:#1B5EA3; --caveat-bg:#f8fafc; --note-bg:#f0f6ff; --moderate-bg:#dbeafe; --moderate-fg:#1e40af; --color-moderate:#2563eb; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0A1929; --bg-alt:#071E38; --bg-header:#071E38; --border:#164E8A; --border-accent:#4A90D9; --text-primary:#C1E4FF; --text-body:#93C9FF; --text-muted:#6BB8FF; --text-faint:#6BB8FF; --accent:#4A90D9; --accent-dark:#93C9FF; --caveat-bg:#0B2D52; --note-bg:#071E38; --moderate-bg:#1E3A5F; --moderate-fg:#93C5FD; --color-moderate:#60a5fa; } }
+body { background:var(--bg); color:var(--text-primary); font-family:'Georgia',serif; font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+.page-wrapper { max-width:680px; margin:0 auto; padding:48px 24px 100px; }
+.back-link { display:inline-block; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--accent); text-decoration:none; margin-bottom:32px; letter-spacing:0.02em; }
+.back-link:hover { text-decoration:underline; }
+.compound-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+h1 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:32px; font-weight:700; color:var(--text-primary); margin-bottom:12px; letter-spacing:-0.02em; line-height:1.2; }
+.meta-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:32px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-faint); }
+.meta-divider { color:var(--border); }
+.meta-row a { color:var(--accent); text-decoration:none; }
+.meta-row a:hover { text-decoration:underline; }
+.score-hero { display:flex; align-items:center; gap:24px; background:var(--bg-alt); border-radius:10px; padding:24px; margin-bottom:40px; border:1px solid var(--border); }
+.score-circle { width:80px; height:80px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; border:4px solid; }
+.score-num-big { font-family:'Helvetica Neue',Arial,sans-serif; font-size:26px; font-weight:800; line-height:1; }
+.score-denom { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; color:var(--text-faint); }
+.score-info { flex:1; }
+.score-band-pill { display:inline-block; padding:4px 14px; border-radius:20px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; font-weight:700; margin-bottom:8px; }
+.score-desc { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); }
+.section-title { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:16px; }
+.dim-table { width:100%; border-collapse:collapse; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; margin-bottom:40px; }
+.dim-table thead tr { border-bottom:2px solid var(--border-accent); background:var(--bg-header); }
+.dim-table thead th { padding:10px 12px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-dark); }
+.dim-table tbody tr { border-bottom:1px solid var(--border); }
+.dim-table tbody tr:last-child { border-bottom:none; }
+.dim-table tbody td { padding:14px 12px; vertical-align:top; color:var(--text-body); line-height:1.5; }
+.dim-table tbody td:first-child { font-weight:700; color:var(--text-primary); width:210px; }
+.dim-score-cell { white-space:nowrap; text-align:right; font-weight:700; width:70px; }
+.total-row td { border-top:2px solid var(--border-accent); font-weight:700; color:var(--text-primary); padding-top:14px; }
+.divider { height:1px; background:var(--border); margin:32px 0; }
+.caveat-box { background:var(--caveat-bg); border-left:3px solid var(--border-accent); border-radius:0 6px 6px 0; padding:14px 18px; margin-bottom:12px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; }
+.caveat-title { font-weight:700; color:var(--text-primary); margin-bottom:4px; }
+.caveat-body { color:var(--text-muted); line-height:1.6; }
+.footer-note { margin-top:40px; padding:16px 20px; background:var(--note-bg); border-radius:8px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); line-height:1.6; }
+@media (max-width:600px) { h1 { font-size:24px; } .score-hero { flex-direction:column; align-items:flex-start; } .dim-table tbody td:first-child { width:auto; } }</style>
+</head>
+<body>
+<div class="page-wrapper">
+  <a class="back-link" href="https://peptideclear.com/vts-methodology">← Back to VTS Methodology</a>
+  <div class="compound-label">VTS Scoring Log</div>
+  <h1>SwissChems</h1>
+  <div class="meta-row">
+    <span>US-facing gray market</span><span class="meta-divider">·</span>
+    <span>Peptides, SARMs, nootropics</span><span class="meta-divider">·</span>
+    <span>Scored July 2026</span><span class="meta-divider">·</span>
+    <a href="https://swisschems.is" target="_blank">swisschems.is →</a>
+  </div>
+  <div class="score-hero">
+    <div class="score-circle" style="border-color:var(--color-moderate); color:var(--color-moderate)">
+      <span class="score-num-big">66</span>
+      <span class="score-denom">/100</span>
+    </div>
+    <div class="score-info">
+      <span class="score-band-pill" style="background:var(--moderate-bg); color:var(--moderate-fg)">Moderate Transparency</span>
+      <div class="score-desc">A public independent test results page using Janoshik as a named lab is a genuine differentiator. However, the 43 publicly available results do not cover the full catalog, testing consistency across peptides specifically is uneven, the specific lab is not always named on individual COAs, and COAs are not consistently linked from product pages. A mixed transparency picture that is better than most but below the cleaner public database implementations in this market.</div>
+    </div>
+  </div>
+  <div class="section-title">Dimension Scores</div>
+  <table class="dim-table">
+    <thead><tr><th>Dimension</th><th>Max</th><th>Notes</th><th style="text-align:right">Score</th></tr></thead>
+    <tbody>
+      <tr><td>Third-Party Testing Practice</td><td style="color:var(--text-faint);font-size:13px">30</td><td>Independent test results page publicly confirms Janoshik as the testing lab for published results. HPLC and mass spectrometry confirmed as methods. Terms confirm per-batch COA and lot-specific COA available on request. However, the 43 published results cover a fraction of the full catalog, testing coverage for peptides specifically is noted as less consistent than for SARMs by independent reviewers, and as of May 2026 SwissChems does not appear in Janoshik's or Finnrick's own public databases.</td><td class="dim-score-cell">18/30</td></tr>
+      <tr><td>Batch Traceability &amp; Verification</td><td style="color:var(--text-faint);font-size:13px">20</td><td>Terms confirm lot-specific COA available on request, tested by validated methods. A product authentication code is described on packaging. The independent test results page shows dated results per product. No QR-to-lab system. Lot-matched documentation exists but requires request rather than appearing in a searchable buyer-facing database.</td><td class="dim-score-cell">12/20</td></tr>
+      <tr><td>COA Accessibility</td><td style="color:var(--text-faint);font-size:13px">15</td><td>Public independent test results page with 43 downloadable PDFs filterable by category and sortable by date. This is meaningfully more accessible than email-on-request. However, COAs are not consistently linked from individual product pages, and the page covers less than the full catalog. Access tier: public browseable page, partial catalog coverage.</td><td class="dim-score-cell">10/15</td></tr>
+      <tr><td>COA Completeness</td><td style="color:var(--text-faint);font-size:13px">15</td><td>Published COA thumbnails show Janoshik-format reports with HPLC data. Methods described publicly as HPLC and MS. Endotoxin and sterility not confirmed in published documentation. Some independent reviewers note the specific testing lab is not always named on individual COA documents despite Janoshik being the described lab.</td><td class="dim-score-cell">10/15</td></tr>
+      <tr><td>Testing Recency</td><td style="color:var(--text-faint);font-size:13px">10</td><td>Independent test results page shows dated reports, with the most recent visible entries from June 2026. Page was updated July 2026 per metadata. Recency evidence is present for published results.</td><td class="dim-score-cell">8/10</td></tr>
+      <tr><td>Policy Transparency</td><td style="color:var(--text-faint);font-size:13px">5</td><td>Refund and return policy published at dedicated URL. Quality claim process described in terms with 30-day window and required documentation (lab report, chromatograms, lab contact details). Specific and detailed on the quality claim process. Minor deduction for no-refund on certain categories.</td><td class="dim-score-cell">4/5</td></tr>
+      <tr><td>Operational Track Record</td><td style="color:var(--text-faint);font-size:13px">5</td><td>Founded 2018. US-based operation (New York address on FDA warning letter; company name notwithstanding). Domain registered through 2029. One of the longer-running gray market operations. Consistent catalog and active site maintenance.</td><td class="dim-score-cell">4/5</td></tr>
+      <tr class="total-row"><td>Total</td><td></td><td></td><td class="dim-score-cell">66/100</td></tr>
+    </tbody>
+  </table>
+  <div class="divider"></div>
+  <div class="section-title">Community Signal</div>
+  <div class="caveat-box"><div class="caveat-title">Independent Test Results</div><div class="caveat-body">Multiple community members have independently reported verifying SARMs purity via HPLC, with results consistent with SwissChems claims. Peptide-specific independent testing is less documented in public community archives. Community-commissioned testing on SARMs is more robust than on peptides specifically.</div></div>
+  <div class="caveat-box"><div class="caveat-title">Community Experience</div><div class="caveat-body">SwissChems has consistent community presence and is generally referenced as reliable for SARMs. Peptide-specific community feedback is more mixed, with some members noting COA accessibility varies by product. The brand's longevity and active product verification page are cited as positive signals.</div></div>
+  <div class="divider"></div>
+  <div class="section-title">Scoring Notes</div>
+  <div class="caveat-box" style="margin-bottom:12px"><div class="caveat-title">SARMs vs peptide transparency gap</div><div class="caveat-body">SwissChems' transparency infrastructure is meaningfully stronger on the SARM side of their catalog than on peptides. The 43 published independent test results skew toward SARMs and assorted compounds. Buyers evaluating peptides specifically should note that the public evidence base for peptide-specific testing is thinner than the overall test results page implies.</div></div>
+  <div class="caveat-box"><div class="caveat-title">Note on the brand name</div><div class="caveat-body">Despite the name, SwissChems is a US-based operation. The "Swiss" branding implies regulatory standards and geographic origin that do not apply to the actual operation. This is not a transparency point that enters the VTS score, but it is relevant context for buyers reading brand marketing.</div></div>
+  <div class="footer-note">Sources: swisschems.is (homepage, independent test results page, terms and conditions, quality assurance page, refund policy) · swisschems.is/independent-test-results · swisschems.is/term-conditions · peppal.app independent review (May 2026). VTS measures process transparency from publicly available materials only. Scored July 2026.</div>
+</div>
+</body>
+</html>

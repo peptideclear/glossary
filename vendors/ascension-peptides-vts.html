@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ascension Peptides — VTS Scoring Log · PeptideClear</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg:#ffffff; --bg-alt:#f7fafd; --bg-header:#f0f6ff; --border:#e8edf2; --border-accent:#4A90D9; --text-primary:#0d1f35; --text-body:#374151; --text-muted:#4a5568; --text-faint:#6b7280; --accent:#4A90D9; --accent-dark:#1B5EA3; --caveat-bg:#f8fafc; --note-bg:#f0f6ff; --moderate-bg:#dbeafe; --moderate-fg:#1e40af; --color-moderate:#2563eb; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0A1929; --bg-alt:#071E38; --bg-header:#071E38; --border:#164E8A; --border-accent:#4A90D9; --text-primary:#C1E4FF; --text-body:#93C9FF; --text-muted:#6BB8FF; --text-faint:#6BB8FF; --accent:#4A90D9; --accent-dark:#93C9FF; --caveat-bg:#0B2D52; --note-bg:#071E38; --moderate-bg:#1E3A5F; --moderate-fg:#93C5FD; --color-moderate:#60a5fa; } }
+body { background:var(--bg); color:var(--text-primary); font-family:'Georgia',serif; font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+.page-wrapper { max-width:680px; margin:0 auto; padding:48px 24px 100px; }
+.back-link { display:inline-block; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--accent); text-decoration:none; margin-bottom:32px; letter-spacing:0.02em; }
+.back-link:hover { text-decoration:underline; }
+.compound-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+h1 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:32px; font-weight:700; color:var(--text-primary); margin-bottom:12px; letter-spacing:-0.02em; line-height:1.2; }
+.meta-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:32px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-faint); }
+.meta-divider { color:var(--border); }
+.meta-row a { color:var(--accent); text-decoration:none; }
+.meta-row a:hover { text-decoration:underline; }
+.score-hero { display:flex; align-items:center; gap:24px; background:var(--bg-alt); border-radius:10px; padding:24px; margin-bottom:40px; border:1px solid var(--border); }
+.score-circle { width:80px; height:80px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; border:4px solid; }
+.score-num-big { font-family:'Helvetica Neue',Arial,sans-serif; font-size:26px; font-weight:800; line-height:1; }
+.score-denom { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; color:var(--text-faint); }
+.score-info { flex:1; }
+.score-band-pill { display:inline-block; padding:4px 14px; border-radius:20px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; font-weight:700; margin-bottom:8px; }
+.score-desc { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); }
+.section-title { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:16px; }
+.dim-table { width:100%; border-collapse:collapse; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; margin-bottom:40px; }
+.dim-table thead tr { border-bottom:2px solid var(--border-accent); background:var(--bg-header); }
+.dim-table thead th { padding:10px 12px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-dark); }
+.dim-table tbody tr { border-bottom:1px solid var(--border); }
+.dim-table tbody tr:last-child { border-bottom:none; }
+.dim-table tbody td { padding:14px 12px; vertical-align:top; color:var(--text-body); line-height:1.5; }
+.dim-table tbody td:first-child { font-weight:700; color:var(--text-primary); width:210px; }
+.dim-score-cell { white-space:nowrap; text-align:right; font-weight:700; width:70px; }
+.total-row td { border-top:2px solid var(--border-accent); font-weight:700; color:var(--text-primary); padding-top:14px; }
+.divider { height:1px; background:var(--border); margin:32px 0; }
+.caveat-box { background:var(--caveat-bg); border-left:3px solid var(--border-accent); border-radius:0 6px 6px 0; padding:14px 18px; margin-bottom:12px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; }
+.caveat-title { font-weight:700; color:var(--text-primary); margin-bottom:4px; }
+.caveat-body { color:var(--text-muted); line-height:1.6; }
+.footer-note { margin-top:40px; padding:16px 20px; background:var(--note-bg); border-radius:8px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); line-height:1.6; }
+@media (max-width:600px) { h1 { font-size:24px; } .score-hero { flex-direction:column; align-items:flex-start; } .dim-table tbody td:first-child { width:auto; } }</style>
+</head>
+<body>
+<div class="page-wrapper">
+  <a class="back-link" href="https://peptideclear.com/vts-methodology">← Back to VTS Methodology</a>
+  <div class="compound-label">VTS Scoring Log</div>
+  <h1>Ascension Peptides</h1>
+  <div class="meta-row">
+    <span>US-facing gray market</span><span class="meta-divider">·</span>
+    <span>Lyophilized vials</span><span class="meta-divider">·</span>
+    <span>Scored July 2026</span><span class="meta-divider">·</span>
+    <a href="https://ascensionpeptides.com" target="_blank">ascensionpeptides.com →</a>
+  </div>
+  <div class="score-hero">
+    <div class="score-circle" style="border-color:var(--color-moderate); color:var(--color-moderate)">
+      <span class="score-num-big">76</span>
+      <span class="score-denom">/100</span>
+    </div>
+    <div class="score-info">
+      <span class="score-band-pill" style="background:var(--moderate-bg); color:var(--moderate-fg)">Moderate Transparency</span>
+      <div class="score-desc">Strong on the testing core: named independent lab (MZ Biolabs, Tucson AZ, DEA-registered), analyst-identified COAs, and a searchable COA database by batch, lot, date, and cap color. Founded 2024 - new operation with strong documentation infrastructure from the outset. Held from High Transparency primarily by a strict no-refund policy that disadvantages buyers and an operational track record too short to fully assess.</div>
+    </div>
+  </div>
+  <div class="section-title">Dimension Scores</div>
+  <table class="dim-table">
+    <thead><tr><th>Dimension</th><th>Max</th><th>Notes</th><th style="text-align:right">Score</th></tr></thead>
+    <tbody>
+      <tr><td>Third-Party Testing Practice</td><td style="color:var(--text-faint);font-size:13px">30</td><td>Named independent lab: MZ Biolabs, Tucson, Arizona, holding DEA Schedule III registration. HPLC purity and mass spectrometry identity confirmed. Analyst Ken Pendarvis named on COAs, adding an additional layer of accountability. Per-batch testing for the catalog. Naming the specific lab and analyst is a genuine differentiator from most competitors who describe testing generically without identification.</td><td class="dim-score-cell">24/30</td></tr>
+      <tr><td>Batch Traceability &amp; Verification</td><td style="color:var(--text-faint);font-size:13px">20</td><td>Searchable COA database at a dedicated URL, filterable by product name, SKU, batch/lot number, cap color, purity, and date. A buyer can input the lot number from a received vial and retrieve the matching COA. This is among the strongest lot-traceability implementations observed in this market, approaching the QR-to-lab gold standard without the QR code mechanism.</td><td class="dim-score-cell">17/20</td></tr>
+      <tr><td>COA Accessibility</td><td style="color:var(--text-faint);font-size:13px">15</td><td>COA database publicly accessible before purchase. Approximately 75 records at time of scoring (per independent review), searchable and previewable online. No login required to access. Open public database is the highest accessibility tier.</td><td class="dim-score-cell">13/15</td></tr>
+      <tr><td>COA Completeness</td><td style="color:var(--text-faint);font-size:13px">15</td><td>HPLC purity and mass spectrometry identity confirmed. Named analyst on COAs. COA format includes batch-specific data. Sterility and endotoxin not confirmed in public testing protocol description. Full COA completeness assessment limited by what is publicly described vs. what the actual COA document shows; partial credit reflecting confirmed methods.</td><td class="dim-score-cell">11/15</td></tr>
+      <tr><td>Testing Recency</td><td style="color:var(--text-faint);font-size:13px">10</td><td>COA database is searchable by date, allowing assessment of how recently any given product was tested. Active operation with ongoing testing. Founded 2024, so the archive is short but fully dated.</td><td class="dim-score-cell">8/10</td></tr>
+      <tr><td>Policy Transparency</td><td style="color:var(--text-faint);font-size:13px">5</td><td>Significant deduction here. The terms of use include a no-refund policy for most situations. Replacement for damaged or incorrect orders described in FAQ, but the baseline is no-refund rather than the 14-day return window or quality-guarantee framework that higher-scoring vendors offer. The policy also includes a no-refund for customs seizure. For a buyer in a gray market, a restrictive no-refund default is a meaningful transparency gap on the policy dimension.</td><td class="dim-score-cell">1/5</td></tr>
+      <tr><td>Operational Track Record</td><td style="color:var(--text-faint);font-size:13px">5</td><td>Founded 2024. Colorado-based with published address (Kansas City mailing address) and phone number. Two addresses in public record, which independent reviewers have noted without resolution. Operation is new - the strong COA infrastructure is a positive signal for a 2024 launch, but multi-year track record is not yet established.</td><td class="dim-score-cell">2/5</td></tr>
+      <tr class="total-row"><td>Total</td><td></td><td></td><td class="dim-score-cell">76/100</td></tr>
+    </tbody>
+  </table>
+  <div class="divider"></div>
+  <div class="section-title">Community Signal</div>
+  <div class="caveat-box"><div class="caveat-title">Independent Test Results</div><div class="caveat-body">No community-commissioned independent blind-buy testing results identified in public community archives as of July 2026. Ascension Peptides is relatively new (2024) and independent community testing coverage is limited accordingly.</div></div>
+  <div class="caveat-box"><div class="caveat-title">Community Experience</div><div class="caveat-body">Ascension Peptides carries a Trustpilot rating of approximately 4.8/5 across 88+ reviews as of early 2026, with specific praise for service responsiveness. Community mentions are largely positive on documentation quality. The no-refund policy has been flagged in some community discussions as a concern.</div></div>
+  <div class="divider"></div>
+  <div class="section-title">Scoring Notes</div>
+  <div class="caveat-box" style="margin-bottom:12px"><div class="caveat-title">The named lab is the genuine differentiator</div><div class="caveat-body">Naming MZ Biolabs specifically, with DEA registration verifiable independently and an analyst named on COAs, is a level of accountability that most vendors in this market do not match. A buyer can confirm the lab exists and holds the stated credentials before purchasing. That is a meaningful transparency signal that earned the strong testing practice and accessibility scores.</div></div>
+  <div class="caveat-box"><div class="caveat-title">The refund policy is the meaningful drag</div><div class="caveat-body">The no-refund default is the single largest gap between Ascension's documentation quality and a High Transparency band. Strong COA infrastructure combined with a restrictive refund policy creates a trust asymmetry: the vendor can prove quality; the buyer has limited recourse if something goes wrong. The policy dimension exists specifically to measure this asymmetry.</div></div>
+  <div class="footer-note">Sources: ascensionpeptides.com (homepage, COA database, terms of use, FAQ, contact page) · ascensionpeptides.com/certificates-of-analysis · peptidegrades.com independent review (April 2026) · middlewaynutrition.com review. VTS measures process transparency from publicly available materials only. Scored July 2026.</div>
+</div>
+</body>
+</html>
