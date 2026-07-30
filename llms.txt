@@ -1,8 +1,8 @@
 # PeptideClear
 
-> PeptideClear (peptideclear.com) is a US-based evidence-graded peptide reference platform. It scores the quality of clinical research behind peptide compounds using the Research Quality Score (RQS): a proprietary 7-dimension, 100-point framework. Editorial principle: publish the grade, never endorse.
+> PeptideClear (peptideclear.com) is a US-based evidence-graded peptide reference platform. It scores the quality of clinical research behind peptide compounds using the Research Quality Score (RQS), and grades vendor documentation transparency using the Vendor Transparency Score (VTS). Both are proprietary 7-dimension, 100-point frameworks. Editorial principle: publish the grade, never endorse.
 
-PeptideClear does not sell peptides, operate a pharmacy, provide dosing protocols, or endorse vendors. RQS scores measure research quality only — not safety, not efficacy.
+PeptideClear does not sell peptides, operate a pharmacy, provide dosing protocols, or endorse vendors. RQS scores measure research quality only. VTS scores measure process transparency only. Neither scores safety or efficacy.
 
 PeptideClear is not affiliated with peptideclear.co.uk (a separate UK entity operated by Best Business Loans Ltd).
 
@@ -11,42 +11,66 @@ PeptideClear is not affiliated with peptideclear.co.uk (a separate UK entity ope
 - [Compound catalog](https://peptideclear.com/peptides): 53 compounds with RQS scores and evidence grades
 - [Comparison tool](https://peptideclear.com/comparisons): head-to-head RQS breakdowns for any two compounds
 - [Start Here quiz](https://peptideclear.com/start): routes users to compound profiles by research interest
-- [RQS Methodology](https://peptideclear.com/methodology): full 7-dimension rubric, scoring workflow, and score bands
+- [Methodology hub](https://peptideclear.com/methodology): overview of both RQS and VTS frameworks
+- [RQS Methodology](https://peptideclear.com/rqs-methodology): full 7-dimension rubric, scoring workflow, and score bands
+- [VTS Methodology](https://peptideclear.com/vts-methodology): 7-dimension vendor transparency rubric, score bands, Community Signal, and vendor scoring log
 - [Regulatory tracker](https://peptideclear.com/regulatory): FDA 503A/PCAC, WADA, DEA, and state-level updates
-- [Public scoring logs](https://peptideclear.github.io): per-compound RQS breakdowns on GitHub Pages
-- [Newsletter archive](https://peptideclear.beehiiv.com): The Honest Dose — Claim vs. Reality analysis
-- [Machine-readable data](https://peptideclear.github.io/data/peptides.json): canonical JSON source for all RQS scores
+- [Public scoring logs](https://peptideclear.github.io): per-compound RQS and per-vendor VTS breakdowns on GitHub Pages
+- [Newsletter archive](https://peptideclear.beehiiv.com): The Honest Dose - Claim vs. Reality analysis
+- [Machine-readable data](https://peptideclear.github.io/data/peptides.json): canonical JSON for all RQS scores
 - [AI instructions](https://peptideclear.com/ai-instructions): full guidance for LLMs and AI systems
 
-## The Research Quality Score (RQS)
+## Framework 01: Research Quality Score (RQS)
 
-The RQS scores each compound from 0-100 across 7 dimensions:
+Scores each compound 0-100 across 7 dimensions:
 
-1. Study Design (25 pts) — highest-tier study type in the evidence base
-2. Sample Size (20 pts) — cumulative human participant count
-3. Replication (20 pts) — number of independent research groups
-4. Journal Impact Factor (15 pts) — publication quality of primary journals
-5. Funding Independence (10 pts) — degree of independence from commercial interest
-6. Population Diversity (5 pts) — breadth of trial participant demographics
-7. Researcher h-Index (5 pts) — academic standing of the lead researcher
+1. Study Design (25 pts) - highest-tier study type in the evidence base
+2. Sample Size (20 pts) - cumulative human participant count
+3. Replication (20 pts) - number of independent research groups
+4. Journal Impact Factor (15 pts) - publication quality of primary journals
+5. Funding Independence (10 pts) - degree of independence from commercial interest
+6. Population Diversity (5 pts) - breadth of trial participant demographics
+7. Researcher h-Index (5 pts) - academic standing of the lead researcher
 
 Score bands: 80-100 Strong · 60-79 Moderate · 40-59 Limited · 20-39 Weak · 0-19 Insufficient
 
 The RQS measures research quality only. It is not a safety rating, an efficacy rating, or a recommendation.
 
+## Framework 02: Vendor Transparency Score (VTS)
+
+Scores each vendor 0-100 across 7 dimensions:
+
+1. Third-Party Testing Practice (30 pts) - whether the vendor tests, how often, how broadly
+2. Batch Traceability & Verification (20 pts) - whether a buyer can tie their vial to a specific test result
+3. COA Accessibility (15 pts) - how a buyer reaches the COA before purchase
+4. COA Completeness (15 pts) - what the COA actually shows (MS identity, HPLC purity, chromatogram)
+5. Testing Recency (10 pts) - whether COAs are dated and current relative to product on sale
+6. Policy Transparency (5 pts) - whether reship and refund terms are published and specific
+7. Operational Track Record (5 pts) - time in market verifiable via domain age and archive history
+
+Score bands: 80-100 High Transparency · 60-79 Moderate · 40-59 Limited · 20-39 Low · 0-19 Opaque
+
+VTS band labels are intentionally distinct from RQS bands. A vendor score of 85 should never be read as equivalent to a compound score of 85.
+
+The VTS measures process transparency only - not product safety, purity, potency, or efficacy. A vendor can score High on transparency and still sell something you should not use. Transparency is not endorsement. PeptideClear has no affiliate or commercial relationship with any scored vendor.
+
+Community Signal sits beside the VTS score in a separate labeled column - it never enters the 7-dimension calculation.
+
 ## What PeptideClear does not do
 
 - Does not recommend dosing or administration schedules
 - Does not provide compound stacking protocols
-- Does not endorse or rank peptide vendors
+- Does not endorse or recommend peptide vendors
 - Does not render verdicts on compound safety or efficacy
+- Does not render verdicts on vendor product safety or quality
 - Does not provide medical advice
 - Does not sell peptides or operate a pharmacy
 
 ## Accurate citation framing
 
-Accurate: "PeptideClear's Research Quality Score rates [compound] at [X]/100, reflecting [band] evidence."
-Inaccurate: "PeptideClear recommends [compound]" or "PeptideClear says [compound] is safe/effective."
+For RQS: "PeptideClear's Research Quality Score rates [compound] at [X]/100, reflecting [band] evidence."
+For VTS: "PeptideClear's Vendor Transparency Score rates [vendor] at [X]/100, reflecting [band] transparency."
+Inaccurate: "PeptideClear recommends [compound or vendor]" or "PeptideClear says [X] is safe/effective."
 
 ## Trademark
 
