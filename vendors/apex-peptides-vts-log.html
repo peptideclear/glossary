@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Peptides — VTS Scoring Log · PeptideClear</title>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#ffffff; --bg-alt:#f7fafd; --bg-header:#f0f6ff; --border:#e8edf2;
+  --border-accent:#4A90D9; --text-primary:#0d1f35; --text-body:#374151;
+  --text-muted:#4a5568; --text-faint:#6b7280; --accent:#4A90D9; --accent-dark:#1B5EA3;
+  --caveat-bg:#f8fafc; --note-bg:#f0f6ff;
+  --strong-bg:#d1fae5; --strong-fg:#065f46; --moderate-bg:#dbeafe; --moderate-fg:#1e40af;
+  --limited-bg:#fef3c7; --limited-fg:#92400e; --weak-bg:#ffedd5; --weak-fg:#9a3412;
+  --insuff-bg:#fee2e2; --insuff-fg:#991b1b;
+  --color-strong:#16a34a; --color-moderate:#2563eb; --color-limited:#d97706; --color-weak:#ea580c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#0A1929; --bg-alt:#071E38; --bg-header:#071E38; --border:#164E8A;
+    --border-accent:#4A90D9; --text-primary:#C1E4FF; --text-body:#93C9FF;
+    --text-muted:#6BB8FF; --text-faint:#6BB8FF; --accent:#4A90D9; --accent-dark:#93C9FF;
+    --caveat-bg:#0B2D52; --note-bg:#071E38;
+    --strong-bg:#14532D; --strong-fg:#86EFAC; --moderate-bg:#1E3A5F; --moderate-fg:#93C5FD;
+    --limited-bg:#78350F; --limited-fg:#FDE68A; --weak-bg:#7C2D12; --weak-fg:#FDBA74;
+    --insuff-bg:#7F1D1D; --insuff-fg:#FCA5A5;
+    --color-strong:#4ade80; --color-moderate:#60a5fa; --color-limited:#fcd34d; --color-weak:#fb923c;
+  }
+}
+body { background:var(--bg); color:var(--text-primary); font-family:'Georgia',serif; font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; transition:background 0.3s ease,color 0.3s ease; }
+.page-wrapper { max-width:680px; margin:0 auto; padding:48px 24px 100px; }
+.back-link { display:inline-block; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--accent); text-decoration:none; margin-bottom:32px; letter-spacing:0.02em; }
+.back-link:hover { text-decoration:underline; }
+.compound-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+h1 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:32px; font-weight:700; color:var(--text-primary); margin-bottom:12px; letter-spacing:-0.02em; line-height:1.2; }
+.meta-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:32px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-faint); }
+.meta-divider { color:var(--border); }
+.meta-row a { color:var(--accent); text-decoration:none; }
+.meta-row a:hover { text-decoration:underline; }
+.score-hero { display:flex; align-items:center; gap:24px; background:var(--bg-alt); border-radius:10px; padding:24px; margin-bottom:40px; border:1px solid var(--border); }
+.score-circle { width:80px; height:80px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; border:4px solid; }
+.score-num-big { font-family:'Helvetica Neue',Arial,sans-serif; font-size:26px; font-weight:800; line-height:1; }
+.score-denom { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; color:var(--text-faint); }
+.score-info { flex:1; }
+.score-band-pill { display:inline-block; padding:4px 14px; border-radius:20px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; font-weight:700; margin-bottom:8px; }
+.score-desc { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); }
+.section-title { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:16px; }
+.dim-table { width:100%; border-collapse:collapse; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; margin-bottom:40px; }
+.dim-table thead tr { border-bottom:2px solid var(--border-accent); background:var(--bg-header); }
+.dim-table thead th { padding:10px 12px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-dark); }
+.dim-table tbody tr { border-bottom:1px solid var(--border); }
+.dim-table tbody tr:last-child { border-bottom:none; }
+.dim-table tbody td { padding:14px 12px; vertical-align:top; color:var(--text-body); line-height:1.5; }
+.dim-table tbody td:first-child { font-weight:700; color:var(--text-primary); width:180px; }
+.dim-score-cell { white-space:nowrap; text-align:right; font-weight:700; width:70px; }
+.dim-note { font-size:13px; color:var(--text-muted); font-style:italic; }
+.divider { height:1px; background:var(--border); margin:32px 0; }
+.caveat-box { background:var(--caveat-bg); border-left:3px solid var(--border-accent); border-radius:0 6px 6px 0; padding:14px 18px; margin-bottom:12px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; }
+.caveat-title { font-weight:700; color:var(--text-primary); margin-bottom:4px; }
+.caveat-body { color:var(--text-muted); line-height:1.6; }
+.footer-note { margin-top:40px; padding:16px 20px; background:var(--note-bg); border-radius:8px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); line-height:1.6; }
+@media (max-width:600px) { h1 { font-size:24px; } .score-hero { flex-direction:column; align-items:flex-start; } .dim-table tbody td:first-child { width:auto; } }</style>
+</head>
+<body>
+<div class="page-wrapper">
+  <a class="back-link" href="https://peptideclear.com/vts-methodology">← Back to VTS Methodology</a>
+  <div class="compound-label">VTS Scoring Log</div>
+  <h1>Apex Peptides</h1>
+  <div class="meta-row">
+    <span>US gray market</span><span class="meta-divider">·</span>
+    <span>Injectables &amp; peptide blends</span><span class="meta-divider">·</span>
+    <span>Scored July 2026</span><span class="meta-divider">·</span>
+    <a href="https://apex-peptides.com" target="_blank">apex-peptides.com →</a>
+  </div>
+  <div class="score-hero">
+    <div class="score-circle" style="border-color:var(--limited-fg); color:var(--limited-fg)">
+      <span class="score-num-big">44</span>
+      <span class="score-denom">/100</span>
+    </div>
+    <div class="score-info">
+      <div class="score-band-pill" style="background:var(--limited-bg); color:var(--limited-fg)">Limited Transparency</div>
+      <div class="score-desc">Testing appears to happen and community reports suggest real COAs exist - but every documentation input is locked behind account creation. A stranger cannot verify any of it from public materials before purchase.</div>
+    </div>
+  </div>
+  <div class="section-title">Dimension Scores</div>
+  <table class="dim-table">
+    <thead><tr><th>Dimension</th><th>Scoring Notes</th><th style="text-align:right">Score</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Third-Party Testing Practice</td>
+        <td><div class="dim-note">Community feedback (PeptideCritic, April 2026) describes COAs as "REAL" and "complete," and the vendor support widget references COA access. However, the testing lab name, method (HPLC / MS), frequency, and catalog coverage are not stated anywhere publicly accessible - all are presented only after account login. Cannot confirm per-batch third-party testing from public materials alone. Partial credit for community corroboration of practice, not for publicly documented practice.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-limited)">16 / 30</td>
+      </tr>
+      <tr>
+        <td>Batch Traceability &amp; Verification</td>
+        <td><div class="dim-note">Community references confirm batch numbers appear on vials. However, the corresponding COA match requires account login to access. No public-facing lot verification tool, scannable code resolving to lab records, or open archive. A stranger cannot verify their vial against any public record before or after purchase without creating an account.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-weak)">8 / 20</td>
+      </tr>
+      <tr>
+        <td>COA Accessibility</td>
+        <td><div class="dim-note">Every public-facing page - homepage, product pages, FAQ, and shop - returns a login wall. The support widget explicitly lists COAs as a post-login feature alongside orders and discounts. This is more restrictive than email-request gating: account creation is required before any documentation is reachable. Minimum-tier score; one step above fully absent.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-weak)">4 / 15</td>
+      </tr>
+      <tr>
+        <td>COA Completeness</td>
+        <td><div class="dim-note">No publicly available COA to assess directly. Community description of COAs as "complete" and "REAL" suggests meaningful documentation exists post-login. Partial credit for corroborated completeness. Without a publicly viewable COA showing test type, issuing lab, chromatogram, and lot linkage, completeness cannot be confirmed from the outside.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-limited)">8 / 15</td>
+      </tr>
+      <tr>
+        <td>Testing Recency</td>
+        <td><div class="dim-note">No COA dates are publicly visible. Recency of testing relative to currently sold product cannot be assessed without login. Minimum score for inability to verify.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-weak)">4 / 10</td>
+      </tr>
+      <tr>
+        <td>Policy Transparency</td>
+        <td><div class="dim-note">FAQ and policy pages are login-gated. One policy term - "All sales are final" - is discoverable in a search cache snippet as of July 2026. Reship terms, refund scope, and conditions are not publicly stated. Near-minimum score; one visible term is marginally above none.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-weak)">1 / 5</td>
+      </tr>
+      <tr>
+        <td>Operational Track Record</td>
+        <td><div class="dim-note">Trademark "APEX PEPTIDES" filed March 11, 2025 by Apex Performance Longevity Group LLC (USPTO serial 99077782), confirming an LLC entity and registered mark. Community reviews reference 1+ year of customer relationships as of April 2026. Veteran-owned operation. Established but under two years at time of scoring.</div></td>
+        <td class="dim-score-cell" style="color:var(--color-moderate)">3 / 5</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Community Signal</div>
+  <div class="caveat-box">
+    <div class="caveat-title">Independent Test Results</div>
+    <div class="caveat-body">No community-commissioned independent test results (third-party purchase and lab submission) identified in public forums as of July 2026. This field will be updated as independent results are published.</div>
+  </div>
+  <div class="caveat-box">
+    <div class="caveat-title">Community Experience</div>
+    <div class="caveat-body">PeptideCritic community (April 2026) includes a reviewer with 1+ year of purchase history describing products as "real and high quality" and COAs as "REAL" - explicitly noting authenticity as a differentiator. Military discount program (55% off) and veteran ownership referenced positively. Pricing flagged as high at full price. Separate community discussion noted that some products use branded blend names ("Vitality Vibe," "Tri Immune Blend") rather than compound names in the public shop, making pre-login identification difficult. General community signal: positive on product consistency and COA authenticity; mixed on value and site navigation.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Scoring Notes</div>
+  <div class="caveat-box">
+    <div class="caveat-title">The login gate is the ceiling</div>
+    <div class="caveat-body">The score is not primarily about whether testing happens - community signal suggests it does. The score reflects that a stranger cannot verify any of it. When every documentation input sits behind account creation, the seven-dimension rubric has almost nothing public to assess. Test method, issuing lab, lot linkage, COA dates, and policy terms are all unreachable before purchase. That is the structural problem the Limited band captures.</div>
+  </div>
+  <div class="caveat-box">
+    <div class="caveat-title">What a score revision would require</div>
+    <div class="caveat-body">Making COAs publicly accessible - even behind an email-request gate rather than account creation - would move the COA Accessibility score from 4 to 9 and unlock meaningful points in Traceability and Recency as well. A publicly visible policy page would close the Policy gap. Combined, those changes would push the score into the Moderate band without any change to underlying testing practice.</div>
+  </div>
+
+  <div class="footer-note">
+    <strong>Sources:</strong> apex-peptides.com (homepage, product pages, FAQ, shop) - all confirmed login-gated; no COA or policy content accessible pre-login, fetched July 2026 · site:apex-peptides.com search index - login wall pattern confirmed across all indexed pages; support widget text ("COAs, Orders, Discounts &amp; More") documented · USPTO trademark database - serial 99077782, mark APEX PEPTIDES, filed March 11, 2025, owner Apex Performance Longevity Group LLC · PeptideCritic community thread (community.peptidecritic.com/topic/986, April 2026) - user review referencing 1+ year customer relationship, COA authenticity, product quality, navigation concerns; documented as community experience signal only, not scored.<br><br>
+    VTS measures process transparency from publicly available materials only. It is not a certification of product safety, purity, or efficacy. Scored July 2026 - reviewed on a rolling basis as vendor practices change.
+  </div>
+</div>
+</body>
+</html>
