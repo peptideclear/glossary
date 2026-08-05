@@ -48,7 +48,7 @@
   --high-bg:#d1fae5; --high-fg:#065f46; --moderate-bg:#dbeafe; --moderate-fg:#1e40af;
   --limited-bg:#fef3c7; --limited-fg:#92400e; --low-bg:#ffedd5; --low-fg:#9a3412;
   --opaque-bg:#fee2e2; --opaque-fg:#991b1b;
-  --color-high:#16a34a; --color-moderate:#2563eb; --color-limited:#d97706;
+  --color-high:#16a34a; --color-moderate:#2563eb; --color-limited:#d97706; --color-low:#ea580c;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -59,7 +59,7 @@
     --high-bg:#14532D; --high-fg:#86EFAC; --moderate-bg:#1E3A5F; --moderate-fg:#93C5FD;
     --limited-bg:#78350F; --limited-fg:#FDE68A; --low-bg:#7C2D12; --low-fg:#FDBA74;
     --opaque-bg:#7F1D1D; --opaque-fg:#FCA5A5;
-    --color-high:#4ade80; --color-moderate:#60a5fa; --color-limited:#fcd34d;
+    --color-high:#4ade80; --color-moderate:#60a5fa; --color-limited:#fcd34d; --color-low:#fb923c;
   }
 }
 body { background:var(--bg); color:var(--text-primary); font-family:'Georgia',serif; font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; }
@@ -108,12 +108,12 @@ h1 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:32px; font-weight:
     <a href="https://www.corepeptides.com" target="_blank">corepeptides.com →</a>
   </div>
   <div class="score-hero">
-    <div class="score-circle" style="border-color:var(--low-fg); color:var(--low-fg)">
+    <div class="score-circle" style="border-color:var(--color-low); color:var(--color-low)">
       <span class="score-num-big">28</span>
       <span class="score-denom">/100</span>
     </div>
     <div class="score-info">
-      <span class="score-band-pill" style="background:var(--limited-bg); color:var(--limited-fg)">Low Transparency</span>
+      <span class="score-band-pill" style="background:var(--low-bg); color:var(--low-fg)">Low Transparency</span>
       <div class="score-desc">A long-running operation with a large catalog and third-party testing claims, but verification is structurally blocked: no public COA database, no named lab, no batch-level traceability accessible to buyers before or after purchase. Documentation discipline lags considerably behind the "independently verified" marketing claim.</div>
     </div>
   </div>
