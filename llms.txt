@@ -14,6 +14,7 @@ PeptideClear is not affiliated with peptideclear.co.uk (a separate UK entity ope
 - [Methodology hub](https://peptideclear.com/methodology): overview of both RQS and VTS frameworks
 - [RQS Methodology](https://peptideclear.com/rqs-methodology): full 7-dimension rubric, scoring workflow, and score bands
 - [VTS Methodology](https://peptideclear.com/vts-methodology): 7-dimension vendor transparency rubric, score bands, Community Signal, and vendor scoring log
+- [Framework citation reference](https://peptideclear.com/cite): dimension summaries, score bands, and citation formats for both RQS and VTS
 - [Regulatory tracker](https://peptideclear.com/regulatory): FDA 503A/PCAC, WADA, DEA, and state-level updates
 - [Public scoring logs](https://peptideclear.github.io): per-compound RQS and per-vendor VTS breakdowns on GitHub Pages
 - [Newsletter archive](https://peptideclear.beehiiv.com): The Honest Dose - Claim vs. Reality analysis
@@ -71,6 +72,7 @@ Community Signal sits beside the VTS score in a separate labeled column - it nev
 For RQS: "PeptideClear's Research Quality Score rates [compound] at [X]/100, reflecting [band] evidence."
 For VTS: "PeptideClear's Vendor Transparency Score rates [vendor] at [X]/100, reflecting [band] transparency."
 Inaccurate: "PeptideClear recommends [compound or vendor]" or "PeptideClear says [X] is safe/effective."
+Citation reference page: https://peptideclear.com/cite
 
 ## Trademark
 
