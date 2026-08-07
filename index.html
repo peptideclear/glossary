@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="auto">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@
   --blue-100: #0B2D52;
   --blue-50:  #071E38;
 
-  /* Light mode tokens */
+  /* Light mode tokens (default) */
   --bg:             #FFFFFF;
   --bg-alt:         #F7FAFD;
   --bg-hero:        #EBF4FF;
@@ -47,6 +47,35 @@
   --divider:        #E8F2FB;
 }
 
+/* OS dark mode — applied automatically */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:             #0A1929;
+    --bg-alt:         #071E38;
+    --bg-hero:        #071E38;
+    --surface:        #103D6E;
+    --surface-hover:  #164E8A;
+    --border:         #1B5EA3;
+    --text-primary:   #C1E4FF;
+    --text-secondary: #93C9FF;
+    --text-muted:     #6BB8FF;
+    --accent:         #4A90D9;
+    --accent-light:   #103D6E;
+    --tag-bg:         #164E8A;
+    --tag-text:       #93C9FF;
+    --heading-color:  #C1E4FF;
+    --pill-bg:        #4A90D9;
+    --pill-text:      #FFFFFF;
+    --toggle-bg:      #1B5EA3;
+    --toggle-knob:    #C1E4FF;
+    --search-bg:      #103D6E;
+    --search-border:  #1B5EA3;
+    --letter-color:   #6BB8FF;
+    --divider:        #103D6E;
+  }
+}
+
+/* Manual dark override */
 [data-theme="dark"] {
   --bg:             #0A1929;
   --bg-alt:         #071E38;
@@ -70,6 +99,31 @@
   --search-border:  #1B5EA3;
   --letter-color:   #6BB8FF;
   --divider:        #103D6E;
+}
+
+[data-theme="light"] {
+  --bg:             #FFFFFF;
+  --bg-alt:         #F7FAFD;
+  --bg-hero:        #EBF4FF;
+  --surface:        #FFFFFF;
+  --surface-hover:  #F0F8FF;
+  --border:         #D0E4F4;
+  --text-primary:   #1B3A5C;
+  --text-secondary: #5A7A8A;
+  --text-muted:     #8AAABB;
+  --accent:         #4A90D9;
+  --accent-light:   #EBF4FF;
+  --tag-bg:         #EBF4FF;
+  --tag-text:       #1B5EA3;
+  --heading-color:  #1B3A5C;
+  --pill-bg:        #1B3A5C;
+  --pill-text:      #FFFFFF;
+  --toggle-bg:      #D0E4F4;
+  --toggle-knob:    #1B3A5C;
+  --search-bg:      #FFFFFF;
+  --search-border:  #D0E4F4;
+  --letter-color:   #4A90D9;
+  --divider:        #E8F2FB;
 }
 
 html { scroll-behavior: smooth; }
@@ -155,7 +209,7 @@ body {
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
-[data-theme="dark"] .toggle::after { transform: translateX(18px); }
+.is-dark .toggle::after { transform: translateX(18px); }
 
 /* ── HERO ── */
 .hero {
@@ -368,7 +422,23 @@ body {
 .tag-community   { background: #FEE2E2; color: #991B1B; }
 .tag-research    { background: #F0FDF4; color: #166534; }
 .tag-scoring     { background: #FFF7ED; color: #9A3412; }
+.tag-vendor      { background: #F5F0FF; color: #5B21B6; }
 
+[data-theme="dark"] .tag-biology,
+:root:not([data-theme="light"]):not([data-theme="dark"]) .tag-biology {
+  background: #103D6E; color: #93C9FF;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tag-biology     { background: #103D6E; color: #93C9FF; }
+  :root:not([data-theme="light"]) .tag-evidence    { background: #064E3B; color: #6EE7B7; }
+  :root:not([data-theme="light"]) .tag-regulatory  { background: #78350F; color: #FDE68A; }
+  :root:not([data-theme="light"]) .tag-chemistry   { background: #4C1D95; color: #DDD6FE; }
+  :root:not([data-theme="light"]) .tag-clinical    { background: #1E3A5F; color: #93C5FD; }
+  :root:not([data-theme="light"]) .tag-community   { background: #7F1D1D; color: #FCA5A5; }
+  :root:not([data-theme="light"]) .tag-research    { background: #14532D; color: #86EFAC; }
+  :root:not([data-theme="light"]) .tag-scoring     { background: #7C2D12; color: #FDBA74; }
+  :root:not([data-theme="light"]) .tag-vendor      { background: #3B1D6E; color: #DDD6FE; }
+}
 [data-theme="dark"] .tag-biology     { background: #103D6E; color: #93C9FF; }
 [data-theme="dark"] .tag-evidence    { background: #064E3B; color: #6EE7B7; }
 [data-theme="dark"] .tag-regulatory  { background: #78350F; color: #FDE68A; }
@@ -377,6 +447,7 @@ body {
 [data-theme="dark"] .tag-community   { background: #7F1D1D; color: #FCA5A5; }
 [data-theme="dark"] .tag-research    { background: #14532D; color: #86EFAC; }
 [data-theme="dark"] .tag-scoring     { background: #7C2D12; color: #FDBA74; }
+[data-theme="dark"] .tag-vendor      { background: #3B1D6E; color: #DDD6FE; }
 
 .term-def {
   font-size: 14px;
@@ -430,7 +501,7 @@ body {
   <div class="header-right">
     <a href="https://peptideclear.com" class="back-link">← Back to site</a>
     <div class="toggle-wrap" onclick="toggleTheme()" title="Toggle dark mode">
-      <span class="toggle-label" id="theme-label">Light</span>
+      <span class="toggle-label" id="theme-label">Auto</span>
       <div class="toggle"></div>
     </div>
   </div>
@@ -440,11 +511,11 @@ body {
 <section class="hero">
   <div class="hero-eyebrow">Reference</div>
   <h1>Peptide Glossary</h1>
-  <p class="hero-sub">Plain-English definitions for every technical term used across PeptideClear's compound profiles — from molecular biology to regulatory status.</p>
+  <p class="hero-sub">Plain-English definitions for every technical term used across PeptideClear's compound profiles and vendor scores — from molecular biology to regulatory status.</p>
   <div class="hero-stats">
-    <span class="stat"><strong>100+</strong> terms defined</span>
-    <span class="stat"><strong>8</strong> categories</span>
-    <span class="stat"><strong>Updated</strong> as catalog grows</span>
+    <span class="stat"><strong>130+</strong> terms defined</span>
+    <span class="stat"><strong>9</strong> categories</span>
+    <span class="stat"><strong>Updated</strong> August 2026</span>
   </div>
 </section>
 
@@ -477,6 +548,7 @@ body {
   <a class="alpha-link" href="#R">R</a>
   <a class="alpha-link" href="#S">S</a>
   <a class="alpha-link" href="#T">T</a>
+  <a class="alpha-link" href="#U">U</a>
   <a class="alpha-link" href="#V">V</a>
   <a class="alpha-link" href="#W">W</a>
 </div>
@@ -492,6 +564,7 @@ body {
   <button class="cat-btn" data-cat="community">Community</button>
   <button class="cat-btn" data-cat="research">Research</button>
   <button class="cat-btn" data-cat="scoring">Scoring</button>
+  <button class="cat-btn" data-cat="vendor">Vendor</button>
 </div>
 
 <!-- GLOSSARY CONTENT -->
@@ -503,18 +576,28 @@ body {
     <div class="letter-heading">A</div>
 
     <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Acetylcholine</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A neurotransmitter responsible for muscle contraction at the neuromuscular junction. Its release involves the SNARE protein complex — the same target inhibited by botulinum toxin and mimicked by cosmetic peptides like Argireline and Leuphasyl. At the synapse, acetylcholine release is suppressed when SNARE complex assembly is disrupted, relaxing the overlying muscle and reducing expression lines.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Adipogenesis</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The process by which precursor cells develop into mature fat cells (adipocytes). Compounds that inhibit adipogenesis are studied for fat loss applications — AOD-9604 works in part by inhibiting this process.</p>
+      <p class="term-def">The process by which precursor cells develop into mature fat cells (adipocytes). Compounds that inhibit adipogenesis are studied for fat loss applications — AOD-9604 works in part by inhibiting this process. 5-Amino-1MQ also inhibits adipogenesis through a separate mechanism involving NNMT suppression.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Amino Acid</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The molecular building blocks of peptides and proteins. There are 20 standard amino acids used by the human body, each with a unique side chain that determines its chemical properties. Peptides are chains of amino acids linked by peptide bonds.</p>
+      <p class="term-def">The molecular building blocks of peptides and proteins. There are 20 standard amino acids used by the human body, each with a unique side chain that determines its chemical properties. Peptides are chains of amino acids linked by peptide bonds. The catalog spans from 2-amino-acid compounds (Carnosine) to 44-amino-acid compounds (Tesamorelin) and all the way to HGH at 191 amino acids.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Amphipathic</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A molecule that has both hydrophilic (water-attracting) and hydrophobic (water-repelling) regions. LL-37 is amphipathic — its hydrophobic face inserts into bacterial membranes while its cationic face attracts it to negatively charged microbial surfaces. This property is essential to its antimicrobial mechanism.</p>
+      <p class="term-def">A molecule that has both hydrophilic (water-attracting) and hydrophobic (water-repelling) regions. LL-37 is amphipathic — its hydrophobic face inserts into bacterial membranes while its cationic face attracts it to negatively charged microbial surfaces. SS-31 is also amphipathic, which enables it to cross the mitochondrial membrane and concentrate in the inner membrane where cardiolipin is located.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Amylin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A hormone co-secreted with insulin by pancreatic beta cells. Amylin slows gastric emptying, suppresses glucagon, and signals satiety to the brain — complementing insulin's glucose-lowering action. Cagrilintide is a long-acting amylin receptor agonist designed to mimic and extend amylin's effects. When combined with a GLP-1 agonist (as in CagriSema), amylin receptor activation adds a distinct satiety pathway on top of GLP-1's appetite suppression.</p>
     </div>
 
     <div class="term" data-cat="biology">
@@ -523,23 +606,23 @@ body {
     </div>
 
     <div class="term" data-cat="biology">
-      <div class="term-header"><span class="term-name">Apoptosis</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">Programmed cell death — a normal and controlled process by which the body eliminates damaged or unnecessary cells. Humanin works by inhibiting apoptosis in neurons, potentially protecting brain cells from Alzheimer's-related death signals.</p>
-    </div>
-
-    <div class="term" data-cat="biology">
-      <div class="term-header"><span class="term-name">AMPK (AMP-Activated Protein Kinase)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A master regulator of cellular energy homeostasis. When energy is low, AMPK activates processes that generate ATP (fat oxidation, glucose uptake) and suppresses energy-consuming processes. MOTS-c activates AMPK — the same pathway triggered by exercise — which is why it is called an exercise mimetic.</p>
-    </div>
-
-    <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Antimicrobial Peptide (AMP)</span><span class="term-tag tag-biology">Biology</span></div>
       <p class="term-def">A class of naturally occurring peptides that form part of the innate immune system's defense against infection. AMPs typically work by disrupting microbial cell membranes. LL-37 is the only known human cathelicidin AMP and one of the most studied AMPs in existence.</p>
     </div>
 
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Apoptosis</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">Programmed cell death — a normal and controlled process by which the body eliminates damaged or unnecessary cells. Humanin works by inhibiting apoptosis in neurons, potentially protecting brain cells from Alzheimer's-related death signals. SS-31 also reduces apoptosis by stabilizing mitochondrial membrane potential and preventing cytochrome c release.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">AMPK (AMP-Activated Protein Kinase)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A master regulator of cellular energy homeostasis. When energy is low, AMPK activates processes that generate ATP (fat oxidation, glucose uptake) and suppresses energy-consuming processes. MOTS-c activates AMPK — the same pathway triggered by exercise — which is why it is called an exercise mimetic. SLU-PP-332 works through ERR nuclear receptors that sit upstream of AMPK in the same general metabolic pathway.</p>
+    </div>
+
     <div class="term" data-cat="evidence">
       <div class="term-header"><span class="term-name">Animal Study</span><span class="term-tag tag-evidence">Evidence</span></div>
-      <p class="term-def">Research conducted in non-human animals, typically rodents. Animal studies are useful for establishing biological plausibility and safety signals but do not reliably predict human outcomes. PeptideClear assigns "Animal Only" evidence grade to compounds where all primary data comes from animal models.</p>
+      <p class="term-def">Research conducted in non-human animals, typically rodents. Animal studies are useful for establishing biological plausibility and safety signals but do not reliably predict human outcomes. PeptideClear assigns "Animal Only" evidence grade to compounds where all primary data comes from animal models — including BPC-157, Ipamorelin, and IGF-1 LR3.</p>
     </div>
   </div>
 
@@ -547,19 +630,24 @@ body {
   <div class="letter-section" id="B">
     <div class="letter-heading">B</div>
 
+    <div class="term" data-cat="vendor">
+      <div class="term-header"><span class="term-name">Batch Traceability</span><span class="term-tag tag-vendor">Vendor</span></div>
+      <p class="term-def">The ability of a buyer to tie the specific vial or product in hand to a named test result. In the VTS framework, batch traceability is the second-most-weighted dimension (20 points). The gold standard is a scannable QR code that resolves to the testing lab's own system showing that exact lot number — the hardest signal to fake. Lot-matched COAs (a COA with a lot number the buyer can match to their order) score next. Generic "representative" documents with no lot linkage score lowest.</p>
+    </div>
+
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Bioavailability</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The fraction of a substance that enters circulation and is available to produce an effect. Most peptides have poor oral bioavailability because digestive enzymes break them down before absorption — which is why most must be injected. Dihexa and Ibutamoren are notable exceptions that are orally bioavailable.</p>
+      <p class="term-def">The fraction of a substance that enters circulation and is available to produce an effect. Most peptides have poor oral bioavailability because digestive enzymes break them down before absorption — which is why most must be injected or administered intranasally. Dihexa and Ibutamoren are notable exceptions that are orally bioavailable. 5-Amino-1MQ is also orally bioavailable, which is a key differentiator among NNMT inhibitors.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">BDNF (Brain-Derived Neurotrophic Factor)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A protein that supports the survival, growth, and differentiation of neurons. Often called "fertilizer for the brain." Semax upregulates BDNF — a primary proposed mechanism for its nootropic effects. Dihexa is reported to be millions of times more potent than BDNF itself at stimulating synaptogenesis in specific laboratory assays.</p>
+      <p class="term-def">A protein that supports the survival, growth, and differentiation of neurons. Often called "fertilizer for the brain." Semax upregulates BDNF — a primary proposed mechanism for its nootropic effects. Dihexa is reported to be millions of times more potent than BDNF itself at stimulating synaptogenesis in specific laboratory assays. PE-22-28 upregulates BDNF through TREK-1 potassium channel inhibition — a mechanistically distinct route to the same downstream target.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Blood-Brain Barrier (BBB)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A selective membrane separating circulating blood from brain tissue, protecting the brain from pathogens and large molecules. Most peptides cannot cross the BBB, which limits their CNS applications. Notable exceptions in this catalog: Semax, Selank, DSIP, and Dihexa — all of which demonstrate BBB penetration.</p>
+      <p class="term-def">A selective membrane separating circulating blood from brain tissue, protecting the brain from pathogens and large molecules. Most peptides cannot cross the BBB, which limits their CNS applications. Notable BBB-penetrating compounds in this catalog include Semax, Selank, DSIP, Dihexa, and PE-22-28. Intranasal administration is commonly used to bypass the BBB by delivering compounds directly via the olfactory pathway — applicable to Oxytocin, Semax, and Selank.</p>
     </div>
   </div>
 
@@ -569,7 +657,12 @@ body {
 
     <div class="term" data-cat="chemistry">
       <div class="term-header"><span class="term-name">CAS Number</span><span class="term-tag tag-chemistry">Chemistry</span></div>
-      <p class="term-def">Chemical Abstracts Service Registry Number — a unique numerical identifier assigned to every chemical substance. CAS numbers allow precise identification of compounds regardless of brand name or nickname. Particularly important in the peptide space where naming confusion is common — e.g. TB-500 (CAS 77591-33-4) vs TB-500 Fragment which has a different CAS number entirely.</p>
+      <p class="term-def">Chemical Abstracts Service Registry Number — a unique numerical identifier assigned to every chemical substance. CAS numbers allow precise identification of compounds regardless of brand name or nickname. Critical in the peptide space where naming confusion is common — e.g. TB-500 (CAS 77591-33-4) vs. TB-500 Fragment, CJC-1295 with DAC vs. without DAC (Modified GRF 1-29), and IGF-1 LR3 where vendor CAS numbers conflict across suppliers.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Cardiolipin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A phospholipid found almost exclusively in the inner mitochondrial membrane. Cardiolipin is essential for the structure and function of the electron transport chain complexes that generate ATP. In aging, disease, and ischemia-reperfusion injury, cardiolipin becomes oxidized and fragmented — destabilizing the inner membrane and reducing energy production. SS-31 (Elamipretide) works specifically by binding and stabilizing cardiolipin, which is its primary mechanism and the reason it is described as a mitochondria-targeted antioxidant.</p>
     </div>
 
     <div class="term" data-cat="biology">
@@ -579,27 +672,32 @@ body {
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">c-Met Receptor</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A receptor tyrosine kinase activated by hepatocyte growth factor (HGF). c-Met signaling drives cell growth, survival, and synaptogenesis — the formation of new synaptic connections. Dihexa works by potentiating HGF activity at c-Met, which is its primary mechanism for cognitive enhancement. c-Met is also an oncogene, which creates a theoretical cancer risk with chronic activation.</p>
+      <p class="term-def">A receptor tyrosine kinase activated by hepatocyte growth factor (HGF). c-Met signaling drives cell growth, survival, and synaptogenesis. Dihexa works by potentiating HGF activity at c-Met, which is its primary mechanism for cognitive enhancement. c-Met is also an oncogene, which creates a theoretical cancer risk with chronic activation.</p>
     </div>
 
-    <div class="term" data-cat="chemistry">
+    <div class="term" data-cat="vendor">
+      <div class="term-header"><span class="term-name">Certificate of Analysis (COA)</span><span class="term-tag tag-vendor">Vendor</span></div>
+      <p class="term-def">A document from a testing laboratory confirming the identity and purity of a specific compound or batch. In the VTS framework, COA accessibility (how a buyer reaches the COA before purchase) and COA completeness (what the COA actually shows) together account for 30 of 100 points. A well-formed COA should confirm identity via mass spectrometry, purity via HPLC with a chromatogram present, and ideally sterility and endotoxin testing where relevant. A bare purity percentage with no method, no lab name, and no lot number is the lowest-quality form of a COA.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Cyclic Peptide</span><span class="term-tag tag-chemistry">Chemistry</span></div>
-      <p class="term-def">A peptide whose amino acid chain forms a ring structure, typically via a bond between the N-terminal and C-terminal ends or between side chains. Cyclic peptides are generally more stable than linear peptides because the ring structure resists enzymatic cleavage. PT-141 is a cyclic heptapeptide — the lactam bond between its Asp and Lys residues creates the ring that gives it metabolic stability.</p>
+      <p class="term-def">A peptide whose amino acid chain forms a ring structure, typically via a bond between the N-terminal and C-terminal ends or between side chains. Cyclic peptides are generally more stable than linear peptides because the ring structure resists enzymatic cleavage. PT-141 is a cyclic heptapeptide. Oxytocin is a cyclic nonapeptide — a disulfide bridge between Cys1 and Cys6 defines its ring structure and is essential for receptor binding.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Cytokine</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">Small signaling proteins released by immune cells to regulate inflammation and immune responses. Pro-inflammatory cytokines like TNF-α, IL-1β, and IL-6 drive inflammation — KPV suppresses these cytokines via NF-κB inhibition. Thymosin Alpha-1 modulates cytokine expression to shift immune responses toward T-cell activation.</p>
+      <p class="term-def">Small signaling proteins released by immune cells to regulate inflammation and immune responses. Pro-inflammatory cytokines like TNF-alpha, IL-1beta, and IL-6 drive inflammation — KPV suppresses these cytokines via NF-kB inhibition. Thymosin Alpha-1 modulates cytokine expression to shift immune responses toward T-cell activation.</p>
     </div>
 
     <div class="term" data-cat="evidence">
       <div class="term-header"><span class="term-name">Confounding Variable</span><span class="term-tag tag-evidence">Evidence</span></div>
-      <p class="term-def">A variable that influences both the independent and dependent variable in a study, creating a spurious association. The "wine is good for your heart" claim was undermined by confounding — moderate drinkers tend to have higher incomes, better diets, and more exercise than abstainers, so the apparent heart benefit may have had nothing to do with wine. Identifying and controlling for confounders is a core function of well-designed research.</p>
+      <p class="term-def">A variable that influences both the independent and dependent variable in a study, creating a spurious association. The classic "wine is good for your heart" claim was undermined by confounding — moderate drinkers tend to have higher incomes, better diets, and more exercise than abstainers. Identifying and controlling for confounders is a core function of well-designed research and a key reason why RCTs are the gold standard.</p>
     </div>
 
     <div class="term" data-cat="clinical">
       <div class="term-header"><span class="term-name">Compounding Pharmacy</span><span class="term-tag tag-clinical">Clinical</span></div>
-      <p class="term-def">A licensed pharmacy that prepares customized medications not available commercially. Several peptides in this catalog — including Sermorelin and Tesamorelin — are available through licensed compounding pharmacies by prescription, providing a legitimate clinical access pathway distinct from research compound suppliers.</p>
+      <p class="term-def">A licensed pharmacy that prepares customized medications not available commercially. Several peptides in this catalog are available through licensed compounding pharmacies by prescription — including Sermorelin, Tesamorelin, Gonadorelin, and PT-141 — providing a legitimate clinical access pathway distinct from research compound suppliers. FDA's 2025-2026 503A rulemaking directly affects which peptides compounding pharmacies can legally prepare.</p>
     </div>
 
     <div class="term" data-cat="evidence">
@@ -614,17 +712,17 @@ body {
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">DAC (Drug Affinity Complex)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A chemical modification added to CJC-1295 that enables it to covalently bind albumin in the bloodstream — dramatically extending its half-life from minutes to 6-8 days. The DAC version and the without-DAC version (Modified GRF 1-29) are frequently confused in the community despite being functionally different compounds with different CAS numbers.</p>
+      <p class="term-def">A chemical modification added to CJC-1295 that enables it to covalently bind albumin in the bloodstream — dramatically extending its half-life from minutes to 6-8 days. The DAC version and the without-DAC version (Modified GRF 1-29) are frequently confused in the community despite being functionally different compounds with different CAS numbers and dosing requirements.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Desensitization</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The reduced response of a receptor to a compound with repeated exposure. Hexarelin causes meaningful desensitization of GH release with continuous use — necessitating cycling protocols. Ipamorelin shows minimal desensitization, which is considered a clinical advantage for chronic use protocols.</p>
+      <p class="term-def">The reduced response of a receptor to a compound with repeated exposure. Hexarelin causes meaningful desensitization of GH release with continuous use — necessitating cycling protocols. Ipamorelin shows minimal desensitization, which is considered a clinical advantage for chronic use protocols. GHRP-6 also causes meaningful desensitization, particularly on appetite stimulation, with repeated use.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Disulfide Bridge</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A covalent bond between two cysteine residues that constrains a peptide's three-dimensional conformation. AOD-9604 has a disulfide bridge between Cys7 and Cys15 that gives it its constrained shape and contributes to its metabolic selectivity — allowing it to target fat metabolism without the growth-promoting effects of full-length hGH.</p>
+      <p class="term-def">A covalent bond between two cysteine residues that constrains a peptide's three-dimensional conformation. AOD-9604 has a disulfide bridge between Cys7 and Cys15. Oxytocin's disulfide bridge between Cys1 and Cys6 creates the cyclic ring essential for receptor binding — without it, the molecule loses activity at the oxytocin receptor.</p>
     </div>
 
     <div class="term" data-cat="biology">
@@ -639,7 +737,12 @@ body {
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Ecdysteroid</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A class of steroid hormones found primarily in insects and some plants. Turkesterone is an ecdysteroid extracted from Ajuga turkestanica. Unlike anabolic steroids, ecdysteroids do not appear to bind androgen receptors in humans — meaning they work through a different mechanism and are not expected to cause hormonal suppression.</p>
+      <p class="term-def">A class of steroid hormones found primarily in insects and some plants. Turkesterone is an ecdysteroid extracted from Ajuga turkestanica. Unlike anabolic steroids, ecdysteroids do not appear to bind androgen receptors in humans — meaning they work through a different mechanism and are not expected to cause hormonal suppression. The fitness industry has significantly outrun the evidence here; the human evidence base remains thin.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Electron Transport Chain (ETC)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A series of protein complexes in the inner mitochondrial membrane that transfer electrons through a series of reactions to generate the proton gradient used to synthesize ATP. The ETC is where the vast majority of cellular energy production occurs. SS-31 targets the inner mitochondrial membrane specifically because cardiolipin — its binding partner — is essential for ETC complex stability and efficiency. ETC dysfunction is a central feature of mitochondrial disease, heart failure, and aging.</p>
     </div>
 
     <div class="term" data-cat="biology">
@@ -649,12 +752,17 @@ body {
 
     <div class="term" data-cat="evidence">
       <div class="term-header"><span class="term-name">Evidence Grade</span><span class="term-tag tag-evidence">Evidence</span></div>
-      <p class="term-def">PeptideClear's primary classification of the quality and type of research supporting each compound. Grades include: Human RCT (strongest), Observational, Animal Only, Animal / In Vitro, and Emerging / Clinical Trial. The evidence grade reflects what type of research exists — not whether the compound works. A compound can have robust Animal Only data and still score low on the evidence grade.</p>
+      <p class="term-def">PeptideClear's primary classification of the quality and type of research supporting each compound. Grades include: Human RCT (strongest), Observational, Animal Only, Animal / In Vitro, and Emerging / Clinical Trial. The evidence grade reflects what type of research exists — not whether the compound works. A compound can have robust Animal Only data and still score low on the evidence grade. The evidence grade and the RQS score together give the most complete picture.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Extracellular Matrix (ECM)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The network of proteins (collagen, elastin, fibronectin) and other molecules that provides structural support to cells. GHK-Cu stimulates ECM remodeling — promoting collagen and elastin synthesis while suppressing matrix metalloproteinases that break down existing ECM. This is the primary mechanism for its skin anti-aging and wound healing effects.</p>
+      <p class="term-def">The network of proteins (collagen, elastin, fibronectin) and other molecules that provides structural support to cells. GHK-Cu stimulates ECM remodeling — promoting collagen and elastin synthesis while suppressing matrix metalloproteinases that break down existing ECM. Palmitoyl Tripeptide-1 (Matrixyl) sends a matrikine signal to fibroblasts that triggers new ECM production.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">ERR (Estrogen-Related Receptor)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A family of nuclear receptors (ERR-alpha, -beta, -gamma) that regulate mitochondrial biogenesis, fatty acid oxidation, and oxidative metabolism. Despite their name, ERRs do not bind estrogen — they are constitutively active transcription factors whose activity is regulated by coactivators. SLU-PP-332 is a pan-ERR agonist — the first small molecule shown to activate all three ERR subtypes simultaneously — producing exercise-like metabolic adaptations in mice without physical activity.</p>
     </div>
   </div>
 
@@ -667,9 +775,14 @@ body {
       <p class="term-def">Connective tissue cells responsible for producing collagen, elastin, and other ECM components. Palmitoyl Tripeptide-1 (Matrixyl) works by sending a matrikine signal to fibroblasts that triggers new collagen, elastin, and hyaluronic acid production — mimicking the body's natural wound repair response.</p>
     </div>
 
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Follistatin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A naturally occurring glycoprotein that binds and neutralizes myostatin, inhibiting myostatin's ability to limit muscle growth. Follistatin-344 is a specific isoform sold as a research compound for its proposed anabolic effects. The theoretical basis — block myostatin, allow more muscle growth — is sound; the problem is that the human evidence is almost entirely absent, and recombinant follistatin is a protein too large for meaningful absorption via most administration routes used in the research compound space.</p>
+    </div>
+
     <div class="term" data-cat="evidence">
       <div class="term-header"><span class="term-name">Funding Source</span><span class="term-tag tag-evidence">Evidence</span></div>
-      <p class="term-def">The organization that paid for a study. Industry-funded studies are not automatically invalid but are statistically more likely to produce positive results than independently funded studies. Disclosing funding sources is standard practice in reputable journals and is one of the dimensions scored in PeptideClear's Research Quality Score.</p>
+      <p class="term-def">The organization that paid for a study. Industry-funded studies are not automatically invalid but are statistically more likely to produce positive results than independently funded studies. Disclosing funding sources is standard practice in reputable journals and is one of the dimensions scored in PeptideClear's Research Quality Score. Argireline and Leuphasyl are specific cases where nearly all efficacy evidence traces directly to their developer (Lipotec/Lubrizol), which meaningfully limits the confidence that can be placed in those results.</p>
     </div>
   </div>
 
@@ -684,12 +797,27 @@ body {
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Ghrelin</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A hunger hormone produced primarily in the stomach that stimulates appetite and GH release via GHSR-1a receptor activation. Ibutamoren mimics ghrelin at GHSR-1a — producing GH secretion without injection. Hexarelin also acts at GHSR-1a but with greater potency than ghrelin itself.</p>
+      <p class="term-def">A hunger hormone produced primarily in the stomach that stimulates appetite and GH release via GHSR-1a receptor activation. Ibutamoren mimics ghrelin at GHSR-1a — producing GH secretion without injection. Hexarelin and GHRP-6 also act at GHSR-1a. A key clinical consequence: GHSR-1a agonists frequently stimulate appetite, which can be a limiting side effect in non-obesity applications.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">GHSR-1a (Growth Hormone Secretagogue Receptor)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The ghrelin receptor — expressed in the pituitary and hypothalamus. Activation triggers pulsatile GH release. Ibutamoren, Hexarelin, and Ipamorelin all work through GHSR-1a. Hexarelin is also unique in acting at CD36 — a second receptor that produces cardioprotective effects independent of GH release.</p>
+      <p class="term-def">The ghrelin receptor — expressed in the pituitary and hypothalamus. Activation triggers pulsatile GH release. Ibutamoren, Hexarelin, Ipamorelin, and GHRP-6 all work through GHSR-1a. Hexarelin is unique in also acting at CD36 — a second receptor that produces cardioprotective effects independent of GH release.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">GIP (Glucose-Dependent Insulinotropic Polypeptide)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">One of the two primary incretin hormones, alongside GLP-1. GIP potentiates insulin secretion in a glucose-dependent manner and also acts on adipose tissue and the brain. Tirzepatide is a dual GIP/GLP-1 receptor agonist — its GIP component contributes additional fat redistribution and potentially reduces the nausea associated with GLP-1-only agonists, which may explain Tirzepatide's superior weight loss outcomes compared to semaglutide in head-to-head trials.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">GLP-1 (Glucagon-Like Peptide-1)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">An incretin hormone produced in the gut after eating that stimulates insulin release, suppresses glucagon, slows gastric emptying, and signals satiety to the brain. GLP-1 receptor agonists — including semaglutide (Ozempic/Wegovy) and liraglutide — have become the most clinically significant pharmacological development in metabolic medicine in decades. The catalog covers GLP-1 as a compound class, Tirzepatide (dual GIP/GLP-1), Retatrutide (triple GLP-1/GIP/glucagon), and Cagrilintide (amylin agonist used in combination).</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">GnRH (Gonadotropin-Releasing Hormone)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A decapeptide hormone produced by the hypothalamus that signals the pituitary to release LH and FSH — the hormones that stimulate the gonads. Gonadorelin is synthetic GnRH used in clinical practice to stimulate testosterone production while preserving testicular function. Unlike exogenous testosterone, which suppresses the HPG axis, Gonadorelin maintains it — which is why it is commonly co-prescribed with testosterone replacement therapy to preserve fertility and testicular size.</p>
     </div>
 
     <div class="term" data-cat="biology">
@@ -698,13 +826,18 @@ body {
     </div>
 
     <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Glutathione</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The body's primary intracellular antioxidant — a tripeptide (gamma-glutamyl-cysteinyl-glycine) produced in almost every cell. Glutathione neutralizes reactive oxygen species, regenerates other antioxidants (vitamins C and E), and is essential for detoxification in the liver. Oral bioavailability of glutathione was long considered poor, but a 2015 RCT by Richie et al. demonstrated that oral supplementation does increase blood glutathione levels. IV glutathione and liposomal formulations have stronger evidence for bioavailability than standard oral capsules.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Growth Hormone (GH)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A peptide hormone produced by the pituitary gland that stimulates growth, cell reproduction, and metabolism. GH declines with age — which has driven significant interest in peptides that stimulate its production. Sermorelin, CJC-1295, Ipamorelin, Hexarelin, and Tesamorelin all work by stimulating pituitary GH release rather than supplying exogenous GH directly.</p>
+      <p class="term-def">A 191-amino-acid peptide hormone produced by the pituitary gland that stimulates growth, cell reproduction, and metabolism. GH declines with age — which has driven significant interest in peptides that stimulate its production. Sermorelin, CJC-1295, Ipamorelin, Hexarelin, GHRP-6, and Tesamorelin all work by stimulating pituitary GH release rather than supplying exogenous GH directly. HGH is FDA-approved exogenous recombinant human growth hormone — structurally identical to endogenous GH.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">GHRH (Growth Hormone Releasing Hormone)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The hypothalamic hormone that triggers the pituitary to release GH. Sermorelin is a 29 amino acid synthetic analog of GHRH. Tesamorelin is a 44 amino acid analog with a stabilizing modification. CJC-1295 is a modified GHRH analog with a DAC group for extended half-life.</p>
+      <p class="term-def">The hypothalamic hormone that triggers the pituitary to release GH. Sermorelin is a 29-amino-acid synthetic analog of GHRH. Tesamorelin is a 44-amino-acid analog with a stabilizing trans-3-hexenoic acid modification. CJC-1295 is a modified GHRH analog with a DAC group for extended half-life.</p>
     </div>
   </div>
 
@@ -714,17 +847,27 @@ body {
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Half-Life</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The time it takes for half of a substance to be eliminated from the body. Half-life determines dosing frequency — a peptide with a short half-life (like DSIP at 15 minutes in vitro, or Sermorelin) requires frequent dosing, while CJC-1295 with DAC (6-8 day half-life) can be dosed once or twice weekly. Dihexa has an unusually long half-life of 12.7 days in rats.</p>
+      <p class="term-def">The time it takes for half of a substance to be eliminated from the body. Half-life determines dosing frequency. Sermorelin: ~10-20 minutes. Ipamorelin: ~2 hours. CJC-1295 with DAC: 6-8 days. Dihexa: ~12.7 days in rats. Cagrilintide: ~7 days, enabling once-weekly dosing. Understanding half-life is critical context for evaluating research compound protocols discussed in the community.</p>
     </div>
 
     <div class="term" data-cat="scoring">
       <div class="term-header"><span class="term-name">h-Index</span><span class="term-tag tag-scoring">Scoring</span></div>
-      <p class="term-def">A metric that measures a researcher's productivity and citation impact. A researcher with an h-Index of 20 has published at least 20 papers that have each been cited at least 20 times. Used in PeptideClear's Research Quality Score to weight the credibility of the research team behind a compound's evidence base. Viewable publicly on Google Scholar for any named researcher.</p>
+      <p class="term-def">A metric that measures a researcher's productivity and citation impact. A researcher with an h-Index of 20 has published at least 20 papers that have each been cited at least 20 times. Used in PeptideClear's Research Quality Score to weight the credibility of the research team behind a compound's evidence base. Viewable publicly on Google Scholar. Notable in this catalog: Shin-ichiro Imai (NMN/NAD+, WashU, h-Index ~60+) and Kerstin Uvnas-Moberg (Oxytocin, Karolinska, h-Index ~60+).</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">HGF (Hepatocyte Growth Factor)</span><span class="term-tag tag-biology">Biology</span></div>
       <p class="term-def">A growth factor that drives cell survival, proliferation, and synaptogenesis through the c-Met receptor. Dihexa works by binding HGF and potentiating its activity at c-Met — driving the formation of new synaptic connections. HGF/c-Met is also an oncogenic pathway, which creates the theoretical cancer risk associated with chronic Dihexa use.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">HPG Axis (Hypothalamic-Pituitary-Gonadal)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">The hormonal feedback system governing reproductive and sexual function: the hypothalamus releases GnRH → the pituitary releases LH and FSH → the gonads produce testosterone or estrogen → those hormones feed back to suppress GnRH and LH/FSH. Kisspeptin-10 acts at the top of this axis, stimulating GnRH neurons. Gonadorelin mimics GnRH itself. Exogenous testosterone suppresses the entire axis by satisfying the downstream feedback loop, which is why testosterone replacement without HPG support causes testicular atrophy and reduced sperm production.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">HPLC (High-Performance Liquid Chromatography)</span><span class="term-tag tag-vendor">Vendor</span></div>
+      <p class="term-def">An analytical chemistry technique that separates compounds in a mixture and measures their quantities by how they travel through a chromatography column. HPLC is the standard method for verifying purity in peptide testing — a COA showing HPLC purity above 98% is considered high-quality. HPLC purity alone does not confirm identity — it only measures how much of the sample is the expected compound relative to impurities. Identity should also be confirmed by mass spectrometry.</p>
     </div>
 
     <div class="term" data-cat="biology">
@@ -734,7 +877,7 @@ body {
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Hypothalamus</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A brain region that acts as the master regulator of hormonal systems, appetite, temperature, and circadian rhythm. DSIP is produced in the hypothalamus. The hypothalamus also produces GHRH (which triggers pituitary GH release) and somatostatin (which inhibits it) — creating the feedback loop that GH secretagogues work within.</p>
+      <p class="term-def">A brain region that acts as the master regulator of hormonal systems, appetite, temperature, and circadian rhythm. DSIP is produced in the hypothalamus. The hypothalamus also produces GnRH (which drives the HPG axis), GHRH (which triggers pituitary GH release), and somatostatin (which inhibits it). Kisspeptin-10 targets hypothalamic Kiss1R receptors specifically to stimulate GnRH neurons in the arcuate nucleus.</p>
     </div>
   </div>
 
@@ -744,12 +887,12 @@ body {
 
     <div class="term" data-cat="evidence">
       <div class="term-header"><span class="term-name">Impact Factor (IF)</span><span class="term-tag tag-scoring">Scoring</span></div>
-      <p class="term-def">A metric reflecting the average number of citations received by papers published in a journal over the past two years. Used as a proxy for journal prestige and research quality. Low-quality journals: IF 1-2. Good peer-reviewed journals: IF 3-4. High-quality journals: IF 5-7. Top-tier journals (NEJM, Nature, JAMA): IF 8+. Used in PeptideClear's Research Quality Score to evaluate where a compound's primary studies were published.</p>
+      <p class="term-def">A metric reflecting the average number of citations received by papers published in a journal over the past two years. Used as a proxy for journal prestige and research quality. Low-quality journals: IF 1-2. Good peer-reviewed journals: IF 3-4. High-quality journals: IF 5-7. Top-tier journals (NEJM, Nature, JAMA): IF 8+. Used in PeptideClear's Research Quality Score. Note: Russian-language journals used for Semax, Selank, Epitalon, and Pinealon typically show lower IF — this reflects the publishing system, not necessarily weaker science.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">IGF-1 (Insulin-Like Growth Factor 1)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A hormone produced primarily in the liver in response to GH stimulation. IGF-1 mediates many of GH's anabolic and growth-promoting effects. Ibutamoren increases both GH and IGF-1 — making it measurable in blood tests. Elevated IGF-1 is both the mechanism of benefit (muscle, recovery) and a concern (potential cancer promotion with chronic elevation).</p>
+      <p class="term-def">A hormone produced primarily in the liver in response to GH stimulation. IGF-1 mediates many of GH's anabolic and growth-promoting effects. Ibutamoren increases both GH and IGF-1 — making it measurable in blood tests. IGF-1 LR3 is a long-acting analog with an arginine substitution at position 3 and a 13-amino-acid N-terminal extension that reduces IGF-binding protein affinity — extending its active half-life from ~10 minutes to ~20-30 hours.</p>
     </div>
 
     <div class="term" data-cat="biology">
@@ -759,17 +902,22 @@ body {
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">In Vitro</span><span class="term-tag tag-evidence">Evidence</span></div>
-      <p class="term-def">Latin for "in glass" — research conducted in a controlled environment outside a living organism, typically in cell cultures or test tubes. In vitro studies are useful for mechanistic investigation but frequently fail to translate to in vivo effects. PeptideClear assigns "Animal / In Vitro" evidence grade to compounds where evidence is limited to these conditions.</p>
+      <p class="term-def">Latin for "in glass" — research conducted in a controlled environment outside a living organism, typically in cell cultures or test tubes. In vitro studies are useful for mechanistic investigation but frequently fail to translate to in vivo effects. PeptideClear assigns "Animal / In Vitro" evidence grade to compounds where evidence is limited to these conditions — including Follistatin-344, IGF-1 LR3, SLU-PP-332, and PE-22-28.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">In Vivo</span><span class="term-tag tag-evidence">Evidence</span></div>
-      <p class="term-def">Latin for "within the living" — research conducted within a living organism. In vivo studies include animal studies and human clinical trials. In vivo results are considered more predictive of real-world outcomes than in vitro results but animal in vivo data still frequently fails to translate to humans.</p>
+      <p class="term-def">Latin for "within the living" — research conducted within a living organism. In vivo studies include animal studies and human clinical trials. In vivo results are considered more predictive of real-world outcomes than in vitro results, but animal in vivo data still frequently fails to translate to humans.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Incretin</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A class of hormones released by the gut after eating that stimulate insulin secretion in a glucose-dependent manner. GLP-1 and GIP are the two primary incretins. GLP-1 receptor agonists (Ozempic, Wegovy) and dual GLP-1/GIP agonists (Tirzepatide) leverage incretin biology to treat diabetes and obesity.</p>
+      <p class="term-def">A class of hormones released by the gut after eating that stimulate insulin secretion in a glucose-dependent manner. GLP-1 and GIP are the two primary incretins. GLP-1 receptor agonists (Ozempic, Wegovy) and dual GLP-1/GIP agonists (Tirzepatide) leverage incretin biology to treat diabetes and obesity. Retatrutide adds glucagon receptor agonism to this combination for a triple-mechanism approach.</p>
+    </div>
+
+    <div class="term" data-cat="clinical">
+      <div class="term-header"><span class="term-name">Intranasal (IN) Administration</span><span class="term-tag tag-clinical">Clinical</span></div>
+      <p class="term-def">Delivery of a compound via the nasal mucosa rather than by injection or oral ingestion. For some peptides, intranasal administration can bypass the blood-brain barrier via the olfactory pathway — making it particularly relevant for CNS-targeted compounds. Oxytocin, Semax, and Selank are all commonly used intranasally for neuromodulatory effects. PeptideClear catalogs IN suitability as a field for each compound because it is a significant differentiator that no other free reference tool tracks systematically.</p>
     </div>
   </div>
 
@@ -786,9 +934,14 @@ body {
   <div class="letter-section" id="K">
     <div class="letter-heading">K</div>
 
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Kisspeptin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A neuropeptide produced by Kiss1 neurons in the hypothalamus that is considered the master regulator of the HPG axis. Kisspeptin binds Kiss1R (GPR54) receptors on GnRH neurons, triggering a surge of GnRH release. Kisspeptin-10 is the shortest active fragment (10 amino acids) of the full kisspeptin-54 precursor. Clinical interest centers on stimulating endogenous LH and testosterone without suppressing the HPG axis — making it a potential alternative or adjunct to Gonadorelin.</p>
+    </div>
+
     <div class="term" data-cat="community">
       <div class="term-header"><span class="term-name">KLOW Stack</span><span class="term-tag tag-community">Community</span></div>
-      <p class="term-def">A branded combination of four research compounds commonly referenced together in the biohacking community: GHK-Cu, KPV, BPC-157, and TB-500. Named for the initials of its components. Designed to target tissue repair and systemic inflammation through four complementary mechanisms. PeptideClear covers what each component contains — not how to use them.</p>
+      <p class="term-def">A branded combination of four research compounds commonly referenced together in the biohacking community: GHK-Cu, KPV, BPC-157, and TB-500. Designed to target tissue repair and systemic inflammation through four complementary mechanisms. PeptideClear covers what each component contains and what the research shows — not how to use them or whether to combine them.</p>
     </div>
   </div>
 
@@ -796,24 +949,24 @@ body {
   <div class="letter-section" id="L">
     <div class="letter-heading">L</div>
 
-    <div class="term" data-cat="biology">
+    <div class="term" data-cat="chemistry">
       <div class="term-header"><span class="term-name">Lactam Bond</span><span class="term-tag tag-chemistry">Chemistry</span></div>
       <p class="term-def">A cyclic amide bond formed between an amine and a carboxylic acid group within the same molecule. In PT-141, a lactam bond between the Asp and Lys residues closes the heptapeptide into a ring — giving it metabolic stability and contributing to its receptor selectivity at MC4R.</p>
     </div>
 
     <div class="term" data-cat="biology">
-      <div class="term-header"><span class="term-name">Lipogenesis</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The metabolic process by which the body converts carbohydrates and other nutrients into fatty acids and triglycerides for storage. AOD-9604 inhibits lipogenesis — reducing the conversion of dietary nutrients into new body fat — as part of its proposed fat reduction mechanism.</p>
-    </div>
-
-    <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Lipolysis</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The breakdown of stored fat (triglycerides) into fatty acids and glycerol for energy use. AOD-9604 promotes lipolysis — the release of stored fat — via a mechanism independent of the GH receptor. Tesamorelin reduces visceral fat through GH-mediated lipolysis in adipose tissue surrounding internal organs.</p>
+      <p class="term-def">The breakdown of stored fat (triglycerides) into fatty acids and glycerol for energy use. AOD-9604 promotes lipolysis via a mechanism independent of the GH receptor. Tesamorelin reduces visceral fat through GH-mediated lipolysis in adipose tissue surrounding internal organs.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Lyophilization</span><span class="term-tag tag-biology">Biology</span></div>
       <p class="term-def">Freeze-drying — a preservation process that removes water from a substance while maintaining its structure. Most research compound peptides are supplied as lyophilized powder that must be reconstituted with bacteriostatic water before use. Lyophilization extends shelf life significantly compared to liquid formulations.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">LH (Luteinizing Hormone)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A pituitary hormone that drives testosterone production in men (via Leydig cells in the testes) and triggers ovulation in women. LH is the key downstream signal in the GnRH → LH/FSH → testosterone axis. Kisspeptin-10 stimulates LH pulses. Gonadorelin (GnRH) stimulates LH release from the pituitary. Measuring LH is a standard way to confirm that HPG axis stimulation is working.</p>
     </div>
   </div>
 
@@ -823,27 +976,37 @@ body {
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Matrikine</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A peptide fragment released during the degradation of extracellular matrix proteins that acts as a signaling molecule to regulate cell behavior. Palmitoyl Tripeptide-1 (Matrixyl) is a matrikine — it mimics a collagen breakdown signal that triggers fibroblasts to produce new collagen, elastin, and hyaluronic acid, essentially telling the skin to repair itself.</p>
+      <p class="term-def">A peptide fragment released during the degradation of extracellular matrix proteins that acts as a signaling molecule to regulate cell behavior. Palmitoyl Tripeptide-1 (Matrixyl) is a matrikine — it mimics a collagen breakdown signal that triggers fibroblasts to produce new collagen, elastin, and hyaluronic acid.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Mass Spectrometry (MS)</span><span class="term-tag tag-vendor">Vendor</span></div>
+      <p class="term-def">An analytical technique that identifies compounds by measuring the mass-to-charge ratio of ions. Mass spectrometry is the gold standard for identity confirmation in peptide testing — it can definitively verify that a compound is what the vendor claims it is, at the molecular level. HPLC measures purity; MS confirms identity. A COA that shows HPLC purity without MS identity confirmation has a significant gap. In the VTS framework, MS identity confirmation is a top-tier signal in the COA Completeness dimension.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">MC4R (Melanocortin Receptor 4)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A receptor expressed primarily in the hypothalamus that modulates appetite, energy expenditure, and sexual function. PT-141 has its highest affinity for MC4R — activating dopaminergic pathways through this receptor to increase sexual desire. MC4R is also involved in energy regulation, which is why melanocortin system compounds can have overlapping metabolic and sexual effects.</p>
+      <p class="term-def">A receptor expressed primarily in the hypothalamus that modulates appetite, energy expenditure, and sexual function. PT-141 has its highest affinity for MC4R. Melanotan II is a non-selective melanocortin agonist that activates MC4R alongside MC1R (skin pigmentation) and other subtypes — which is why it produces tanning as well as sexual effects, and why it carries a broader side effect profile than the more selective PT-141.</p>
     </div>
 
     <div class="term" data-cat="evidence">
       <div class="term-header"><span class="term-name">Meta-Analysis</span><span class="term-tag tag-evidence">Evidence</span></div>
-      <p class="term-def">A statistical method that combines results from multiple studies to produce a single, more powerful estimate of an effect. Meta-analyses sit at the top of the evidence hierarchy because they synthesize all available data rather than relying on any single study. The presence or absence of a meta-analysis is one of the factors scored in PeptideClear's Research Quality Score.</p>
+      <p class="term-def">A statistical method that combines results from multiple studies to produce a single, more powerful estimate of an effect. Meta-analyses sit at the top of the evidence hierarchy because they synthesize all available data rather than relying on any single study. Their presence or absence is one of the factors scored in PeptideClear's Research Quality Score. For compounds like Creatine and GLP-1 agonists, the meta-analysis base is extensive; for most research peptides, none exist.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Mitochondrial-Derived Peptide (MDP)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A peptide encoded within mitochondrial DNA rather than nuclear DNA — a recently discovered class of bioactive molecules. PeptideClear currently covers two MDPs: MOTS-c (metabolic regulation, exercise mimetic) and Humanin (neuroprotection, cytoprotection). Both are encoded within the ribosomal RNA genes of mitochondrial DNA and decline with age.</p>
+      <p class="term-def">A peptide encoded within mitochondrial DNA rather than nuclear DNA — a recently discovered class of bioactive molecules. PeptideClear covers two MDPs: MOTS-c (metabolic regulation, exercise mimetic) and Humanin (neuroprotection, cytoprotection). Both are encoded within the ribosomal RNA genes of mitochondrial DNA and decline with age.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Mechanism of Action (MOA)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The specific biological process through which a compound produces its effect. Understanding mechanism distinguishes PeptideClear from surface-level content — knowing that BPC-157 promotes angiogenesis and that KPV inhibits NF-κB explains why they might have different effects despite both being described as "anti-inflammatory."</p>
+      <p class="term-def">The specific biological process through which a compound produces its effect. Understanding mechanism is core to PeptideClear's editorial approach — knowing that BPC-157 promotes angiogenesis and KPV inhibits NF-kB explains why they might have different effects despite both being described as "anti-inflammatory." It also matters for honest risk assessment: SLU-PP-332's ERR agonism and Dihexa's HGF/c-Met potentiation are both theoretically oncogenic pathways, which is only visible if you look at the mechanism.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Myostatin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A protein (also called GDF-8) that limits skeletal muscle growth by inhibiting myoblast differentiation and proliferation. Myostatin functions as a natural brake on muscle size — individuals with rare myostatin loss-of-function mutations display dramatically increased muscle mass. Follistatin-344 is sold based on its ability to neutralize myostatin. The anabolic hypothesis is credible; the gap is translating it through a delivery route that actually reaches target tissue in humans.</p>
     </div>
   </div>
 
@@ -852,13 +1015,28 @@ body {
     <div class="letter-heading">N</div>
 
     <div class="term" data-cat="biology">
-      <div class="term-header"><span class="term-name">NF-κB (Nuclear Factor Kappa B)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A transcription factor that controls the expression of pro-inflammatory genes. NF-κB activation triggers the production of cytokines, chemokines, and other inflammatory mediators. KPV inhibits NF-κB signaling intracellularly — a mechanistically precise anti-inflammatory approach that targets the master switch rather than individual downstream products.</p>
+      <div class="term-header"><span class="term-name">NAD+ (Nicotinamide Adenine Dinucleotide)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A coenzyme found in every cell, essential for energy metabolism, DNA repair, and sirtuin activity. NAD+ levels decline with age, which is believed to contribute to mitochondrial dysfunction, metabolic decline, and reduced capacity for cellular repair. NMN (nicotinamide mononucleotide) and NR (nicotinamide riboside) are precursors the body converts to NAD+. Direct IV NAD+ is also used clinically. PeptideClear catalogs NAD+ separately from NMN as they have distinct evidence bases and administration routes.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">NF-kB (Nuclear Factor Kappa B)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A transcription factor that controls the expression of pro-inflammatory genes. NF-kB activation triggers the production of cytokines, chemokines, and other inflammatory mediators. KPV inhibits NF-kB signaling intracellularly — a mechanistically precise anti-inflammatory approach that targets the master switch rather than individual downstream products.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">NMN (Nicotinamide Mononucleotide)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A direct precursor to NAD+ that has been shown in human RCTs to raise blood NAD+ levels. The most foundational research comes from Shin-ichiro Imai's group at Washington University. Functional endpoints — what raising NAD+ actually does at the human level — are less consistently replicated than the biomarker endpoint (NAD+ elevation itself). NMN scores Moderate on the RQS (74/100), higher than most other longevity compounds in the catalog, because of the quality of the underlying research infrastructure even though translational questions remain open.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">NNMT (Nicotinamide N-Methyltransferase)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">An enzyme that methylates nicotinamide, consuming SAM (S-adenosyl methionine) — a universal methyl donor — and generating 1-MNA as a byproduct. Elevated NNMT activity depletes cellular NAM (nicotinamide) and SAM, reducing NAD+ availability. In adipose tissue, high NNMT activity is associated with obesity and metabolic dysfunction. 5-Amino-1MQ is a small-molecule NNMT inhibitor — its mechanism is to block this enzyme, preserve NAM and SAM, and restore NAD+ levels and metabolic flexibility.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Nootropic</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A substance that enhances cognitive function including memory, focus, creativity, or motivation. In PeptideClear's catalog the Nootropics & Neuroprotection category includes Semax, Selank, Humanin, DSIP, and Dihexa — each working through distinct CNS mechanisms. The term is broadly used and loosely defined in the wellness community.</p>
+      <p class="term-def">A substance that enhances cognitive function including memory, focus, creativity, or motivation. In PeptideClear's catalog the Nootropics & Neuroprotection category includes Semax, Selank, Humanin, DSIP, Dihexa, and PE-22-28 — each working through distinct CNS mechanisms. The term is broadly used and loosely defined in the wellness community.</p>
     </div>
   </div>
 
@@ -868,17 +1046,17 @@ body {
 
     <div class="term" data-cat="evidence">
       <div class="term-header"><span class="term-name">Observational Study</span><span class="term-tag tag-evidence">Evidence</span></div>
-      <p class="term-def">Research that observes outcomes without intervening or assigning treatments. Observational studies can establish correlation but cannot prove causation. PeptideClear assigns "Observational" evidence grade to compounds where the primary human evidence comes from observational rather than controlled research — including CJC-1295, Ibutamoren, AOD-9604, and the Russian-developed nootropics Semax and Selank.</p>
+      <p class="term-def">Research that observes outcomes without intervening or assigning treatments. Observational studies can establish correlation but cannot prove causation. PeptideClear assigns "Observational" evidence grade to compounds where the primary human evidence comes from observational rather than controlled research — including CJC-1295, Ibutamoren, Hexarelin, GHRP-6, and AOD-9604.</p>
     </div>
 
     <div class="term" data-cat="regulatory">
       <div class="term-header"><span class="term-name">Off-Label Use</span><span class="term-tag tag-regulatory">Regulatory</span></div>
-      <p class="term-def">The use of an FDA-approved drug for an indication, population, or dosage not specified in its approved labeling. Legal for physicians to prescribe but not for manufacturers to promote. Several compounds in this catalog are FDA-approved for specific indications but used off-label for longevity, body composition, or other purposes — including Tesamorelin, PT-141, and Thymosin Alpha-1.</p>
+      <p class="term-def">The use of an FDA-approved drug for an indication, population, or dosage not specified in its approved labeling. Legal for physicians to prescribe but not for manufacturers to promote. Compounds in this catalog used off-label include Tesamorelin (approved for HIV lipodystrophy; used off-label for body composition), PT-141 (approved for HSDD in premenopausal women; used off-label in men), and Gonadorelin (approved for diagnostic use; commonly prescribed off-label for HPG axis support in TRT patients).</p>
     </div>
 
     <div class="term" data-cat="regulatory">
       <div class="term-header"><span class="term-name">Orphan Drug</span><span class="term-tag tag-regulatory">Regulatory</span></div>
-      <p class="term-def">A pharmaceutical agent developed to treat rare diseases affecting fewer than 200,000 people in the US. The FDA grants orphan drug designation to incentivize development of treatments for rare conditions. Thymosin Alpha-1 received FDA orphan drug designation for conditions including DiGeorge syndrome and hepatocellular carcinoma.</p>
+      <p class="term-def">A pharmaceutical agent developed to treat rare diseases affecting fewer than 200,000 people in the US. The FDA grants orphan drug designation to incentivize development of treatments for rare conditions. Thymosin Alpha-1 received FDA orphan drug designation for DiGeorge syndrome and hepatocellular carcinoma. SS-31 (Elamipretide) received orphan designation for Barth syndrome — a rare mitochondrial cardiomyopathy — and showed clinically meaningful results in a small open-label extension study despite failing its primary Phase 3 endpoint.</p>
     </div>
   </div>
 
@@ -887,13 +1065,13 @@ body {
     <div class="letter-heading">P</div>
 
     <div class="term" data-cat="chemistry">
-      <div class="term-header"><span class="term-name">Peptide</span><span class="term-tag tag-chemistry">Chemistry</span></div>
-      <p class="term-def">A short chain of amino acids linked by peptide bonds, typically fewer than 50 amino acids. Peptides are smaller than proteins and are produced naturally throughout the body as signaling molecules, hormones, and structural components. The compounds in PeptideClear's catalog range from 2 amino acids (Carnosine) to 44 amino acids (Tesamorelin).</p>
+      <div class="term-header"><span class="term-name">Palmitoylation</span><span class="term-tag tag-chemistry">Chemistry</span></div>
+      <p class="term-def">The attachment of a 16-carbon fatty acid chain (palmitic acid) to a peptide or protein. In cosmetic peptides, palmitoylation improves skin penetration by making the peptide more lipophilic — allowing it to cross the lipid-rich skin barrier that would otherwise block absorption of a bare peptide. Palmitoyl Tripeptide-1 (Matrixyl) and Leuphasyl are both palmitoylated, which is why they work topically in skincare rather than requiring injection.</p>
     </div>
 
-    <div class="term" data-cat="evidence">
-      <div class="term-header"><span class="term-name">Peptide Bond</span><span class="term-tag tag-chemistry">Chemistry</span></div>
-      <p class="term-def">The covalent chemical bond formed between the carboxyl group of one amino acid and the amino group of another, releasing water in the process. The sequence and number of peptide bonds determine a peptide's primary structure and consequently its biological activity.</p>
+    <div class="term" data-cat="chemistry">
+      <div class="term-header"><span class="term-name">Peptide</span><span class="term-tag tag-chemistry">Chemistry</span></div>
+      <p class="term-def">A short chain of amino acids linked by peptide bonds, typically fewer than 50 amino acids. Peptides are smaller than proteins and are produced naturally throughout the body as signaling molecules, hormones, and structural components. The compounds in PeptideClear's catalog range from Carnosine (2 amino acids) to Tesamorelin (44 amino acids), with HGH at 191 amino acids representing the protein end of the spectrum.</p>
     </div>
 
     <div class="term" data-cat="evidence">
@@ -903,7 +1081,7 @@ body {
 
     <div class="term" data-cat="evidence">
       <div class="term-header"><span class="term-name">Population Diversity</span><span class="term-tag tag-scoring">Scoring</span></div>
-      <p class="term-def">The degree to which a study's participants represent the broader population — across age, sex, ethnicity, and health status. Studies conducted exclusively on young white men may not produce findings that generalize to women, older populations, or different ethnicities. Population diversity is one of the seven dimensions scored in PeptideClear's Research Quality Score, as flagged by Professor Erica Bailey at UC Berkeley.</p>
+      <p class="term-def">The degree to which a study's participants represent the broader population — across age, sex, ethnicity, and health status. Studies conducted exclusively on young white men may not produce findings that generalize to women, older populations, or different ethnicities. Population diversity is one of the seven dimensions in PeptideClear's Research Quality Score. SS-31's MMPOWER-3 trial (94% White) received a 1/5 on this dimension — an accurate reflection that limits how broadly those results can be generalized.</p>
     </div>
 
     <div class="term" data-cat="regulatory">
@@ -913,12 +1091,12 @@ body {
 
     <div class="term" data-cat="regulatory">
       <div class="term-header"><span class="term-name">Prescription Drug</span><span class="term-tag tag-regulatory">Regulatory</span></div>
-      <p class="term-def">A medication that requires a licensed healthcare provider's authorization before it can be dispensed. Several compounds in PeptideClear are prescription-only including GLP-1 analogs, Tirzepatide, Tesamorelin, Sermorelin, and PT-141. Accessing these compounds without a prescription is illegal and bypasses the medical oversight that makes their use appropriate.</p>
+      <p class="term-def">A medication that requires a licensed healthcare provider's authorization before it can be dispensed. Compounds in this catalog that are prescription-only include GLP-1 agonists, Tirzepatide, Tesamorelin, Sermorelin, PT-141, Gonadorelin, HGH, and Oxytocin (intranasal compounded form). Accessing these compounds without a prescription bypasses the medical oversight that makes their use appropriate and carries legal risk.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Pulsatile Release</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The natural pattern of hormone secretion in intermittent bursts rather than continuous flow. Growth hormone is naturally released in pulses — primarily during deep sleep. GHRH analogs like Sermorelin and CJC-1295 preserve this pulsatile pattern by stimulating the pituitary's own release mechanisms rather than flooding the system with exogenous GH.</p>
+      <p class="term-def">The natural pattern of hormone secretion in intermittent bursts rather than continuous flow. Growth hormone is naturally released in pulses — primarily during deep sleep. GHRH analogs like Sermorelin and CJC-1295 preserve this pulsatile pattern by stimulating the pituitary's own release mechanisms rather than flooding the system with exogenous GH. GnRH is also pulsatile — Gonadorelin is most effective when dosed to mimic this natural rhythm, while continuous GnRH stimulation actually suppresses LH release.</p>
     </div>
 
     <div class="term" data-cat="biology">
@@ -933,22 +1111,27 @@ body {
 
     <div class="term" data-cat="evidence">
       <div class="term-header"><span class="term-name">Randomized Controlled Trial (RCT)</span><span class="term-tag tag-evidence">Evidence</span></div>
-      <p class="term-def">The gold standard of clinical research. Participants are randomly assigned to treatment or control groups — eliminating selection bias. When blinded (participants and/or researchers don't know who receives treatment), RCTs can establish causation rather than merely correlation. PeptideClear's strongest evidence grade — Human RCT — requires this design in human subjects.</p>
+      <p class="term-def">The gold standard of clinical research. Participants are randomly assigned to treatment or control groups — eliminating selection bias. When blinded, RCTs can establish causation rather than merely correlation. PeptideClear's strongest evidence grade — Human RCT — requires this design in human subjects. Compounds holding Human RCT grade: Creatine, GLP-1 agonists, Tirzepatide, Tesamorelin, HGH, Collagen Type I, NMN, Carnosine, PT-141, Collagen Type III, Sermorelin, Oxytocin, Glutathione, GHK-Cu, Palmitoyl Tripeptide-1, Argireline, and Leuphasyl.</p>
     </div>
 
     <div class="term" data-cat="evidence">
       <div class="term-header"><span class="term-name">Replication</span><span class="term-tag tag-scoring">Scoring</span></div>
-      <p class="term-def">The independent reproduction of a study's findings by a different research group. A single impressive study that has never been replicated should be held lightly — many initial findings fail to replicate, a phenomenon known as the replication crisis. Replication is one of the highest-weighted dimensions in PeptideClear's Research Quality Score (20 points) because it is the most reliable indicator of a finding's robustness.</p>
+      <p class="term-def">The independent reproduction of a study's findings by a different research group. A single impressive study that has never been replicated should be held lightly — many initial findings fail to replicate. Replication is the highest-weighted single dimension in PeptideClear's Research Quality Score (20 points). It is why compounds like Epitalon and Pinealon score so low despite appearing in the literature: virtually all their evidence comes from a single research group (Khavinson's St. Petersburg Institute), making the results impossible to evaluate independently.</p>
     </div>
 
     <div class="term" data-cat="community">
       <div class="term-header"><span class="term-name">Research Compound</span><span class="term-tag tag-community">Community</span></div>
-      <p class="term-def">A substance sold legally for laboratory research purposes but not approved for human therapeutic use. Research compounds occupy a legal grey zone — they are not illegal to purchase but are not approved for administration to humans. Many peptides in PeptideClear's catalog are sold as research compounds, including BPC-157, TB-500, KPV, Semax, and Selank.</p>
+      <p class="term-def">A substance sold legally for laboratory research purposes but not approved for human therapeutic use. Research compounds occupy a legal gray zone — they are not illegal to purchase but are not approved for administration to humans. Many peptides in PeptideClear's catalog are sold as research compounds, including BPC-157, TB-500, KPV, Semax, Selank, DSIP, Dihexa, and MOTS-c.</p>
     </div>
 
     <div class="term" data-cat="scoring">
-      <div class="term-header"><span class="term-name">Research Quality Score</span><span class="term-tag tag-scoring">Scoring</span></div>
-      <p class="term-def">PeptideClear's proprietary scoring framework that evaluates the methodological strength of evidence behind each compound, scored out of 100 points across seven dimensions: Study Design (25 pts), Sample Size (20 pts), Replication (20 pts), Journal Impact Factor (15 pts), Funding Independence (10 pts), Population Diversity (5 pts), and Researcher h-Index (5 pts). Designed to help visitors understand not just what the research says but how much weight to give it.</p>
+      <div class="term-header"><span class="term-name">Research Quality Score (RQS)</span><span class="term-tag tag-scoring">Scoring</span></div>
+      <p class="term-def">PeptideClear's proprietary scoring framework that evaluates the methodological strength of evidence behind each compound, scored out of 100 points across seven dimensions: Study Design (25 pts), Sample Size (20 pts), Replication (20 pts), Journal Impact Factor (15 pts), Funding Independence (10 pts), Population Diversity (5 pts), and Researcher h-Index (5 pts). The RQS measures research quality only — it is not a safety rating, an efficacy rating, or a recommendation. Score bands: Strong (80-100), Moderate (60-79), Limited (40-59), Weak (20-39), Insufficient (0-19).</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Reactive Oxygen Species (ROS)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">Chemically reactive molecules containing oxygen — including free radicals like superoxide and hydroxyl radicals — generated as byproducts of normal metabolism, particularly in mitochondria. In excess, ROS damage proteins, lipids, and DNA. Glutathione is the primary intracellular ROS scavenger. SS-31 reduces mitochondrial ROS by stabilizing the inner membrane and reducing electron leak. GHK-Cu has antioxidant properties through multiple mechanisms including SOD and catalase upregulation.</p>
     </div>
   </div>
 
@@ -958,7 +1141,12 @@ body {
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Secretagogue</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A substance that stimulates another substance to be secreted. Growth hormone secretagogues (GHS) — including Ipamorelin, Hexarelin, and Ibutamoren — stimulate the pituitary to secrete GH. This is mechanistically distinct from administering exogenous GH directly, as secretagogues preserve the body's own regulatory feedback systems.</p>
+      <p class="term-def">A substance that stimulates another substance to be secreted. Growth hormone secretagogues (GHS) — including Ipamorelin, Hexarelin, GHRP-6, and Ibutamoren — stimulate the pituitary to secrete GH. This is mechanistically distinct from administering exogenous GH directly, as secretagogues preserve the body's own regulatory feedback systems and somatostatin brake.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Sirtuin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A family of NAD+-dependent enzymes (SIRT1-7) that regulate gene expression, DNA repair, metabolism, and cellular stress responses. Sirtuins are often described as longevity enzymes because of their involvement in caloric restriction pathways. They require NAD+ as a cofactor — when NAD+ declines with age, sirtuin activity declines with it. This is one of the primary rationales for NAD+ precursor supplementation (NMN, NR).</p>
     </div>
 
     <div class="term" data-cat="biology">
@@ -967,13 +1155,23 @@ body {
     </div>
 
     <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">SNARE Complex</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A protein complex (SNAP-25, syntaxin, VAMP/synaptobrevin) responsible for docking neurotransmitter-containing vesicles to the presynaptic membrane, enabling their release. Botulinum toxin (Botox) permanently cleaves SNARE proteins, blocking acetylcholine release at the neuromuscular junction. Argireline mimics the N-terminal domain of SNAP-25, competitively interfering with SNARE assembly and reducing acetylcholine release — producing a reversible, topical muscle-relaxing effect at a fraction of the potency. Leuphasyl targets the same pathway at a distinct binding site.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Somatostatin</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A hormone that inhibits GH release — the counterpart to GHRH in the hypothalamic-pituitary axis. GHRH analogs like Sermorelin and Tesamorelin work within this regulatory system — they stimulate GH release but somatostatin can still suppress it, preventing dangerous GH excess. DSIP inhibits somatostatin release via a dopaminergic mechanism, which secondarily stimulates GH — an indirect GH-releasing mechanism.</p>
+      <p class="term-def">A hormone that inhibits GH release — the counterpart to GHRH in the hypothalamic-pituitary axis. GHRH analogs like Sermorelin and Tesamorelin work within this regulatory system — they stimulate GH release but somatostatin can still suppress it, preventing dangerous GH excess. DSIP inhibits somatostatin release via a dopaminergic mechanism, which secondarily stimulates GH — an indirect GH-releasing mechanism that makes DSIP mechanistically distinct from GHRH analogs.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">Spadin</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A naturally occurring neuropeptide derived from the pro-region of NTSR3/sortilin — the neurotensin receptor 3. Spadin acts as an endogenous antagonist of the TREK-1 potassium channel. PE-22-28 is a synthetic optimized fragment of spadin (positions 22-28) with improved stability and potency. By blocking TREK-1, PE-22-28 increases neuronal excitability and promotes BDNF-dependent signaling — the proposed mechanism for its antidepressant-like effects in rodent models.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Subcutaneous Injection</span><span class="term-tag tag-clinical">Clinical</span></div>
-      <p class="term-def">Administration of a substance into the tissue layer between the skin and muscle. Most injectable peptides in this catalog are administered subcutaneously rather than intravenously or intramuscularly. Subcutaneous injection is generally simpler and lower-risk than intravenous administration and produces slower, more sustained absorption.</p>
+      <p class="term-def">Administration of a substance into the tissue layer between the skin and muscle. Most injectable peptides in this catalog are administered subcutaneously rather than intravenously or intramuscularly. Subcutaneous injection is generally simpler and lower-risk than intravenous administration and produces slower, more sustained absorption. SS-31's preclinical and clinical data was generated using subcutaneous injection — no oral bioavailability exists for this compound.</p>
     </div>
 
     <div class="term" data-cat="evidence">
@@ -983,7 +1181,7 @@ body {
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Synaptogenesis</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">The formation of new synaptic connections between neurons. Synaptogenesis underlies learning, memory consolidation, and cognitive recovery after injury. Dihexa works by activating the HGF/c-Met pathway to drive synaptogenesis — making it mechanistically unique among the nootropic compounds in this catalog, all of which target the brain through different pathways.</p>
+      <p class="term-def">The formation of new synaptic connections between neurons. Synaptogenesis underlies learning, memory consolidation, and cognitive recovery after injury. Dihexa works by activating the HGF/c-Met pathway to drive synaptogenesis. PE-22-28 promotes synaptogenesis indirectly through TREK-1 inhibition and BDNF upregulation — a mechanistically distinct route to a similar downstream outcome.</p>
     </div>
   </div>
 
@@ -993,12 +1191,17 @@ body {
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Telomerase</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">An enzyme that extends telomeres — the protective caps at the ends of chromosomes that shorten with each cell division. Telomere shortening is associated with cellular aging and senescence. Epitalon is proposed to activate telomerase, potentially slowing this process. Telomerase is also activated in most cancers, creating a theoretical oncogenic concern with compounds that upregulate it chronically.</p>
+      <p class="term-def">An enzyme that extends telomeres — the protective caps at the ends of chromosomes that shorten with each cell division. Epitalon is proposed to activate telomerase, potentially slowing cellular aging. Telomerase is also activated in most cancers, creating a theoretical oncogenic concern with chronic upregulation. A May 2026 Johns Hopkins finding that inherited long telomeres may raise lymphoma and cancer risk adds further complexity to the "longer telomeres are always better" premise.</p>
     </div>
 
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Telomere</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">Protective sequences of repetitive DNA at the ends of chromosomes, often compared to the plastic tips on shoelaces. Telomeres shorten with each cell division and with oxidative stress — when they become too short the cell can no longer divide and enters senescence. Telomere length is considered a biological marker of cellular aging.</p>
+      <p class="term-def">Protective sequences of repetitive DNA at the ends of chromosomes, often compared to the plastic tips on shoelaces. Telomeres shorten with each cell division and with oxidative stress. When too short, the cell can no longer divide and enters senescence. Telomere length is considered a biological marker of cellular aging, though the relationship between telomere length and health outcomes is more complex than the popular narrative suggests.</p>
+    </div>
+
+    <div class="term" data-cat="vendor">
+      <div class="term-header"><span class="term-name">Third-Party Testing</span><span class="term-tag tag-vendor">Vendor</span></div>
+      <p class="term-def">Testing conducted by a laboratory that is independent from the vendor selling the product. Third-party testing is the most heavily weighted dimension in the VTS (30 points) because it is the single most predictive signal of whether a vial matches its label. Per-batch third-party testing — where every product lot is tested before sale — is the gold standard. Periodic or spot-check testing scores lower. In-house testing by the vendor's own lab is not considered third-party. Named labs (e.g. Janoshik, MZ Biolabs, Colmaric) score higher than unnamed "independent laboratory" claims, which cannot be verified.</p>
     </div>
 
     <div class="term" data-cat="biology">
@@ -1012,8 +1215,28 @@ body {
     </div>
 
     <div class="term" data-cat="biology">
+      <div class="term-header"><span class="term-name">TREK-1 (TWIK-Related Potassium Channel 1)</span><span class="term-tag tag-biology">Biology</span></div>
+      <p class="term-def">A two-pore domain potassium channel expressed throughout the brain that dampens neuronal excitability by allowing potassium ions to flow out of cells. TREK-1 is thought to act as a natural "brake" on neuronal activity — high TREK-1 activity is associated with depression-like states in rodent models. PE-22-28 (and its parent compound spadin) works by blocking TREK-1, increasing neuronal excitability and promoting downstream BDNF signaling.</p>
+    </div>
+
+    <div class="term" data-cat="vendor">
+      <div class="term-header"><span class="term-name">Testing Recency</span><span class="term-tag tag-vendor">Vendor</span></div>
+      <p class="term-def">In the VTS framework, whether a vendor's published COAs are dated and current relative to the product currently on sale. A vendor could have an impressive COA archive that is years old while currently selling untested stock — a meaningful gap that testing recency scoring specifically captures. Undated COAs score lowest because it is impossible to assess whether they reflect current batches or historical testing from years prior.</p>
+    </div>
+
+    <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Tuftsin</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">A naturally occurring tetrapeptide (Thr-Lys-Pro-Arg) produced by the spleen as a fragment of immunoglobulin G. Tuftsin activates macrophages and modulates immune function but is rapidly degraded in plasma. Selank was created by adding a Pro-Gly-Pro stabilizing tail to Tuftsin, dramatically improving its stability and enabling CNS penetration while preserving its immunomodulatory and anxiolytic properties.</p>
+      <p class="term-def">A naturally occurring tetrapeptide (Thr-Lys-Pro-Arg) produced by the spleen as a fragment of immunoglobulin G. Tuftsin activates macrophages but is rapidly degraded in plasma. Selank was created by adding a Pro-Gly-Pro stabilizing tail to Tuftsin, dramatically improving its stability and enabling CNS penetration while preserving its immunomodulatory and anxiolytic properties.</p>
+    </div>
+  </div>
+
+  <!-- U -->
+  <div class="letter-section" id="U">
+    <div class="letter-heading">U</div>
+
+    <div class="term" data-cat="vendor">
+      <div class="term-header"><span class="term-name">Upstream vs. Downstream (Vendor Context)</span><span class="term-tag tag-vendor">Vendor</span></div>
+      <p class="term-def">In PeptideClear's framework, "upstream" vendors are B2B raw material suppliers (bulk API manufacturers, often based in China) selling to other businesses. "Downstream" vendors are US-facing consumer gray market suppliers selling directly to end users. The PeptideClear VTS exclusively scores downstream consumer vendors because that is the vendor category the audience is actually evaluating. B2B raw material suppliers like Yongli Biopeptide and TopXPeptide are out of scope regardless of their quality posture.</p>
     </div>
   </div>
 
@@ -1021,9 +1244,14 @@ body {
   <div class="letter-section" id="V">
     <div class="letter-heading">V</div>
 
+    <div class="term" data-cat="scoring">
+      <div class="term-header"><span class="term-name">Vendor Transparency Score (VTS)</span><span class="term-tag tag-scoring">Scoring</span></div>
+      <p class="term-def">PeptideClear's proprietary framework for evaluating research compound vendors, scored 0-100 across seven dimensions: Third-Party Testing Practice (30 pts), Batch Traceability (20 pts), COA Accessibility (15 pts), COA Completeness (15 pts), Testing Recency (10 pts), Policy Transparency (5 pts), and Operational Track Record (5 pts). The VTS measures process transparency only — not product safety, purity, potency, or efficacy. Score bands: High Transparency (80-100), Moderate (60-79), Limited (40-59), Low (20-39), Opaque (0-19). Band labels are intentionally distinct from RQS bands so a vendor score of 85 is never read as equivalent to a compound score of 85.</p>
+    </div>
+
     <div class="term" data-cat="biology">
       <div class="term-header"><span class="term-name">Visceral Adipose Tissue (VAT)</span><span class="term-tag tag-biology">Biology</span></div>
-      <p class="term-def">Fat stored around internal organs in the abdominal cavity — as opposed to subcutaneous fat stored under the skin. VAT is metabolically active and associated with insulin resistance, cardiovascular disease, and systemic inflammation. Tesamorelin is specifically approved to reduce VAT in HIV-associated lipodystrophy and is the most clinically validated compound for targeted visceral fat reduction in this catalog.</p>
+      <p class="term-def">Fat stored around internal organs in the abdominal cavity — as opposed to subcutaneous fat stored under the skin. VAT is metabolically active and associated with insulin resistance, cardiovascular disease, and systemic inflammation. Tesamorelin is specifically approved to reduce VAT in HIV-associated lipodystrophy and is the most clinically validated compound for targeted visceral fat reduction in this catalog. GLP-1 agonists and Tirzepatide also reduce VAT significantly as part of their total weight loss effect.</p>
     </div>
 
     <div class="term" data-cat="biology">
@@ -1038,12 +1266,12 @@ body {
 
     <div class="term" data-cat="community">
       <div class="term-header"><span class="term-name">Wolverine Stack</span><span class="term-tag tag-community">Community</span></div>
-      <p class="term-def">A branded combination of two research compounds commonly referenced in the biohacking and recovery community: BPC-157 and TB-500. Named after the Marvel character's regenerative abilities. The combination targets complementary axes of tissue repair — BPC-157 via angiogenesis and TB-500 via cell migration. Forms the foundation from which the GLOW and KLOW stacks are built.</p>
+      <p class="term-def">A branded combination of two research compounds commonly referenced in the biohacking and recovery community: BPC-157 and TB-500. Named after the Marvel character's regenerative abilities. The combination targets complementary axes of tissue repair — BPC-157 via angiogenesis and TB-500 via cell migration and actin dynamics. Forms the foundation from which the KLOW stack is built.</p>
     </div>
 
     <div class="term" data-cat="regulatory">
       <div class="term-header"><span class="term-name">WADA (World Anti-Doping Agency)</span><span class="term-tag tag-regulatory">Regulatory</span></div>
-      <p class="term-def">The international organization that sets and enforces anti-doping regulations in competitive sport. WADA's Prohibited List (updated annually) bans numerous peptides and growth hormone secretagogues. Compounds prohibited under WADA Section S2 include CJC-1295, Hexarelin, Ipamorelin, Ibutamoren, and Sermorelin. Athletes subject to anti-doping testing should consult WADA's current list before using any compound in this catalog.</p>
+      <p class="term-def">The international organization that sets and enforces anti-doping regulations in competitive sport. WADA's Prohibited List (updated annually) bans numerous peptides and growth hormone secretagogues. Compounds prohibited under WADA include CJC-1295, Hexarelin, Ipamorelin, Ibutamoren, Sermorelin, GHRP-6, and HGH. Athletes subject to anti-doping testing should consult WADA's current Prohibited List (updated each January) before using any compound in this catalog, as the list changes periodically.</p>
     </div>
   </div>
 
@@ -1051,26 +1279,50 @@ body {
 
 <!-- FOOTER -->
 <footer class="glossary-footer">
-  <p>PeptideClear Glossary — 100+ terms across 8 categories. Updated as new compound profiles are added.<br>
+  <p>PeptideClear Glossary — 130+ terms across 9 categories. Updated August 2026 to reflect 53 compounds and 18 vendors.<br>
   Questions or corrections? <a href="mailto:hello@peptideclear.com">hello@peptideclear.com</a></p>
 </footer>
 
 <script>
-  // ── DARK MODE TOGGLE ──
-  function toggleTheme() {
-    const html = document.documentElement;
-    const isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    document.getElementById('theme-label').textContent = isDark ? 'Light' : 'Dark';
-    localStorage.setItem('pc-theme', isDark ? 'light' : 'dark');
+  // ── DARK MODE ──
+  // Three-state cycle: auto (follows OS) → dark → light → auto
+  // On load: respect saved preference, fall back to 'auto' (OS follows via CSS media query)
+
+  const STATES = ['auto', 'dark', 'light'];
+  const LABELS = { auto: 'Auto', dark: 'Dark', light: 'Light' };
+
+  function getState() {
+    return localStorage.getItem('pc-theme') || 'auto';
   }
 
-  // Restore saved theme
-  const saved = localStorage.getItem('pc-theme');
-  if (saved) {
-    document.documentElement.setAttribute('data-theme', saved);
-    document.getElementById('theme-label').textContent = saved === 'dark' ? 'Dark' : 'Light';
+  function applyState(state) {
+    const html = document.documentElement;
+    const body = document.body;
+    if (state === 'auto') {
+      html.removeAttribute('data-theme');
+    } else {
+      html.setAttribute('data-theme', state);
+    }
+    // Update toggle knob visual
+    const isDark = state === 'dark' || (state === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    body.classList.toggle('is-dark', isDark);
+    document.getElementById('theme-label').textContent = LABELS[state];
   }
+
+  function toggleTheme() {
+    const current = getState();
+    const next = STATES[(STATES.indexOf(current) + 1) % STATES.length];
+    localStorage.setItem('pc-theme', next);
+    applyState(next);
+  }
+
+  // Apply saved or default state on load
+  applyState(getState());
+
+  // Keep toggle knob in sync when OS preference changes (for 'auto' mode)
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (getState() === 'auto') applyState('auto');
+  });
 
   // ── SEARCH ──
   const searchInput = document.getElementById('search');
