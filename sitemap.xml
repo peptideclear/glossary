@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Glossary root -->
+  <url>
+    <loc>https://peptideclear.github.io/glossary/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Compound scoring logs (53) -->
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/creatine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/glp-1</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/tirzepatide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/hgh</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/tesamorelin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/collagen-type-i</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/thymosin-alpha-1</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/gonadorelin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/retatrutide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/nmn</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/carnosine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/pt-141</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/nad-plus</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/collagen-type-iii</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/cagrilintide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/oxytocin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/sermorelin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/ibutamoren</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/cerebrolysin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/glutathione</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/ghrp-2</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/ghk-cu</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/survodutide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/palmitoyl-tripeptide-1</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/ss-31</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/argireline</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/ghrp-6</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/kisspeptin-10</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/cjc-1295</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/hexarelin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/kpv</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/semax</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/tb-500</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/mots-c</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/ll-37</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/epitalon</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/melanotan-ii</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/leuphasyl</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/turkesterone</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/humanin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/dsip</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/selank</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/slu-pp-332</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/ipamorelin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/igf-1-lr3</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/follistatin-344</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/aod-9604</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/dihexa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/5-amino-1mq</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/pe-22-28</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/bpc-157</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/pda</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/scoring-logs/pinealon</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Vendor scoring logs (18) -->
+  <url><loc>https://peptideclear.github.io/glossary/vendors/biolongevity-labs.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/protide-health.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/umbrella-labs.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/verified-peptides.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/eternal-peptides.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/ascension-peptides.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/titan-peptide-lab.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/behemoth-labz.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/limitless-life-nootropics.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/peptide-pro.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/swisschems.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/sko-compounds.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/biotech-peptides.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/blue-sky-peptide.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/apex-peptides.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/core-peptides.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/rebirth-labs.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/vendors/biomax-peptides.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Comparison pages (7) -->
+  <url><loc>https://peptideclear.github.io/glossary/compare/tirzepatide-vs-retatrutide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/nad-plus-vs-nmn</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/pt-141-vs-melanotan-ii</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/bpc-157-vs-tb-500</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/recovery-peptides-compared</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/gh-secretagogues-compared</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/nootropic-peptides-compared</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+</urlset>
