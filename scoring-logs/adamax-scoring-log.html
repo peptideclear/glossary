@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adamax — RQS Scoring Log · PeptideClear</title>
+<link rel="canonical" href="https://peptideclear.github.io/glossary/scoring-logs/adamax">
+<meta property="og:title" content="Adamax — RQS Scoring Log · PeptideClear">
+<meta property="og:description" content="Adamax (N-Acetyl Semax Adamantane) scores 11/100 — Insufficient Evidence. Full 7-dimension RQS scoring log by PeptideClear.">
+<meta property="og:url" content="https://peptideclear.github.io/glossary/scoring-logs/adamax">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Adamax — Research Quality Score",
+  "description": "PeptideClear RQS scoring log for Adamax (N-Acetyl Semax Adamantane). Score: 11/100 — Insufficient Evidence. The RQS measures research quality only; it is not a safety or efficacy verdict.",
+  "url": "https://peptideclear.github.io/glossary/scoring-logs/adamax",
+  "creator": { "@type": "Organization", "name": "PeptideClear", "url": "https://peptideclear.com" },
+  "variableMeasured": [
+    { "@type": "PropertyValue", "name": "Study Design", "value": "2/25" },
+    { "@type": "PropertyValue", "name": "Sample Size", "value": "0/20" },
+    { "@type": "PropertyValue", "name": "Replication", "value": "0/20" },
+    { "@type": "PropertyValue", "name": "Journal Impact Factor", "value": "2/15" },
+    { "@type": "PropertyValue", "name": "Funding Independence", "value": "4/10" },
+    { "@type": "PropertyValue", "name": "Population Diversity", "value": "0/5" },
+    { "@type": "PropertyValue", "name": "Researcher h-Index", "value": "3/5" },
+    { "@type": "PropertyValue", "name": "RQS Total", "value": "11/100" }
+  ],
+  "about": { "@type": "Thing", "name": "Adamax", "alternateName": ["N-Acetyl Semax Adamantane", "Acetyl-Semax-Adamantane", "Ac-MEHFPGP-Adamantyl-NH2"] }
+}
+</script>
+<style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#ffffff; --bg-alt:#f7fafd; --bg-header:#f0f6ff; --border:#e8edf2;
+  --border-accent:#4A90D9; --text-primary:#0d1f35; --text-body:#374151;
+  --text-muted:#4a5568; --text-faint:#6b7280; --accent:#4A90D9; --accent-dark:#1B5EA3;
+  --caveat-bg:#f8fafc; --note-bg:#f0f6ff;
+  --strong-bg:#d1fae5; --strong-fg:#065f46; --moderate-bg:#dbeafe; --moderate-fg:#1e40af;
+  --limited-bg:#fef3c7; --limited-fg:#92400e; --weak-bg:#ffedd5; --weak-fg:#9a3412;
+  --insuff-bg:#fee2e2; --insuff-fg:#991b1b;
+  --color-strong:#16a34a; --color-moderate:#2563eb; --color-limited:#d97706; --color-weak:#ea580c; --color-insuff:#dc2626;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#0A1929; --bg-alt:#071E38; --bg-header:#071E38; --border:#164E8A;
+    --border-accent:#4A90D9; --text-primary:#C1E4FF; --text-body:#93C9FF;
+    --text-muted:#6BB8FF; --text-faint:#6BB8FF; --accent:#4A90D9; --accent-dark:#93C9FF;
+    --caveat-bg:#0B2D52; --note-bg:#071E38;
+    --strong-bg:#14532D; --strong-fg:#86EFAC; --moderate-bg:#1E3A5F; --moderate-fg:#93C5FD;
+    --limited-bg:#78350F; --limited-fg:#FDE68A; --weak-bg:#7C2D12; --weak-fg:#FDBA74;
+    --insuff-bg:#7F1D1D; --insuff-fg:#FCA5A5;
+    --color-strong:#4ade80; --color-moderate:#60a5fa; --color-limited:#fcd34d; --color-weak:#fb923c; --color-insuff:#f87171;
+  }
+}
+body { background:var(--bg); color:var(--text-primary); font-family:'Georgia',serif; font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+.page-wrapper { max-width:680px; margin:0 auto; padding:48px 24px 100px; }
+.back-link { display:inline-block; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--accent); text-decoration:none; margin-bottom:32px; letter-spacing:0.02em; }
+.back-link:hover { text-decoration:underline; }
+.compound-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+h1 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:32px; font-weight:700; color:var(--text-primary); margin-bottom:12px; letter-spacing:-0.02em; line-height:1.2; }
+.meta-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:32px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-faint); }
+.meta-divider { color:var(--border); }
+.meta-row a { color:var(--accent); text-decoration:none; }
+.meta-row a:hover { text-decoration:underline; }
+.score-hero { display:flex; align-items:center; gap:24px; background:var(--bg-alt); border-radius:10px; padding:24px; margin-bottom:40px; border:1px solid var(--border); }
+.score-circle { width:80px; height:80px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; border:4px solid; }
+.score-num-big { font-family:'Helvetica Neue',Arial,sans-serif; font-size:26px; font-weight:800; line-height:1; }
+.score-denom { font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; color:var(--text-faint); }
+.score-info { flex:1; }
+.score-band-pill { display:inline-block; padding:4px 14px; border-radius:20px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; font-weight:700; margin-bottom:8px; }
+.score-desc { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); }
+.section-title { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:16px; }
+.dim-table { width:100%; border-collapse:collapse; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; margin-bottom:40px; }
+.dim-table thead tr { border-bottom:2px solid var(--border-accent); background:var(--bg-header); }
+.dim-table thead th { padding:10px 12px; text-align:left; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-dark); }
+.dim-table tbody tr { border-bottom:1px solid var(--border); }
+.dim-table tbody tr:last-child { border-bottom:none; }
+.dim-table tbody td { padding:14px 12px; vertical-align:top; color:var(--text-body); line-height:1.5; }
+.dim-table tbody td:first-child { font-weight:700; color:var(--text-primary); width:180px; }
+.dim-score-cell { white-space:nowrap; text-align:right; font-weight:700; width:70px; }
+.dim-note { font-size:13px; color:var(--text-muted); font-style:italic; }
+.divider { height:1px; background:var(--border); margin:32px 0; }
+.caveat-box { background:var(--caveat-bg); border-left:3px solid var(--border-accent); border-radius:0 6px 6px 0; padding:14px 18px; margin-bottom:12px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; }
+.caveat-title { font-weight:700; color:var(--text-primary); margin-bottom:4px; }
+.caveat-body { color:var(--text-muted); line-height:1.6; }
+.footer-note { margin-top:40px; padding:16px 20px; background:var(--note-bg); border-radius:8px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--text-muted); line-height:1.6; }
+.lede { font-family:'Helvetica Neue',Arial,sans-serif; font-size:15px; color:var(--text-muted); line-height:1.7; margin-bottom:32px; }
+@media (max-width:600px) { h1 { font-size:24px; } .score-hero { flex-direction:column; align-items:flex-start; } .dim-table tbody td:first-child { width:auto; } }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+  <a class="back-link" href="https://peptideclear.github.io/glossary/rqs-methodology" target="_top">← Back to RQS Methodology</a>
+  <div class="compound-label">RQS Scoring Log</div>
+  <h1>Adamax</h1>
+  <div class="meta-row">
+    <span>Nootropics &amp; Neuroprotection</span><span class="meta-divider">·</span>
+    <span>Animal / In Vitro</span><span class="meta-divider">·</span>
+    <span>Scored August 2026</span><span class="meta-divider">·</span>
+    <a href="https://peptideclear.com/peptides/adamax" target="_top">View compound profile →</a>
+  </div>
+
+  <p class="lede">Adamax is a synthetic nootropic peptide built on the Semax backbone with two pharmacokinetic modifications: N-terminal acetylation and a C-terminal adamantane group. The rationale is sound on paper, but Adamax has never been studied independently in any species. Its RQS score reflects the actual evidence base, not the theoretical one.</p>
+
+  <div class="score-hero">
+    <div class="score-circle" style="border-color:var(--color-insuff); color:var(--color-insuff)">
+      <span class="score-num-big">11</span>
+      <span class="score-denom">/100</span>
+    </div>
+    <div class="score-info">
+      <span class="score-band-pill" style="background:var(--insuff-bg); color:var(--insuff-fg)">Insufficient Evidence</span>
+      <div class="score-desc">No published study of Adamax exists in any species. All proposed mechanisms are inferences from parent compounds Semax and P21. The score reflects the actual evidence base only.</div>
+    </div>
+  </div>
+
+  <div class="section-title">7-Dimension Breakdown</div>
+  <table class="dim-table">
+    <thead>
+      <tr><th>Dimension</th><th>Max</th><th>Notes</th><th class="dim-score-cell">Score</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Study Design</td><td>25</td>
+        <td><span class="dim-note">No published study of Adamax exists in any species — not in vitro, not animal, not human. Scored 2 rather than 0 to reflect the well-characterized preclinical evidence for the parent compound Semax, from which structural inferences are made.</span></td>
+        <td class="dim-score-cell">2 / 25</td>
+      </tr>
+      <tr>
+        <td>Sample Size</td><td>20</td>
+        <td><span class="dim-note">No human participants. No animal participants in any study of Adamax itself.</span></td>
+        <td class="dim-score-cell">0 / 20</td>
+      </tr>
+      <tr>
+        <td>Replication</td><td>20</td>
+        <td><span class="dim-note">Zero replication. There is nothing to replicate. No single published study of the compound exists under its own name in any database.</span></td>
+        <td class="dim-score-cell">0 / 20</td>
+      </tr>
+      <tr>
+        <td>Journal Impact Factor</td><td>15</td>
+        <td><span class="dim-note">No peer-reviewed journal publication on Adamax. The 2 points reflect low-IF Russian pharmacology journals where Semax parent research appears -- a generous proxy given Adamax itself has no journal record.</span></td>
+        <td class="dim-score-cell">2 / 15</td>
+      </tr>
+      <tr>
+        <td>Funding Independence</td><td>10</td>
+        <td><span class="dim-note">The lineage is Russian academic (Institute of Molecular Genetics). However, the compound now circulates almost exclusively through gray-market research chemical vendors. No formal research funding exists to assess. Partial credit for the academic origin of the parent compound program.</span></td>
+        <td class="dim-score-cell">4 / 10</td>
+      </tr>
+      <tr>
+        <td>Population Diversity</td><td>5</td>
+        <td><span class="dim-note">No human data. Not applicable.</span></td>
+        <td class="dim-score-cell">0 / 5</td>
+      </tr>
+      <tr>
+        <td>Researcher h-Index</td><td>5</td>
+        <td><span class="dim-note">Credited to the Semax research lineage (Institute of Molecular Genetics, Russian Academy of Sciences). The researchers behind the parent program have credible academic profiles. Adamax itself has no identifiable primary researcher.</span></td>
+        <td class="dim-score-cell">3 / 5</td>
+      </tr>
+      <tr style="background:var(--bg-alt); font-weight:700;">
+        <td>Total</td><td>100</td><td></td><td class="dim-score-cell">11 / 100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Community Signal</div>
+  <p style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; color:var(--text-muted); line-height:1.7; margin-bottom:32px;">
+    Anecdotal reports in nootropic communities describe Adamax as producing stronger and longer-lasting cognitive effects than Semax, with users noting enhanced focus, improved verbal fluency, and extended duration per dose. These reports are entirely unverifiable and cannot be distinguished from placebo response. PeptideClear does not validate or weight anecdotal claims; they are surfaced here as community signal only.
+  </p>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Scoring Notes</div>
+  <div class="caveat-box">
+    <div class="caveat-title">No Independent Research Exists</div>
+    <div class="caveat-body">A PubMed search for "Adamax peptide" returns no results pertaining to this compound. The only PubMed hit for "Adamax" is a machine-learning paper referring to the Adamax optimization algorithm. Every mechanism attributed to Adamax -- BDNF upregulation, TrkB activation, extended half-life, superior BBB penetration -- is structural inference from parent compounds Semax and P21, not measured data. This is acknowledged transparently by the more credible vendor literature. The RQS score of 11 is not a verdict on the compound's potential; it is an accurate reflection of the current evidence base.</div>
+  </div>
+  <div class="caveat-box">
+    <div class="caveat-title">Russian Literature Note</div>
+    <div class="caveat-body">The parent compound Semax has a 30+ year clinical history in Russia, documented in Russian pharmacology journals. Those journals score lower on Western impact factor metrics, not because the science is necessarily weaker, but because of publishing system differences. This context applies to the Semax lineage. It does not apply to Adamax, which has no published literature in any language or journal.</div>
+  </div>
+
+  <div class="footer-note">
+    The RQS measures research quality only. A low score does not mean a compound is unsafe or ineffective. It means the published evidence base is insufficient to evaluate it. Adamax has not yet been studied in any controlled setting; the score reflects that gap, not a judgment on the compound's underlying pharmacology or future potential. Sources: PubMed search "Adamax peptide" (August 2026); Semax parent compound literature via PubMed; peptahub.com editorial review; peptidelist.org compound entry. Scored: August 2026.
+  </div>
+</div>
+</body>
+</html>
