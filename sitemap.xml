@@ -104,7 +104,7 @@
   <url><loc>https://peptideclear.github.io/glossary/vendors/umbrella-labs.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://peptideclear.github.io/glossary/vendors/verified-peptides.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <!-- Comparison pages (7) -->
+  <!-- Comparison pages (16) -->
   <url><loc>https://peptideclear.github.io/glossary/compare/bpc-157-vs-tb-500</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://peptideclear.github.io/glossary/compare/gh-secretagogues-compared</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://peptideclear.github.io/glossary/compare/nad-plus-vs-nmn</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -112,5 +112,14 @@
   <url><loc>https://peptideclear.github.io/glossary/compare/pt-141-vs-melanotan-ii</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://peptideclear.github.io/glossary/compare/recovery-peptides-compared</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://peptideclear.github.io/glossary/compare/tirzepatide-vs-retatrutide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/bpc-157-vendors.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/tb-500-vendors.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/ghk-cu-vendors.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/kpv-vendors.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/ipamorelin-vendors.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/cjc-1295-ipamorelin-blend-vendors.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/semaglutide-vendors.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/tirzepatide-vendors.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://peptideclear.github.io/glossary/compare/retatrutide-vendors.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
 </urlset>
