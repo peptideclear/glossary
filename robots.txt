@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://peptideclear.github.io/glossary/sitemap.xml
