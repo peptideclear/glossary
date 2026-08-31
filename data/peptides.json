@@ -18,6 +18,12 @@
     "grade": "Human RCT"
   },
   {
+    "slug": "l-carnitine",
+    "name": "L-Carnitine",
+    "rqs": 93,
+    "grade": "Human RCT"
+  },
+  {
     "slug": "tirzepatide",
     "name": "Tirzepatide",
     "rqs": 91,
@@ -90,6 +96,12 @@
     "grade": "Human RCT"
   },
   {
+    "slug": "survodutide",
+    "name": "Survodutide",
+    "rqs": 67,
+    "grade": "Human RCT"
+  },
+  {
     "slug": "sermorelin",
     "name": "Sermorelin",
     "rqs": 64,
@@ -123,12 +135,6 @@
     "slug": "glutathione",
     "name": "Glutathione",
     "rqs": 60,
-    "grade": "Human RCT"
-  },
-  {
-    "slug": "survodutide",
-    "name": "Survodutide",
-    "rqs": 56,
     "grade": "Human RCT"
   },
   {
@@ -309,6 +315,12 @@
     "slug": "pda",
     "name": "PDA",
     "rqs": 19,
+    "grade": "Animal / In Vitro"
+  },
+  {
+    "slug": "adamax",
+    "name": "Adamax",
+    "rqs": 11,
     "grade": "Animal / In Vitro"
   },
   {
