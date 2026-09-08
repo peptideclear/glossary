@@ -80,12 +80,12 @@
   },
 
   "cjc-1295-ipamorelin-blend": {
-    "unit": "vial",
-    "low": null,
-    "high": null,
-    "median": null,
-    "n": null,
-    "as_of": "",
-    "_status": "pending - this is a blend, so per-mg does not normalize cleanly. Either price per vial as set here, or skip the band on the blend page. Your call."
+    "unit": "50/50 split mg",
+    "low": 3.21,
+    "high": 9.00,
+    "median": 6.80,
+    "n": 5,
+    "as_of": "Sepetember 2026",
+    "_status": "Updated"
   }
 }
