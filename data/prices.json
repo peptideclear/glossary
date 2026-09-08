@@ -17,12 +17,12 @@
 
   "bpc-157": {
     "unit": "mg",
-    "low": null,
-    "high": null,
-    "median": null,
-    "n": null,
+    "low": 3.18,
+    "high": 9.70,
+    "median": 5.00,
+    "n": 9,
     "as_of": "",
-    "_status": "pending capture"
+    "_status": "September 2026"
   },
   "tb-500": {
     "unit": "mg",
