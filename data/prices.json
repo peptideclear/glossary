@@ -35,12 +35,12 @@
   },
   "kpv": {
     "unit": "mg",
-    "low": null,
-    "high": null,
-    "median": null,
-    "n": null,
-    "as_of": "",
-    "_status": "pending capture"
+    "low": 3.30,
+    "high": 5.00,
+    "median": 5.00,
+    "n": 4,
+    "as_of": "September 2026",
+      "_status": "Updated"
   },
   "ipamorelin": {
     "unit": "mg",
