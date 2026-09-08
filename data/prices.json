@@ -7,12 +7,12 @@
 
   "ghk-cu": {
     "unit": "mg",
-    "low": 0.60,
-    "high": 1.80,
-    "median": 1.05,
-    "n": 11,
-    "as_of": "Aug 2026",
-    "_status": "EXAMPLE NUMBERS ONLY - replace all figures with your own captured data before this goes live"
+    "low": 0.30,
+    "high": 0.93,
+    "median": 0.70,
+    "n": 7,
+    "as_of": "September 2026",
+    "_status": "Updated"
   },
 
   "bpc-157": {
