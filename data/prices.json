@@ -1,0 +1,91 @@
+{
+  "_meta": {
+    "unit_convention": "low, high, and median are the lowest public listing price per vendor for the STANDALONE compound, normalized to the stated unit. Blends are excluded from single-compound bands. Capture these figures while doing VTS scoring passes, when you are already on each vendor's public site.",
+    "how_to_update": "Edit a compound's low, high, median, n, and as_of when you refresh vendor scoring. A band only appears on its page once low, high, and median are all real numbers. Leave a compound null to keep its band hidden.",
+    "updated": "2026-09"
+  },
+
+  "ghk-cu": {
+    "unit": "mg",
+    "low": 0.60,
+    "high": 1.80,
+    "median": 1.05,
+    "n": 11,
+    "as_of": "Aug 2026",
+    "_status": "EXAMPLE NUMBERS ONLY - replace all figures with your own captured data before this goes live"
+  },
+
+  "bpc-157": {
+    "unit": "mg",
+    "low": null,
+    "high": null,
+    "median": null,
+    "n": null,
+    "as_of": "",
+    "_status": "pending capture"
+  },
+  "tb-500": {
+    "unit": "mg",
+    "low": null,
+    "high": null,
+    "median": null,
+    "n": null,
+    "as_of": "",
+    "_status": "pending capture"
+  },
+  "kpv": {
+    "unit": "mg",
+    "low": null,
+    "high": null,
+    "median": null,
+    "n": null,
+    "as_of": "",
+    "_status": "pending capture"
+  },
+  "ipamorelin": {
+    "unit": "mg",
+    "low": null,
+    "high": null,
+    "median": null,
+    "n": null,
+    "as_of": "",
+    "_status": "pending capture"
+  },
+  "semaglutide": {
+    "unit": "mg",
+    "low": null,
+    "high": null,
+    "median": null,
+    "n": null,
+    "as_of": "",
+    "_status": "pending capture"
+  },
+  "tirzepatide": {
+    "unit": "mg",
+    "low": null,
+    "high": null,
+    "median": null,
+    "n": null,
+    "as_of": "",
+    "_status": "pending capture"
+  },
+  "retatrutide": {
+    "unit": "mg",
+    "low": null,
+    "high": null,
+    "median": null,
+    "n": null,
+    "as_of": "",
+    "_status": "pending capture"
+  },
+
+  "cjc-1295-ipamorelin-blend": {
+    "unit": "vial",
+    "low": null,
+    "high": null,
+    "median": null,
+    "n": null,
+    "as_of": "",
+    "_status": "pending - this is a blend, so per-mg does not normalize cleanly. Either price per vial as set here, or skip the band on the blend page. Your call."
+  }
+}
