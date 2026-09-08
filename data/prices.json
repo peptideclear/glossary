@@ -62,12 +62,12 @@
   },
   "tirzepatide": {
     "unit": "mg",
-    "low": null,
-    "high": null,
-    "median": null,
-    "n": null,
-    "as_of": "",
-    "_status": "pending capture"
+    "low": 1.15,
+    "high": 8.50,
+    "median": 4.83,
+    "n": 2,
+    "as_of": "September 2026",
+    "_status": "Updated"
   },
   "retatrutide": {
     "unit": "mg",
